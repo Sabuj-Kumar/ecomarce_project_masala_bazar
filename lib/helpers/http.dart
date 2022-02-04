@@ -122,6 +122,7 @@ class HTTP {
               body: json.encode(body))
           .timeout(const Duration(seconds: 50000));
     } catch (e) {
+      log("HTTP [WEBPOST ERROR] :", error: e);
       return Future.value(http.Response(
           jsonEncode({"Success": false, "Message": e.toString()}), 400));
     }
