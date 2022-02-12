@@ -6,19 +6,22 @@ import 'package:efgecom/pages/menu/side_menu.dart';
 
 class HomePage extends StatefulWidget {
   final int? index;
+
   const HomePage({Key? key, this.index}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _HomePageState();
   }
 
-  // @override
-  // _HomePageState createState() => _HomePageState();
+// @override
+// _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   int _index = 0;
+
   @override
   void initState() {
     if (widget.index != null) {
@@ -50,32 +53,33 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           });
         },
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(_index == 0
-                ? CupertinoIcons.rectangle_grid_2x2_fill
-                : CupertinoIcons.rectangle_grid_2x2),
+          const BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-                _index == 2 ? CupertinoIcons.gear_solid : CupertinoIcons.gear),
-            label: 'Settings',
+            icon: Icon(_index == 1
+                ? CupertinoIcons.bubble_right_fill
+                : CupertinoIcons.bubble_right),
+            label: 'Inbox',
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Fontisto.shopping_pos_machine),
-            label: 'Operation',
+          BottomNavigationBarItem(
+            icon: Icon(_index == 2
+                ? CupertinoIcons.search_circle_fill
+                : CupertinoIcons.search_circle),
+            label: 'Search',
           ),
           BottomNavigationBarItem(
             icon: Icon(_index == 3
-                ? CupertinoIcons.chart_bar_square_fill
-                : CupertinoIcons.chart_bar_square),
-            label: 'Report',
+                ? CupertinoIcons.cart_fill
+                : CupertinoIcons.cart),
+            label: 'Cart',
           ),
           const BottomNavigationBarItem(
             icon: Icon(
               CupertinoIcons.profile_circled,
             ),
-            label: 'Settings',
+            label: 'Profile',
           ),
         ],
       ),

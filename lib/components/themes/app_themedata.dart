@@ -15,37 +15,37 @@ class AppThemeData {
       backgroundColor: Colors.white,
       cardColor: Colors.grey[300],
       // scaffoldBackgroundColor: Colors.grey[100],
-      scaffoldBackgroundColor: Colors.white,
-      textTheme: TextTheme(
-        bodyText1: const TextStyle(
-          color: Colors.black,
+      scaffoldBackgroundColor: bgColor,
+      textTheme:  const TextTheme(
+        bodyText1: TextStyle(
+          color: secondaryColor,
         ),
-        bodyText2: const TextStyle(
-          color: primaryColor,
+        bodyText2: TextStyle(
+          color: secondaryColor,
         ),
-        headline1: const TextStyle(
-          color: Colors.black,
+        headline1: TextStyle(
+          color: secondaryColor,
         ),
-        headline2: const TextStyle(
-          color: Colors.black,
+        headline2: TextStyle(
+          color: secondaryColor,
         ),
-        headline3: const TextStyle(
-          color: Colors.black,
+        headline3: TextStyle(
+          color: secondaryColor,
         ),
-        headline4: const TextStyle(
-          color: Colors.black,
+        headline4: TextStyle(
+          color: secondaryColor,
         ),
-        headline5: const TextStyle(
-          color: Colors.black,
+        headline5: TextStyle(
+          color: secondaryColor,
         ),
-        headline6: const TextStyle(
-          color: Colors.black,
+        headline6: TextStyle(
+          color: secondaryColor,
         ),
-        subtitle1: const TextStyle(
-          color: Colors.black,
+        subtitle1: TextStyle(
+          color: secondaryColor,
         ),
         caption: TextStyle(
-          color: Colors.grey[900],
+          color: secondaryColor,
         ),
       ),
       appBarTheme: AppBarTheme(
