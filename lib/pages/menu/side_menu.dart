@@ -57,14 +57,14 @@ class _MenuState extends State<Menu> {
               title: "Dashboard",
               svgSrc: "assets/icons/menu_dashbord.svg",
               press: () {
-                Navigator.of(context).pushNamed('/home?index=0');
+                Navigator.of(context).pushNamed('/mainPage?index=0');
               },
             ),
             DrawerListTile(
               title: "Index 1",
               svgSrc: "assets/icons/menu_tran.svg",
               press: () {
-                Navigator.of(context).pushNamed('/home?index=1');
+                Navigator.of(context).pushNamed('/mainPage?index=1');
               },
             ),
             DrawerListTile(
@@ -79,7 +79,7 @@ class _MenuState extends State<Menu> {
               title: "Index 2",
               svgSrc: "assets/icons/menu_doc.svg",
               press: () {
-                Navigator.of(context).pushNamed('/home?index=2');
+                Navigator.of(context).pushNamed('/mainPage?index=2');
               },
             ),
             DrawerListTile(

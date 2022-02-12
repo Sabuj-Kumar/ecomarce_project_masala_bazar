@@ -1,24 +1,25 @@
+import 'package:efgecom/pages/homePage/view/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:efgecom/pages/home/dashboard_page.dart';
+import 'package:efgecom/pages/mainPage/dashboard_page.dart';
 import 'package:efgecom/pages/menu/side_menu.dart';
 
-class HomePage extends StatefulWidget {
+class MainPage extends StatefulWidget {
   final int? index;
 
-  const HomePage({Key? key, this.index}) : super(key: key);
+  const MainPage({Key? key, this.index}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _HomePageState();
+    return _MainPageState();
   }
 
 // @override
-// _HomePageState createState() => _HomePageState();
+// _MainPageState createState() => _MainPageState();
 }
 
-class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
+class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   int _index = 0;
 
@@ -92,7 +93,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
         Widget tabPage;
         switch (index) {
           case 0:
-            tabPage = const DashboardPage();
+            tabPage = const HomePage();
             break;
           case 1:
             tabPage = const DashboardPage();

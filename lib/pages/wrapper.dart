@@ -12,7 +12,7 @@ import 'package:efgecom/helpers/router.dart';
 import 'package:efgecom/providers/user_provider.dart';
 import 'package:efgecom/services/connectivity_service.dart';
 
-import 'home/home.dart';
+import 'mainPage/mainPage.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({Key? key}) : super(key: key);
@@ -164,6 +164,6 @@ class AppHandler extends StatelessWidget {
     //   return const AuthPage();
     // }
 
-    return const HomePage();
+    return const MainPage();
   }
 }
