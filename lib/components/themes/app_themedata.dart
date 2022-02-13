@@ -16,6 +16,7 @@ class AppThemeData {
       cardColor: Colors.grey[300],
       // scaffoldBackgroundColor: Colors.grey[100],
       scaffoldBackgroundColor: bgColor,
+      fontFamily: 'Inter',
       textTheme:  const TextTheme(
         bodyText1: TextStyle(
           color: secondaryColor,
