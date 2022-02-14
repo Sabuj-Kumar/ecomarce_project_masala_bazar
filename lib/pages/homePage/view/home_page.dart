@@ -14,8 +14,18 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const CustomScaffold(
-      child: CustomAppBar(),
+    var _height = MediaQuery.of(context).size.height;
+    var _width = MediaQuery.of(context).size.width;
+    return CustomScaffold(
+      child: Column(
+        children: [
+          CustomAppBar(),
+          SizedBox(
+            height: _height * 0.008,
+          ),
+          SearchContainer(),
+        ],
+      ),
     );
   }
 }
@@ -122,6 +132,81 @@ class _CustomAppBarState extends State<CustomAppBar> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SearchContainer extends StatefulWidget {
+  const SearchContainer({Key? key}) : super(key: key);
+
+  @override
+  _SearchContainerState createState() => _SearchContainerState();
+}
+
+class _SearchContainerState extends State<SearchContainer> {
+  TextEditingController _searchController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    var _height = MediaQuery.of(context).size.height;
+    var _width = MediaQuery.of(context).size.width;
+    var _ratio = MediaQuery.of(context).devicePixelRatio;
+    return Padding(
+      padding: EdgeInsets.only(left: _width * 0.04, right: _width * 0.04),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            height: _height * 0.046,
+            width: _width * 0.82,
+            child: TextFormField(
+              controller: _searchController,
+              autocorrect: false,
+              autovalidateMode: AutovalidateMode.always,
+              style: const TextStyle(color: Colors.black, fontSize: 14),
+              onChanged: (changed) {
+                setState(() {});
+              },
+              decoration: InputDecoration(
+                fillColor: searchBarBgColor,
+                contentPadding: EdgeInsets.only(left: _width * 0.045),
+                filled: true,
+                hintText: 'Search Product Name',
+                hintStyle: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey.shade400,
+                    fontWeight: FontWeight.w500),
+                suffixIcon: InkWell(
+                  onTap: () {},
+                  child: Padding(
+                    padding: EdgeInsets.all(_width * 0.02),
+                    child: SvgPicture.asset(
+                      'assets/icons/search_icon.svg',
+                    ),
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(_ratio * 2)),
+                    borderSide:
+                        BorderSide(color: Colors.grey.withOpacity(0.15))),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(_ratio * 2)),
+                    borderSide: const BorderSide(color: secondaryColor)),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: _width * 0.01,
+          ),
+          InkWell(
+            onTap: () {},
+            child: SvgPicture.asset(
+              'assets/icons/sliders.svg',
+              height: _height * 0.04,
+            ),
+          ),
+        ],
       ),
     );
   }
