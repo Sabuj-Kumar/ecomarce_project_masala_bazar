@@ -3,6 +3,7 @@ import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: _height * 0.008,
           ),
-          SearchContainer(),
+          SearchContainer(), // TopBanner()
         ],
       ),
     );
@@ -65,7 +66,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             //top: 14,
             top: _height * 0.02,
             bottom: 0),
-        height: _height * 0.1,
+        height: _height * 0.105,
         //height: 80,
         width: _width,
         child: Column(
@@ -92,6 +93,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 ),
               ],
             ),
+            SizedBox(
+              height: _height * 0.005,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -117,8 +121,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       return DropdownMenuItem(
                         value: items,
                         child: Text(items,
-                            style: const TextStyle(
-                                fontSize: 11, fontWeight: FontWeight.w600)),
+                            style: TextStyle(
+                                //fontSize: 11,
+                              fontSize: 12.sp,
+                                fontWeight: FontWeight.w600)),
                       );
                     }).toList(),
                     onChanged: (String? newValue) {
@@ -174,7 +180,8 @@ class _SearchContainerState extends State<SearchContainer> {
                 filled: true,
                 hintText: 'Search Product Name',
                 hintStyle: TextStyle(
-                    fontSize: 13,
+                    //fontSize: _height * 0.018,
+                  fontSize: 14.sp,
                     color: Colors.grey.shade400,
                     fontWeight: FontWeight.w500),
                 suffixIcon: InkWell(
