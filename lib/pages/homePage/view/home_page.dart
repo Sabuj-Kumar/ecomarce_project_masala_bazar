@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../components/navigation_bar/navigation_bar.dart';
+import 'grid_box.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,11 +22,53 @@ class _HomePageState extends State<HomePage> {
     return CustomScaffold(
       child: Column(
         children: [
-          CustomAppBar(),
+          const CustomAppBar(),
           SizedBox(
             height: _height * 0.008,
           ),
           SearchContainer(),
+          Container(height: _height * 0.25,width:_width * 0.915,color: Colors.red,),
+          SizedBox(
+            width: _width * 0.915,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Featured Product",style: TextStyle(color: secondaryColor,fontWeight: FontWeight.bold),),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    primary: Colors.red,
+                  ),
+                  onPressed: () { print("Pressed"); },
+                  child: Text("See All"),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: _height * 0.311,
+            width: _width * 0.935,
+            child: GridView.builder(
+              shrinkWrap: true,
+                itemCount: 4,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.75,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10
+                ),
+                itemBuilder: (context,index){
+                  return const GridTileView(
+                    image: "assets/neccesary_images/katla_fish.png",
+                    productName: "Katla Fish processing(Big Size)",
+                    bangli: "কাতলা মাছ প্রসেসিং(বড় মাছ)",
+                    presentPrice: 200,
+                    oldPrice: 300,
+                    rating: 4.6,
+                    views: 86,
+                  );
+                },
+            ),
+          )
         ],
       ),
     );

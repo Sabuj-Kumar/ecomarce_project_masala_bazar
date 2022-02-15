@@ -114,7 +114,7 @@ class NavigationBBar extends StatelessWidget {
                       },
                       child: Column(
                         children: [
-                          Icon(Icons.person,size: 25,color: currentPage != 4? const Color(0xff21305A):primaryColor),
+                          Icon(Icons.person,size: 25,color: currentPage != 4? secondaryColor:primaryColor),
                            Padding(
                             padding: const EdgeInsets.only(top: 2),
                             child: Text("PROFILE",style: TextStyle(color:  currentPage != 4? const Color(0xff21305A):primaryColor,fontSize: 10),),
