@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../components/navigation_bar/navigation_bar.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -120,6 +122,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 )
               ],
             ),
+            //const NavigationBBar(),
           ],
         ),
       ),
