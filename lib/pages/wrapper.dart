@@ -102,7 +102,7 @@ class _WrapperState extends State<Wrapper> with WidgetsBindingObserver {
       child: Material(
         type: MaterialType.transparency,
         child: ScreenUtilInit(
-          designSize: const Size(428, 1848),
+          designSize: const Size(428, 926),
           builder: () => MaterialApp(
             title: 'Xpertcapture',
             debugShowCheckedModeBanner: false,
