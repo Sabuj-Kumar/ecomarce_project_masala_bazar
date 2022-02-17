@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widget/category_list.dart';
 import '../widget/custom_appBar.dart';
+import '../widget/featured_product.dart';
 import '../widget/search_container.dart';
 import '../widget/top_banner.dart';
 
@@ -31,9 +32,13 @@ class _HomePageState extends State<HomePage> {
         ),
         const TopBanner(), // TopBanner()
         SizedBox(
-          height: 25.25.h,
+          height: 25.h,
         ),
-        const CategoryList()
+        const CategoryList(),
+        SizedBox(
+          height: 37.h,
+        ),
+        const FeaturedProduct(),
       ],
     ));
   }
