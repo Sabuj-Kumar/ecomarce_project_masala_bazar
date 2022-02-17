@@ -3,9 +3,11 @@ import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../components/navigation_bar/navigation_bar.dart';
 import 'grid_box.dart';
+import 'home_page_design_container.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,47 +30,9 @@ class _HomePageState extends State<HomePage> {
           ),
           SearchContainer(),
           Container(height: _height * 0.25,width:_width * 0.915,color: Colors.red,),
-          SizedBox(
-            width: _width * 0.915,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Featured Product",style: TextStyle(color: secondaryColor,fontWeight: FontWeight.bold),),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: Colors.red,
-                  ),
-                  onPressed: () { print("Pressed"); },
-                  child: Text("See All"),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: _height * 0.311,
-            width: _width * 0.935,
-            child: GridView.builder(
-              shrinkWrap: true,
-                itemCount: 4,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.75,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10
-                ),
-                itemBuilder: (context,index){
-                  return const GridTileView(
-                    image: "assets/neccesary_images/katla_fish.png",
-                    productName: "Katla Fish processing(Big Size)",
-                    bangli: "কাতলা মাছ প্রসেসিং(বড় মাছ)",
-                    presentPrice: 200,
-                    oldPrice: 300,
-                    rating: 4.6,
-                    views: 86,
-                  );
-                },
-            ),
-          )
+          SizedBox(height: 20.h,),
+          const HomePageDesign(),
+           // TopBanner()
         ],
       ),
     );
@@ -110,7 +74,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             //top: 14,
             top: _height * 0.02,
             bottom: 0),
-        height: _height * 0.1,
+        height: _height * 0.105,
         //height: 80,
         width: _width,
         child: Column(
@@ -137,6 +101,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
                 ),
               ],
             ),
+            SizedBox(
+              height: _height * 0.005,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -162,8 +129,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       return DropdownMenuItem(
                         value: items,
                         child: Text(items,
-                            style: const TextStyle(
-                                fontSize: 11, fontWeight: FontWeight.w600)),
+                            style: TextStyle(
+                                //fontSize: 11,
+                              fontSize: 12.sp,
+                                fontWeight: FontWeight.w600)),
                       );
                     }).toList(),
                     onChanged: (String? newValue) {
@@ -220,7 +189,8 @@ class _SearchContainerState extends State<SearchContainer> {
                 filled: true,
                 hintText: 'Search Product Name',
                 hintStyle: TextStyle(
-                    fontSize: 13,
+                    //fontSize: _height * 0.018,
+                  fontSize: 14.sp,
                     color: Colors.grey.shade400,
                     fontWeight: FontWeight.w500),
                 suffixIcon: InkWell(

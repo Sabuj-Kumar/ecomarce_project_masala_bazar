@@ -57,6 +57,7 @@ dependencies:
   permission_handler: ^8.1.6                    #ANDROID IOS 
   path_provider: ^2.0.5                         #ANDROID IOS LINUX MACOS WINDOWS
   path: ^1.8.0                                  #ANDROID IOS LINUX MACOS WEB WINDOWS
+  flutter_screenutil: ^5.2.0
 
 dev_dependencies:
   moor_generator: ^4.5.1

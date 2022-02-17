@@ -3,6 +3,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -100,36 +101,39 @@ class _WrapperState extends State<Wrapper> with WidgetsBindingObserver {
       ],
       child: Material(
         type: MaterialType.transparency,
-        child: MaterialApp(
-          title: 'Xpertcapture',
-          debugShowCheckedModeBanner: false,
-          themeMode: _preferedTheme ?? ThemeMode.system,
-          theme: AppThemeData.light(),
-          darkTheme: AppThemeData.dark(),
+        child: ScreenUtilInit(
+          designSize: const Size(428, 926),
+          builder: () => MaterialApp(
+            title: 'Xpertcapture',
+            debugShowCheckedModeBanner: false,
+            themeMode: _preferedTheme ?? ThemeMode.system,
+            theme: AppThemeData.light(),
+            darkTheme: AppThemeData.dark(),
 
-          onGenerateRoute: PageRouter.router.generator, // routes: routes,
-          navigatorKey: Get.key,
-          // List all of the app's supported locales here
-          supportedLocales: const [
-            Locale('en', 'US'),
-            Locale('bn', 'BD'),
-          ],
-          locale: locale,
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          localeResolutionCallback: (locale, supportedLocales) {
-            for (var supportedLocale in supportedLocales) {
-              if (supportedLocale.languageCode == locale?.languageCode &&
-                  supportedLocale.countryCode == locale?.countryCode) {
-                return supportedLocale;
+            onGenerateRoute: PageRouter.router.generator, // routes: routes,
+            navigatorKey: Get.key,
+            // List all of the app's supported locales here
+            supportedLocales: const [
+              Locale('en', 'US'),
+              Locale('bn', 'BD'),
+            ],
+            locale: locale,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            localeResolutionCallback: (locale, supportedLocales) {
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale?.languageCode &&
+                    supportedLocale.countryCode == locale?.countryCode) {
+                  return supportedLocale;
+                }
               }
-            }
-            return supportedLocales.first;
-          },
+              return supportedLocales.first;
+            },
+          ),
         ),
       ),
     );
