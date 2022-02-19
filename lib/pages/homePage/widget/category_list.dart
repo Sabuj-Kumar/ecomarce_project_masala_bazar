@@ -54,7 +54,7 @@ class _CategoryListState extends State<CategoryList> {
                 style: TextStyle(
                     color: secondaryColor,
                     fontSize: 16.sp,
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w600),
               ),
               TextButton(
                   onPressed: () {},
