@@ -24,8 +24,8 @@ class GridTileView extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.sp),
         color: color
       ),
-      height: 262.h,
-      width: 182.w,
+      height: 280.h,
+
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
