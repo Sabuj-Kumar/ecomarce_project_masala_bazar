@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../config/theme_config.dart';
-import 'grid_box.dart';
-
-class HomePageDesign extends StatelessWidget {
-  const HomePageDesign({Key? key}) : super(key: key);
+import '../../../models/featured_product_model.dart';
+import '../widget/product_tile.dart';class DiscountBanner extends StatelessWidget {
+  const DiscountBanner({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,64 +16,7 @@ class HomePageDesign extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            width: 387.w,
-            height: 19.h,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Featured Product",
-                  style: TextStyle(
-                      color: secondaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.sp),
-                ),
-                InkWell(
-                    onTap: () {
-                      print("pressed");
-                    },
-                    child: Text(
-                      "See All",
-                      style: TextStyle(color: Colors.red, fontSize: 12.sp),
-                    )),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          SizedBox(
-            height: 285.h,
-            width: 390.w,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              key: UniqueKey(),
-              itemCount: 2,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.h),
-                  ),
-                  elevation: 0.8,
-                  color: Colors.white,
-                  child: const GridTileView(
-                    color: Colors.white,
-                    image: "assets/neccesary_images/katla_fish.png",
-                    productName: "Katla Fish processing(Big Size)",
-                    bangli: "কাতলা মাছ প্রসেসিং(বড় মাছ)",
-                    presentPrice: 200,
-                    oldPrice: 300,
-                    rating: 4.6,
-                    views: 86,
-                  ),
-                );
-              },
-            ),
-          ),
-          SizedBox(
-            height: 10.h,
+            height: 18.h,
           ),
           SizedBox(
             height: 150.h,
@@ -143,7 +85,7 @@ class HomePageDesign extends StatelessWidget {
           SizedBox(
             height: 25.h,
           ),
-          FlashDeals(),
+
         ],
       ),
     );
@@ -152,9 +94,57 @@ class HomePageDesign extends StatelessWidget {
 
 //Text("Up to 70% Discount to all Masala...",style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18.sp),),
 //"assets/neccesary_images/unsplash_uaHShoIDGeo.png"
-class FlashDeals extends StatelessWidget {
+
+class FlashDeals extends StatefulWidget {
   FlashDeals({Key? key,this.text,}) : super(key: key);
   final String? text;
+
+  @override
+  State<FlashDeals> createState() => _FlashDealsState();
+}
+
+class _FlashDealsState extends State<FlashDeals> {
+  late List<FeaturedProductModel> featured;
+
+  @override
+  void initState() {
+    super.initState();
+    featured = [
+      FeaturedProductModel(
+          imgUrl: 'assets/img/katla.png',
+          titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
+          newPrice: 200,
+          oldPrice: 200,
+          rating: 4.6,
+          reviews: 86),
+      FeaturedProductModel(
+          imgUrl: 'assets/img/katla.png',
+          titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
+          newPrice: 200,
+          oldPrice: 200,
+          rating: 4.6,
+          reviews: 86),
+      FeaturedProductModel(
+          imgUrl: 'assets/img/katla.png',
+          titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
+          newPrice: 200,
+          oldPrice: 200,
+          rating: 4.6,
+          reviews: 86),
+      FeaturedProductModel(
+          imgUrl: 'assets/img/katla.png',
+          titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
+          newPrice: 200,
+          oldPrice: 200,
+          rating: 4.6,
+          reviews: 86),
+    ];
+  }
+
 
   List<String> time= [
     "Days",
@@ -162,154 +152,148 @@ class FlashDeals extends StatelessWidget {
     "Minutes",
     "Seconds"
   ];
+
   List<String> value =[
     "15",
     "05",
     "25",
     "25"
   ];
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              "Flash Deals",
-              style: TextStyle(
-                  color: secondaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.sp),
-            ),
-            InkWell(
-                onTap: () {
-                  print("pressed");
-                },
-                child: Text(
-                  "See All",
-                  style: TextStyle(color: Colors.red.withOpacity(0.8), fontSize: 12.sp),
-                )),
-          ],
-        ),
-        RichText(
-          text: TextSpan(
-            children:[
-              TextSpan(
-                text: "Hurry Up!  ",
-                style: TextStyle(color: buttonColor,fontSize: 14.sp,fontWeight: FontWeight.bold),
+    return Padding(
+      padding: EdgeInsets.only(left: 20.w, right: 20.w),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Flash Deals',
+                style: TextStyle(
+                    color: secondaryColor,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600),
               ),
-              TextSpan(
-                text: "Offer ends in:",
-                style: TextStyle(color: buttonColor.withOpacity(0.5),fontSize: 14.sp,),
-              ),
-            ]
-          ),
-        ),
-        SizedBox(height: 10.h,),
-        SizedBox(
-          height: 34.h,
-          width: 297.w,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: List.generate(4, (index) => Padding(
-              padding: EdgeInsets.symmetric(horizontal: 0.1.h),
-              child: Container(
-                  decoration: BoxDecoration(
-                    color: buttonColor,
-                    borderRadius: BorderRadius.circular(8.w)
+              TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    primary: buttonColor,
+                    minimumSize: Size.zero,
+                    padding: EdgeInsets.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0.w),
-                    child: RichText(
-                      text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: value[index]+" ",
-                              style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 12.sp),
-                            ),
-                            TextSpan(
-                              text: time[index],
-                              style: TextStyle(color: Colors.white.withOpacity(0.6),fontSize: 12.sp),
-                            ),
-                          ]
-                      ),
+                  child: const Text('See All')),
+            ],
+          ),
+          SizedBox(height: 10.h,),
+          RichText(
+            text: TextSpan(
+              children:[
+                TextSpan(
+                  text: "Hurry Up!  ",
+                  style: TextStyle(color: buttonColor,fontSize: 14.sp,fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text: "Offer ends in:",
+                  style: TextStyle(color: buttonColor.withOpacity(0.5),fontSize: 14.sp,),
+                ),
+              ]
+            ),
+          ),
+          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 34.h,
+            width: 297.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: List.generate(4, (index) => Padding(
+                padding: EdgeInsets.symmetric(horizontal: 0.1.h),
+                child: Container(
+                    decoration: BoxDecoration(
+                      color: buttonColor,
+                      borderRadius: BorderRadius.circular(8.w)
                     ),
-                  )
-              ),
-            ),)
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0.w),
+                      child: RichText(
+                        text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: value[index]+" ",
+                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 12.sp),
+                              ),
+                              TextSpan(
+                                text: time[index],
+                                style: TextStyle(color: Colors.white.withOpacity(0.6),fontSize: 12.sp),
+                              ),
+                            ]
+                        ),
+                      ),
+                    )
+                ),
+              ),)
+            ),
           ),
-        ),
-        SizedBox(height: 10.h,),
-        SizedBox(
-          height: 262.h,
-          width: 390.w,
-          child: ListView.separated(
-            separatorBuilder: (BuildContext cxt,int index){
-              return SizedBox(
-                width: 2.w,
-              );
-            },
-            scrollDirection: Axis.horizontal,
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            key: UniqueKey(),
-            itemCount: 2,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.h),
-                ),
-                elevation: 0.8,
-                color: Colors.white,
-                child: const GridTileView(
-                  color: Colors.white,
-                  image: "assets/neccesary_images/katla_fish.png",
-                  productName: "Katla Fish processing(Big Size)",
-                  bangli: "কাতলা মাছ প্রসেসিং(বড় মাছ)",
-                  presentPrice: 200,
-                  oldPrice: 300,
-                  rating: 4.6,
-                  views: 86,
-                ),
-              );
-            },
-          ),
-        ),
-        SizedBox(height: 10.h,),
-        SizedBox(
-          height: 262.h,
-          width: 390.w,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            key: UniqueKey(),
-            itemCount: 2,
-            itemBuilder: (BuildContext context, int index) {
-              return Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.h),
-                ),
-                elevation: 0.8,
-                color: Colors.white,
-                child: const GridTileView(
-                  color: Colors.white,
-                  image: "assets/neccesary_images/katla_fish.png",
-                  productName: "Katla Fish processing(Big Size)",
-                  bangli: "কাতলা মাছ প্রসেসিং(বড় মাছ)",
-                  presentPrice: 200,
-                  oldPrice: 300,
-                  rating: 4.6,
-                  views: 86,
-                ),
-              );
-            },
-          ),
-        ),
 
-      ],
+          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 272.h,
+            width: 390.w,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              key: UniqueKey(),
+              itemCount: 2,
+              itemBuilder: (BuildContext context, int index) {
+                return ProductTile(
+                  imgUrl: featured[index].imgUrl,
+                  titleBang: featured[index].titleBang,
+                  titleEng: featured[index].titleEng,
+                  newPrice: featured[index].newPrice,
+                  oldPrice: featured[index].oldPrice,
+                  rating: featured[index].rating,
+                  reviews: featured[index].reviews);
+              }, separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  width: 24.w,
+                );
+            },
+            ),
+          ),
+          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 275.h,
+            width: 390.w,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              key: UniqueKey(),
+              itemCount: 2,
+              itemBuilder: (BuildContext context, int index) {
+                return ProductTile(
+                    imgUrl: featured[index].imgUrl,
+                    titleBang: featured[index].titleBang,
+                    titleEng: featured[index].titleEng,
+                    newPrice: featured[index].newPrice,
+                    oldPrice: featured[index].oldPrice,
+                    rating: featured[index].rating,
+                    reviews: featured[index].reviews);
+              }, separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                width: 24.w,
+              );
+            },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
+

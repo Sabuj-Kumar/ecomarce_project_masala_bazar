@@ -7,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../components/navigation_bar/navigation_bar.dart';
 import '../../../config/theme_config.dart';
-import 'grid_box.dart';
+
 import 'home_page_design_container.dart';
 import '../widget/category_list.dart';
 import '../widget/custom_appBar.dart';
@@ -43,8 +43,9 @@ class _HomePageState extends State<HomePage> {
           SizedBox(height: 25.25.h,),
           const CategoryList(),
           SizedBox(height: 20.h,),
-          const HomePageDesign(),
           const FeaturedProduct(),
+          const DiscountBanner(),
+          FlashDeals()
            // TopBanner()
         ],
       ),

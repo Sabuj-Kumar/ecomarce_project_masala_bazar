@@ -74,7 +74,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 1.h),
-          height: 275.h,
+          height: 280.h,
           child: ListView.separated(
               separatorBuilder: (context, index) {
                 return SizedBox(
