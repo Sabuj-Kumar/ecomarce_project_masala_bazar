@@ -65,7 +65,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
                     padding: EdgeInsets.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child: const Text('See All')),
+                  child: Text('See All', style: TextStyle(fontSize: 12.sp))),
             ],
           ),
         ),

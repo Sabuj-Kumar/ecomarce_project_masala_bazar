@@ -92,8 +92,6 @@ flutter:
 #    - assets/images/
     - assets/icons/
     - assets/logo/
-    - assets/neccesary_images/
-
     - assets/img/
 
   # To add assets to your application, add an assets section, like this:

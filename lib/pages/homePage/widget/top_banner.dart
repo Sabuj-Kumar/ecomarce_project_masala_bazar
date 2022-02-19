@@ -113,7 +113,7 @@ class _TopBannerState extends State<TopBanner> {
                           height: 8.81.h,
                         ),
                         Text(
-                          item.date,
+                          item.date!,
                           style: TextStyle(
                               fontSize: 12.sp,
                               color: Colors.white,

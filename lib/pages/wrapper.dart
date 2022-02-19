@@ -118,7 +118,7 @@ class _WrapperState extends State<Wrapper> with WidgetsBindingObserver {
               Locale('bn', 'BD'),
             ],
             locale: locale,
-            localizationsDelegates:  [
+            localizationsDelegates: const [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
