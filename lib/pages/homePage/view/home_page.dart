@@ -11,6 +11,7 @@ import 'grid_box.dart';
 import 'home_page_design_container.dart';
 import '../widget/category_list.dart';
 import '../widget/custom_appBar.dart';
+import '../widget/featured_product.dart';
 import '../widget/search_container.dart';
 import '../widget/top_banner.dart';
 
@@ -43,6 +44,7 @@ class _HomePageState extends State<HomePage> {
           const CategoryList(),
           SizedBox(height: 20.h,),
           const HomePageDesign(),
+          const FeaturedProduct(),
            // TopBanner()
         ],
       ),
