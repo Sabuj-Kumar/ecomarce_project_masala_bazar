@@ -57,11 +57,11 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
+        elevation: 0,
         child: Container(
           decoration: BoxDecoration(
-            border: Border.all(width: 0.0,color: Colors.white),
+            border: Border.all(width: 0.0,color: bgColor),
             color: bgColor,
-
           ),
 
           height: height * 0.13,

@@ -2,6 +2,7 @@ import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'custom_clipper.dart';
 
@@ -54,7 +55,7 @@ class NavigationBBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Padding(
-                    padding:  EdgeInsets.only(top: 33.w,left: 12.w),
+                    padding:  EdgeInsets.only(top: 38.h,left: 12.w),
                     child: InkWell(
                       onTap: (){
                         onClick(0);
@@ -62,54 +63,12 @@ class NavigationBBar extends StatelessWidget {
                       child: Column(
                         children:  [
                           Padding(
-                            padding: EdgeInsets.only(top: 4.0.w,bottom: 3.0.w),
-                            child: Icon(Icons.home_outlined,size: 25.sp,color:  currentPage != 0? const Color(0xff21305A):primaryColor),
+                            padding: EdgeInsets.only(top: 4.0.h,bottom: 3.0.h),
+                            child: SvgPicture.asset('assets/icons/home.svg', width: 22.w, height: 22.w, color:  currentPage != 0? secondaryColor:buttonColor,)
                           ),
                           Padding(
-                            padding:  EdgeInsets.only(top: 0.5.w,bottom: 0.5.w),
-                            child: Text("HOME",style: TextStyle(color:  currentPage != 0? const Color(0xff21305A):primaryColor,fontSize: 11.sp,),),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: width * 0.015.h,),
-                  Padding(
-                    padding:  EdgeInsets.only(top: 30.sp),
-                    child: InkWell(
-                      onTap: (){
-                        onClick(1);
-                      },
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 4.0.w,bottom: 3.0.w),
-                            child: Icon(Icons.messenger_outline,size: 25.sp,color: currentPage != 1? const Color(0xff21305A):primaryColor),
-                          ),
-                           Padding(
-                            padding: EdgeInsets.only(top: 0.5.w,bottom: 0.5.w),
-                            child: Text("INBOX",style: TextStyle(color:  currentPage != 1? const Color(0xff21305A):primaryColor,fontSize: 11.sp),),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: width * 0.25,),
-                  Padding(
-                    padding:  EdgeInsets.only(top: 30.w),
-                    child: InkWell(
-                      onTap: (){
-                        onClick(3);
-                      },
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(top: 5.0.w,bottom: 2.0.w),
-                            child: Icon(Icons.shopping_cart_outlined,size: 25.h,color: currentPage != 3? const Color(0xff21305A):primaryColor),
-                          ),
-                           Padding(
-                            padding: EdgeInsets.only(top: 0.5.w,bottom: 0.5.w),
-                            child: Text("CART",style: TextStyle(color:  currentPage != 3? const Color(0xff21305A):primaryColor,fontSize: 11.sp,)),
+                            padding:  EdgeInsets.only(top: 0.5.h,bottom: 0.5.h),
+                            child: Text("Home",style: TextStyle(color:  currentPage != 0? secondaryColor:buttonColor,fontSize: 11.sp, fontWeight: FontWeight.w500),),
                           )
                         ],
                       ),
@@ -117,7 +76,49 @@ class NavigationBBar extends StatelessWidget {
                   ),
                   SizedBox(width: width * 0.015.w,),
                   Padding(
-                    padding:  EdgeInsets.only(top: 30.w,right: 15.w),
+                    padding:  EdgeInsets.only(top: 38.h),
+                    child: InkWell(
+                      onTap: (){
+                        onClick(1);
+                      },
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 4.0.h,bottom: 3.0.h),
+                            child: SvgPicture.asset('assets/icons/message.svg', width: 22.w, height: 22.w, color:  currentPage != 1? secondaryColor:buttonColor,)
+                          ),
+                           Padding(
+                            padding: EdgeInsets.only(top: 0.5.h,bottom: 0.5.h),
+                            child: Text("Inbox",style: TextStyle(color:  currentPage != 1? secondaryColor:buttonColor,fontSize: 11.sp, fontWeight: FontWeight.w500),),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: width * 0.25,),
+                  Padding(
+                    padding:  EdgeInsets.only(top: 38.h),
+                    child: InkWell(
+                      onTap: (){
+                        onClick(3);
+                      },
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 5.0.h,bottom: 2.0.h),
+                            child: SvgPicture.asset('assets/icons/shopping-cart.svg', width: 22.w, height: 22.w, color:  currentPage != 3? secondaryColor:buttonColor,)
+                          ),
+                           Padding(
+                            padding: EdgeInsets.only(top: 0.5.h,bottom: 0.5.h),
+                            child: Text("Cart",style: TextStyle(color:  currentPage != 3? secondaryColor:buttonColor,fontSize: 11.sp, fontWeight: FontWeight.w500)),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: width * 0.015.w,),
+                  Padding(
+                    padding:  EdgeInsets.only(top: 38.h, right: 12.w),
                     child: InkWell(
                       onTap: (){
                         onClick(4);
@@ -125,10 +126,14 @@ class NavigationBBar extends StatelessWidget {
                       child: Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(top: 4.0.w,bottom: 3.0.w),
-                            child: Icon(Icons.settings_outlined,size: 25.sp,color: currentPage != 4? secondaryColor:primaryColor),
+                            padding: EdgeInsets.only(top: 5.0.h,bottom: 2.0.h),
+                            child: SvgPicture.asset('assets/icons/profile.svg', width: 22.w, height: 22.w, color:  currentPage != 4? secondaryColor:buttonColor,)
+                            //Icon(Icons.settings_outlined,size: 25.sp,color: currentPage != 4? secondaryColor:buttonColor),
                           ),
-                          Text("PROFILE",style: TextStyle(color:  currentPage != 4? const Color(0xff21305A):primaryColor,fontSize: 11.sp),)
+                          Padding(
+                            padding: EdgeInsets.only(top: 0.5.h,bottom: 0.5.h),
+                            child: Text("Profile",style: TextStyle(color:  currentPage != 4? secondaryColor:buttonColor,fontSize: 11.sp, fontWeight: FontWeight.w500),),
+                          )
                         ],
                       ),
                     ),
@@ -136,7 +141,7 @@ class NavigationBBar extends StatelessWidget {
                 ],
               ),
               Positioned(
-                  top: 12.sp,
+                  top: 20.h,
                   child: InkWell(
                     onTap: (){
                       onClick(2);
@@ -144,10 +149,13 @@ class NavigationBBar extends StatelessWidget {
                     child: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 4.0.w),
-                          child: Icon(Icons.search_outlined,size: 40.w,color:  currentPage != 2? const Color(0xff21305A):primaryColor,),
+                          padding: EdgeInsets.only(top: 4.0.h),
+                          child: SvgPicture.asset('assets/icons/search_icon.svg', width: 30.w, height: 30.w, color:  currentPage != 2? secondaryColor:buttonColor,)
                         ),
-                        Text("SEARCH",style: TextStyle(color: currentPage != 2? const Color(0xff21305A):primaryColor,fontSize: 11.sp,)),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text("Search",style: TextStyle(color: currentPage != 2? secondaryColor:buttonColor,fontSize: 11.sp, fontWeight: FontWeight.w500)),
                       ],
                     ),
                   )),

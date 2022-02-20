@@ -69,7 +69,9 @@ class _TopBannerState extends State<TopBanner> {
                                   image: item.imgUrl == null
                                       ? const AssetImage(
                                       'assets/img/placeholder.jpg')
-                                      : AssetImage(item.imgUrl))),
+                                      : AssetImage(item.imgUrl)
+                              )
+                          ),
                         ),
                       )
                     ],
