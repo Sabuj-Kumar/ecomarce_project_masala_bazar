@@ -7,9 +7,10 @@ class CustomScaffold extends StatelessWidget {
   final Color? backgroundColor;
   final Widget child;
   final ScaffoldHeader? header;
+  final BottomNavigationBar? bottomNavigationBar;
   // ignore: use_key_in_widget_constructors
   const CustomScaffold(
-      {required this.child, this.header, this.backgroundColor});
+      {required this.child, this.header, this.backgroundColor,this.bottomNavigationBar});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ class CustomScaffold extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: bottomNavigationBar,
     );
     // if (CURRENT_PLATFORM == PLATFORM_IOS) {
     //   return CupertinoPageScaffold(

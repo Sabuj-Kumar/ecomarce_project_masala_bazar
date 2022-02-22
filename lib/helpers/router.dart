@@ -1,6 +1,6 @@
 import 'package:efgecom/pages/wrapper.dart';
 import 'package:fluro/fluro.dart';
-import 'package:efgecom/pages/home/home.dart';
+import 'package:efgecom/pages/mainPage/mainPage.dart';
 
 class PageRouter {
   static FluroRouter router = FluroRouter();
@@ -8,7 +8,7 @@ class PageRouter {
   static void setupRouter() {
     router.define('/',
         handler: _appHandler, transitionType: TransitionType.fadeIn);
-    router.define('/home',
+    router.define('/mainPage',
         handler: _homeHandler, transitionType: TransitionType.fadeIn);
   }
 
@@ -19,9 +19,9 @@ class PageRouter {
       Handler(handlerFunc: (context, Map<String, dynamic> params) {
     var index = params['index']?.first;
     if (index != null) {
-      return HomePage(index: int.parse(index.toString()));
+      return MainPage(index: int.parse(index.toString()));
     } else {
-      return const HomePage();
+      return const MainPage();
     }
   });
 }

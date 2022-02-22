@@ -1,3 +1,4 @@
+import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:efgecom/components/cards/custom_card.dart';
@@ -59,6 +60,7 @@ class _DashboardPageState extends State<DashboardPage> {
               ),
             ),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: buttonColor),
               onPressed: () {
                 CustomToast.show(
                     message:
