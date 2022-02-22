@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/custom_text_style.dart';
 import '../../../config/theme_config.dart';
 import '../../../models/top_banner_model.dart';
 
@@ -37,8 +38,6 @@ class _SpecialOffersState extends State<SpecialOffers> {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme text = Theme.of(context).textTheme;
-
     var _height = MediaQuery.of(context).size.height;
     var _width = MediaQuery.of(context).size.width;
 
@@ -53,17 +52,21 @@ class _SpecialOffersState extends State<SpecialOffers> {
             children: [
               Text(
                 'Spacial Offers',
-                style: text.headline1?.copyWith(fontSize: 16.sp),
+                style: CustomTextStyle.subHeader1(context)
+                    .copyWith(fontWeight: FontWeight.w600),
               ),
-              TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    primary: buttonColor,
-                    minimumSize: Size.zero,
-                    padding: EdgeInsets.zero,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  child: Text('See All', style: TextStyle(fontSize: 12.sp))),
+              Padding(
+                padding: EdgeInsets.only(top: 4.h),
+                child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      primary: buttonColor,
+                      minimumSize: Size.zero,
+                      padding: EdgeInsets.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: Text('See All', style: TextStyle(fontSize: 12.sp))),
+              ),
             ],
           ),
         ),
@@ -102,11 +105,12 @@ class _SpecialOffersState extends State<SpecialOffers> {
                                       alignment: Alignment.bottomLeft,
                                       child: Text(
                                         item.title,
-                                        style: text.headline2?.copyWith(
-                                            fontSize: 18.sp,
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.italic,
-                                        ),
+                                        style:
+                                            CustomTextStyle.header2Bold(context)
+                                                .copyWith(
+                                                    color: Colors.white,
+                                                    fontStyle:
+                                                        FontStyle.italic),
                                       ),
                                     ),
                                   ),
@@ -126,12 +130,14 @@ class _SpecialOffersState extends State<SpecialOffers> {
                                               alignment: Alignment.centerLeft,
                                               child: Text(
                                                 item.bodyText.toString(),
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.bold,
-                                                    decoration: TextDecoration
-                                                        .underline,
-                                                    fontSize: 18.sp),
+                                                style:
+                                                    CustomTextStyle.header2Semi(
+                                                            context)
+                                                        .copyWith(
+                                                  color: Colors.black,
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                ),
                                               )),
                                         ),
                                         ClipRRect(

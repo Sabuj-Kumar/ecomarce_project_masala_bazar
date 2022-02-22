@@ -1,3 +1,4 @@
+import 'package:efgecom/config/custom_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +8,6 @@ class DiscountBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme text = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.only(left: 20.h, right: 20.h),
       child: Column(
@@ -31,7 +31,8 @@ class DiscountBanner extends StatelessWidget {
                         children: [
                           Text(
                             "Up to 70% Discount to all Masala...",
-                            style: text.headline2?.copyWith(fontSize: 18.sp, color: Colors.white),
+                            style: CustomTextStyle.header2Bold(context)
+                                .copyWith(color: Colors.white),
                           ),
                           SizedBox(
                             height: 30.h,
@@ -45,16 +46,17 @@ class DiscountBanner extends StatelessWidget {
                               children: [
                                 Text(
                                   "Shop now",
-                                  style: TextStyle(
-                                      color: Colors.white.withOpacity(0.85),
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.bold,
-                                      decoration: TextDecoration.underline,
-                                      letterSpacing: 1),
+                                  style: CustomTextStyle.subHeader2(context)
+                                      .copyWith(
+                                    color: Colors.white.withOpacity(0.85),
+                                    decoration: TextDecoration.underline,
+                                  ),
                                 ),
-                                const Icon(
+                                SizedBox(width: 16.17.w,),
+                                Icon(
                                   Icons.arrow_forward_outlined,
                                   color: Colors.white,
+                                  size: 20.w,
                                 )
                               ],
                             ),

@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:efgecom/config/custom_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +36,6 @@ class _TopBannerState extends State<TopBanner> {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme text = Theme.of(context).textTheme;
-
     var _height = MediaQuery.of(context).size.height;
     var _width = MediaQuery.of(context).size.width;
     return SizedBox(
@@ -101,21 +100,20 @@ class _TopBannerState extends State<TopBanner> {
                                   height: 64.h,
                                   width: 162.01.w,
                                   child: Center(
-                                    child: Text(
-                                      item.title,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: text.headline1?.copyWith(
-                                        fontSize: 18.sp,
-                                        height: 1.6.h,
-                                        color: Colors.white,
-                                      ),
-                                    ),
+                                    child: Text(item.title,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style:
+                                            CustomTextStyle.header2Semi(context)
+                                                .copyWith(
+                                          height: 1.6.h,
+                                          color: Colors.white,
+                                        )),
                                   ),
                                 ),
                                 Text(
                                   item.date!,
-                                  style: text.subtitle2?.copyWith(fontSize: 12.sp,),
+                                  style: CustomTextStyle.body(context).copyWith(color: Colors.white),
                                 ),
                                 SizedBox(
                                   height: 20.h,
@@ -134,12 +132,10 @@ class _TopBannerState extends State<TopBanner> {
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(
                                               horizontal: 14.5.w,
-                                              vertical: 5.h),
+                                          ),
                                           child: Text(
                                             'Shop now',
-                                            style: TextStyle(
-                                                fontSize: 14.sp,
-                                                fontWeight: FontWeight.w500),
+                                            style: CustomTextStyle.subHeader2(context).copyWith(color: Colors.white),
                                           ),
                                         )),
                                   ),

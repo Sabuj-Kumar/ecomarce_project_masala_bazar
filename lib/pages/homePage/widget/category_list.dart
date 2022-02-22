@@ -1,3 +1,4 @@
+import 'package:efgecom/config/custom_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,6 @@ class _CategoryListState extends State<CategoryList> {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme text = Theme.of(context).textTheme;
     return Column(
       children: [
         Container(
@@ -53,20 +53,24 @@ class _CategoryListState extends State<CategoryList> {
             children: [
               Text(
                 'Categories',
-                style: text.headline1?.copyWith(fontSize: 16.sp),
+                style: CustomTextStyle.subHeader1(context)
+                    .copyWith(fontWeight: FontWeight.w600),
               ),
-              TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    primary: buttonColor,
-                    minimumSize: Size.zero,
-                    padding: EdgeInsets.zero,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  child: Text(
-                    'See All',
-                    style: TextStyle(fontSize: 12.sp),
-                  )),
+              Padding(
+                padding: EdgeInsets.only(top: 4.h),
+                child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      primary: buttonColor,
+                      minimumSize: Size.zero,
+                      padding: EdgeInsets.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: Text(
+                      'See All',
+                      style: TextStyle(fontSize: 12.sp),
+                    )),
+              ),
             ],
           ),
         ),
@@ -119,8 +123,11 @@ class _CategoryListState extends State<CategoryList> {
                                     alignment: Alignment.bottomLeft,
                                     child: Text(
                                       slider[index].title,
-                                      style: text.bodyText1?.copyWith(
-                                          color: Colors.white, fontSize: 13.sp),
+                                      style: CustomTextStyle.subHeader2(context)
+                                          .copyWith(
+                                              fontSize: 13.sp,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
                                     ),
                                   ),
                                 ),

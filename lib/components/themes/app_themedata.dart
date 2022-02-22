@@ -50,7 +50,7 @@ class AppThemeData {
         const TextTheme(
           headline1: TextStyle(
               color: secondaryColor,
-              fontWeight: FontWeight.w600
+              fontWeight: FontWeight.w600,
           ),
           headline2: TextStyle(
               color: Colors.white,

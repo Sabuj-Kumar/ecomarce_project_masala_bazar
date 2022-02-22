@@ -1,3 +1,4 @@
+import 'package:efgecom/config/custom_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +25,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme text = Theme.of(context).textTheme;
-
     var _height = MediaQuery.of(context).size.height;
     var _width = MediaQuery.of(context).size.width;
     return Material(
@@ -86,7 +85,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       return DropdownMenuItem(
                         value: items,
                         child: Text(items,
-                          style: text.headline1?.copyWith(fontSize: 12.sp),
+                          style: CustomTextStyle.bodyText2(context),
+                          //style: text.headline1?.copyWith(fontSize: 12.sp),
                         ),
                       );
                     }).toList(),
