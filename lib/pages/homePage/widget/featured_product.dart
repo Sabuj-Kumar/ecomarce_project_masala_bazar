@@ -41,6 +41,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme text = Theme.of(context).textTheme;
     return Column(
       children: [
         Container(
@@ -52,10 +53,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
             children: [
               Text(
                 'Featured Product',
-                style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600),
+                style: text.headline1?.copyWith(fontSize: 16.sp),
               ),
               TextButton(
                   onPressed: () {},

@@ -21,12 +21,12 @@ class ProductTile extends StatelessWidget {
       required this.newPrice,
       required this.oldPrice,
       required this.rating,
-        required this.reviews
-      })
+      required this.reviews})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextTheme text = Theme.of(context).textTheme;
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.sp), color: Colors.white),
@@ -58,17 +58,11 @@ class ProductTile extends StatelessWidget {
                     children: [
                       Text(
                         titleEng,
-                        style: TextStyle(
-                            color: secondaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12.sp),
+                        style: text.headline2?.copyWith(fontSize: 12.sp, color: secondaryColor),
                       ),
                       Text(
                         titleBang,
-                        style: TextStyle(
-                            color: secondaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12.sp),
+                        style: text.headline2?.copyWith(fontSize: 12.sp, color: secondaryColor),
                       ),
                     ],
                   ),
@@ -84,20 +78,20 @@ class ProductTile extends StatelessWidget {
                       children: [
                         Text(
                           "Tk-$newPrice/kg",
-                          style: TextStyle(
-                              color: buttonColor,
-                              fontSize: 13.5.sp,
-                              fontWeight: FontWeight.bold),
+                          style: text.headline3?.copyWith(
+                            fontSize: 13.5.sp,
+                          ),
                         ),
                         SizedBox(
                           width: 4.26.w,
                         ),
-                        Text("Tk-$oldPrice/kg",
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 13.5.sp,
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.lineThrough)),
+                        Text(
+                          "Tk-$oldPrice/kg",
+                          style: text.headline3?.copyWith(
+                              fontSize: 13.5.sp,
+                              color: Colors.grey,
+                              decoration: TextDecoration.lineThrough),
+                        ),
                       ],
                     ),
                   ),
@@ -118,17 +112,19 @@ class ProductTile extends StatelessWidget {
                         SizedBox(width: 4.56.w),
                         Text(
                           "$rating",
-                          style: TextStyle(
-                              fontSize: 11.64.sp,
-                              color: secondaryColor,
-                              fontWeight: FontWeight.w400),
+                          style: text.subtitle2?.copyWith(
+                            fontSize: 11.64.sp,
+                            color: secondaryColor,
+                          ),
                         ),
                         SizedBox(width: 11.64.w),
-                        Text("$reviews Reviews",
-                            style: TextStyle(
-                                fontSize: 11.64.sp,
-                                color: secondaryColor,
-                                fontWeight: FontWeight.w400))
+                        Text(
+                          "$reviews Reviews",
+                          style: text.subtitle2?.copyWith(
+                            fontSize: 11.64.sp,
+                            color: secondaryColor,
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -153,10 +149,10 @@ class ProductTile extends StatelessWidget {
                 children: [
                   Text(
                     "Add to Cart",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 11.88.sp,
-                        fontWeight: FontWeight.bold),
+                    style: text.headline2?.copyWith(
+                      color: Colors.white,
+                      fontSize: 11.88.sp,
+                    ),
                   ),
                   Icon(
                     Icons.shopping_cart_outlined,

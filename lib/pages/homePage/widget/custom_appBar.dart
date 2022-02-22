@@ -24,6 +24,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme text = Theme.of(context).textTheme;
+
     var _height = MediaQuery.of(context).size.height;
     var _width = MediaQuery.of(context).size.width;
     return Material(
@@ -84,8 +86,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       return DropdownMenuItem(
                         value: items,
                         child: Text(items,
-                            style: TextStyle(
-                                fontSize: 12.sp, fontWeight: FontWeight.w600)),
+                          style: text.headline1?.copyWith(fontSize: 12.sp),
+                        ),
                       );
                     }).toList(),
                     onChanged: (String? newValue) {

@@ -65,6 +65,7 @@ class _FlashDealsState extends State<FlashDeals> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme text = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.only(left: 20.w, right: 20.w),
       child: Column(
@@ -76,10 +77,7 @@ class _FlashDealsState extends State<FlashDeals> {
             children: [
               Text(
                 'Flash Deals',
-                style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600),
+                style: text.headline1?.copyWith(fontSize: 16.sp),
               ),
               TextButton(
                   onPressed: () {},

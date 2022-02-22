@@ -7,6 +7,7 @@ class DiscountBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme text = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.only(left: 20.h, right: 20.h),
       child: Column(
@@ -30,10 +31,7 @@ class DiscountBanner extends StatelessWidget {
                         children: [
                           Text(
                             "Up to 70% Discount to all Masala...",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.sp),
+                            style: text.headline2?.copyWith(fontSize: 18.sp, color: Colors.white),
                           ),
                           SizedBox(
                             height: 30.h,

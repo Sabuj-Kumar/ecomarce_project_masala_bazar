@@ -1,4 +1,3 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +37,8 @@ class _SpecialOffersState extends State<SpecialOffers> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme text = Theme.of(context).textTheme;
+
     var _height = MediaQuery.of(context).size.height;
     var _width = MediaQuery.of(context).size.width;
 
@@ -52,10 +53,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
             children: [
               Text(
                 'Spacial Offers',
-                style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600),
+                style: text.headline1?.copyWith(fontSize: 16.sp),
               ),
               TextButton(
                   onPressed: () {},
@@ -83,64 +81,72 @@ class _SpecialOffersState extends State<SpecialOffers> {
               ),
               items: banner
                   .map((item) => Container(
-                height: 400.h,
-                width: 386.w,
-                //color: Colors.green,
-                padding: EdgeInsets.only(right: 15.w),
-                child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15.r),
-                      ),
-                      color: item.color,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 19.37.w),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Text(
-                                item.title,
-                                style: TextStyle(
-                                    fontSize: 18.sp,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FontStyle.italic
-                                ),
+                        height: 400.h,
+                        width: 386.w,
+                        //color: Colors.green,
+                        padding: EdgeInsets.only(right: 15.w),
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(15.r),
                               ),
+                              color: item.color,
                             ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                InkWell(
-                                  onTap: (){
-                                    print("Shop Now");
-                                  },
-                                  child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(item.bodyText.toString(),style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,decoration: TextDecoration.underline,fontSize: 18.sp),)
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 19.37.w),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text(
+                                        item.title,
+                                        style: text.headline2?.copyWith(
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.bold,
+                                            fontStyle: FontStyle.italic,
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                ClipRRect(
-
-                                  child: Image.asset("assets/img/Snacks.png"),
-                                  borderRadius: BorderRadius.circular(15.r),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                ),
-              ))
+                                  Expanded(
+                                    flex: 2,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            print("Shop Now");
+                                          },
+                                          child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                item.bodyText.toString(),
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    fontSize: 18.sp),
+                                              )),
+                                        ),
+                                        ClipRRect(
+                                          child: Image.asset(
+                                              "assets/img/Snacks.png"),
+                                          borderRadius:
+                                              BorderRadius.circular(15.r),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ))
                   .toList()),
         ),
       ],

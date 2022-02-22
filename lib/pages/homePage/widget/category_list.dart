@@ -3,6 +3,7 @@ import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:efgecom/models/category_list_model.dart';
+
 class CategoryList extends StatefulWidget {
   const CategoryList({Key? key}) : super(key: key);
 
@@ -40,6 +41,7 @@ class _CategoryListState extends State<CategoryList> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme text = Theme.of(context).textTheme;
     return Column(
       children: [
         Container(
@@ -51,10 +53,7 @@ class _CategoryListState extends State<CategoryList> {
             children: [
               Text(
                 'Categories',
-                style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600),
+                style: text.headline1?.copyWith(fontSize: 16.sp),
               ),
               TextButton(
                   onPressed: () {},
@@ -64,7 +63,10 @@ class _CategoryListState extends State<CategoryList> {
                     padding: EdgeInsets.zero,
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
-                  child: Text('See All', style: TextStyle(fontSize: 12.sp),)),
+                  child: Text(
+                    'See All',
+                    style: TextStyle(fontSize: 12.sp),
+                  )),
             ],
           ),
         ),
@@ -77,36 +79,36 @@ class _CategoryListState extends State<CategoryList> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding:
-                  EdgeInsets.only(right: 10.w, top: 0.5.h, bottom: 0.5.h),
+                      EdgeInsets.only(right: 10.w, top: 0.5.h, bottom: 0.5.h),
                   child: SizedBox(
                     width: 122.w,
                     child: InkWell(
-                      onTap: (){},
+                      onTap: () {},
                       child: Card(
                           margin: EdgeInsets.zero,
                           color: slider[index].id == 0
                               ? Colors.orange.shade400
                               : slider[index].id == 1
-                              ? buttonColor
-                              : slider[index].id == 2
-                              ? textColor
-                              : slider[index].id == 3
-                              ? Colors.orange
-                              : slider[index].id == 4
-                              ? Colors.green.shade800
-                              : slider[index].id == 5
-                              ? Colors.purple.shade700
-                              : slider[index].id == 6
-                              ? Colors.pinkAccent
-                              : slider[index].id == 7
-                              ? Colors.amberAccent
-                              .shade200
-                              : Colors
-                              .orange.shade700,
+                                  ? buttonColor
+                                  : slider[index].id == 2
+                                      ? textColor
+                                      : slider[index].id == 3
+                                          ? Colors.orange
+                                          : slider[index].id == 4
+                                              ? Colors.green.shade800
+                                              : slider[index].id == 5
+                                                  ? Colors.purple.shade700
+                                                  : slider[index].id == 6
+                                                      ? Colors.pinkAccent
+                                                      : slider[index].id == 7
+                                                          ? Colors.amberAccent
+                                                              .shade200
+                                                          : Colors
+                                                              .orange.shade700,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                               borderRadius:
-                              BorderRadius.all(Radius.circular(10.r))),
+                                  BorderRadius.all(Radius.circular(10.r))),
                           child: Column(
                             children: [
                               Expanded(
@@ -117,10 +119,8 @@ class _CategoryListState extends State<CategoryList> {
                                     alignment: Alignment.bottomLeft,
                                     child: Text(
                                       slider[index].title,
-                                      style: TextStyle(
-                                          fontSize: 13.sp,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w400),
+                                      style: text.bodyText1?.copyWith(
+                                          color: Colors.white, fontSize: 13.sp),
                                     ),
                                   ),
                                 ),
