@@ -1,3 +1,5 @@
+import 'package:efgecom/config/custom_text_style.dart';
+import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +22,7 @@ class DiscountBanner extends StatelessWidget {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.purple,
+                        color: irisYellow,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10.h),
                             bottomLeft: Radius.circular(10.h))),
@@ -30,10 +32,8 @@ class DiscountBanner extends StatelessWidget {
                         children: [
                           Text(
                             "Up to 70% Discount to all Masala...",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18.sp),
+                            style: CustomTextStyle.header2Bold(context)
+                                .copyWith(color: Colors.black),
                           ),
                           SizedBox(
                             height: 30.h,
@@ -47,16 +47,17 @@ class DiscountBanner extends StatelessWidget {
                               children: [
                                 Text(
                                   "Shop now",
-                                  style: TextStyle(
-                                      color: Colors.white.withOpacity(0.85),
-                                      fontSize: 18.sp,
-                                      fontWeight: FontWeight.bold,
-                                      decoration: TextDecoration.underline,
-                                      letterSpacing: 1),
+                                  style: CustomTextStyle.subHeader2(context)
+                                      .copyWith(
+                                    color: Colors.black,
+                                    decoration: TextDecoration.underline,
+                                  ),
                                 ),
-                                const Icon(
+                                SizedBox(width: 16.17.w,),
+                                Icon(
                                   Icons.arrow_forward_outlined,
-                                  color: Colors.white,
+                                  color: Colors.black,
+                                  size: 20.w,
                                 )
                               ],
                             ),

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/custom_text_style.dart';
 import '../../../config/theme_config.dart';
 import '../../../models/featured_product_model.dart';
 
@@ -52,20 +53,21 @@ class _FeaturedProductState extends State<FeaturedProduct> {
             children: [
               Text(
                 'Featured Product',
-                style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600),
+                style: CustomTextStyle.subHeader1(context)
+                    .copyWith(fontWeight: FontWeight.w600),
               ),
-              TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    primary: buttonColor,
-                    minimumSize: Size.zero,
-                    padding: EdgeInsets.zero,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  child: Text('See All', style: TextStyle(fontSize: 12.sp))),
+              Padding(
+                padding: EdgeInsets.only(top: 4.h),
+                child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      primary: buttonColor,
+                      minimumSize: Size.zero,
+                      padding: EdgeInsets.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: Text('See All', style: TextStyle(fontSize: 12.sp))),
+              ),
             ],
           ),
         ),
@@ -74,7 +76,8 @@ class _FeaturedProductState extends State<FeaturedProduct> {
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 1.h),
-          height: 280.h,
+          //height: 280.h,
+          height: 300.h,
           child: ListView.separated(
               separatorBuilder: (context, index) {
                 return SizedBox(

@@ -29,8 +29,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
     const HomePage(),
     const DashboardPage(),
     const DashboardPage(),
-    const Menu(),
     const DashboardPage(),
+    const Menu(),
   ];
   @override
   void initState() {
@@ -60,9 +60,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
         elevation: 0.0,
         child: Container(
           decoration: BoxDecoration(
-            border: Border.all(width: 0.0,color: Colors.white),
+            border: Border.all(width: 0.0,color: bgColor),
             color: bgColor,
-
           ),
 
           height: height * 0.13,

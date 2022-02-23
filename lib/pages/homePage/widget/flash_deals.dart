@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/custom_text_style.dart';
 import '../../../config/theme_config.dart';
 import '../../../models/featured_product_model.dart';
 
@@ -76,20 +77,21 @@ class _FlashDealsState extends State<FlashDeals> {
             children: [
               Text(
                 'Flash Deals',
-                style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600),
+                style: CustomTextStyle.subHeader1(context)
+                    .copyWith(fontWeight: FontWeight.w600),
               ),
-              TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    primary: buttonColor,
-                    minimumSize: Size.zero,
-                    padding: EdgeInsets.zero,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  child: Text('See All', style: TextStyle(fontSize: 12.sp))),
+              Padding(
+                padding: EdgeInsets.only(top: 4.h),
+                child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      primary: buttonColor,
+                      minimumSize: Size.zero,
+                      padding: EdgeInsets.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: Text('See All', style: TextStyle(fontSize: 12.sp))),
+              ),
             ],
           ),
           SizedBox(
@@ -99,16 +101,17 @@ class _FlashDealsState extends State<FlashDeals> {
             text: TextSpan(children: [
               TextSpan(
                 text: "Hurry Up!  ",
-                style: TextStyle(
-                    color: buttonColor,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold),
+                style: CustomTextStyle.bodySmall(context).copyWith(
+                  fontSize: 14.sp,
+                  color: buttonColor,
+                ),
               ),
               TextSpan(
                 text: "Offer ends in:",
-                style: TextStyle(
-                  color: buttonColor.withOpacity(0.5),
+                style: CustomTextStyle.bodySmall(context).copyWith(
                   fontSize: 14.sp,
+                  color: buttonColor.withOpacity(0.9),
+                  fontWeight: FontWeight.w400
                 ),
               ),
             ]),
@@ -123,14 +126,14 @@ class _FlashDealsState extends State<FlashDeals> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: List.generate(
                   4,
-                      (index) => Padding(
+                  (index) => Padding(
                     padding: EdgeInsets.symmetric(horizontal: 0.1.h),
                     child: Container(
                         decoration: BoxDecoration(
-                            color: buttonColor,
+                            color: irisOrange,
                             borderRadius: BorderRadius.circular(8.w)),
                         child: Padding(
-                          padding: EdgeInsets.all(8.0.w),
+                          padding: EdgeInsets.all(7.0.w),
                           child: RichText(
                             text: TextSpan(children: [
                               TextSpan(
@@ -143,8 +146,10 @@ class _FlashDealsState extends State<FlashDeals> {
                               TextSpan(
                                 text: time[index],
                                 style: TextStyle(
-                                    color: Colors.white.withOpacity(0.6),
-                                    fontSize: 12.sp),
+                                    color: Colors.white,
+                                    fontSize: 12.sp,
+                                    letterSpacing: 0.2
+                                ),
                               ),
                             ]),
                           ),
@@ -156,7 +161,8 @@ class _FlashDealsState extends State<FlashDeals> {
             height: 10.h,
           ),
           SizedBox(
-            height: 272.h,
+            //height: 272.h,
+            height: 300.h,
             width: 390.w,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
@@ -185,7 +191,38 @@ class _FlashDealsState extends State<FlashDeals> {
             height: 10.h,
           ),
           SizedBox(
-            height: 275.h,
+            //height: 272.h,
+            height: 300.h,
+            width: 390.w,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              key: UniqueKey(),
+              itemCount: 2,
+              itemBuilder: (BuildContext context, int index) {
+                return ProductTile(
+                    imgUrl: featured[index].imgUrl,
+                    titleBang: featured[index].titleBang,
+                    titleEng: featured[index].titleEng,
+                    newPrice: featured[index].newPrice,
+                    oldPrice: featured[index].oldPrice,
+                    rating: featured[index].rating,
+                    reviews: featured[index].reviews);
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  width: 24.w,
+                );
+              },
+            ),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          SizedBox(
+            //height: 275.h,
+            height: 300.h,
             width: 390.w,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,

@@ -1,3 +1,4 @@
+import 'package:efgecom/config/custom_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
@@ -37,10 +38,7 @@ class _SearchContainerState extends State<SearchContainer> {
                 contentPadding: EdgeInsets.only(left: 20.w),
                 filled: true,
                 hintText: 'Search Product Name',
-                hintStyle: TextStyle(
-                    fontSize: 14.sp,
-                    color: Colors.grey.shade400,
-                    fontWeight: FontWeight.w500),
+                hintStyle: CustomTextStyle.subHeader2(context).copyWith(color: Colors.grey.shade400),
                 suffixIcon: InkWell(
                   onTap: () {},
                   child: Padding(

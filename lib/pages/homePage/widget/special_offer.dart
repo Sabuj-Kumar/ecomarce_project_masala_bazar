@@ -1,9 +1,9 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/custom_text_style.dart';
 import '../../../config/theme_config.dart';
 import '../../../models/top_banner_model.dart';
 
@@ -52,20 +52,21 @@ class _SpecialOffersState extends State<SpecialOffers> {
             children: [
               Text(
                 'Spacial Offers',
-                style: TextStyle(
-                    color: secondaryColor,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600),
+                style: CustomTextStyle.subHeader1(context)
+                    .copyWith(fontWeight: FontWeight.w600),
               ),
-              TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    primary: buttonColor,
-                    minimumSize: Size.zero,
-                    padding: EdgeInsets.zero,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  ),
-                  child: Text('See All', style: TextStyle(fontSize: 12.sp))),
+              Padding(
+                padding: EdgeInsets.only(top: 4.h),
+                child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      primary: buttonColor,
+                      minimumSize: Size.zero,
+                      padding: EdgeInsets.zero,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: Text('See All', style: TextStyle(fontSize: 12.sp))),
+              ),
             ],
           ),
         ),
@@ -83,64 +84,75 @@ class _SpecialOffersState extends State<SpecialOffers> {
               ),
               items: banner
                   .map((item) => Container(
-                height: 400.h,
-                width: 386.w,
-                //color: Colors.green,
-                padding: EdgeInsets.only(right: 15.w),
-                child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15.r),
-                      ),
-                      color: item.color,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 19.37.w),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 1,
-                            child: Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Text(
-                                item.title,
-                                style: TextStyle(
-                                    fontSize: 18.sp,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FontStyle.italic
-                                ),
+                        height: 400.h,
+                        width: 386.w,
+                        //color: Colors.green,
+                        padding: EdgeInsets.only(right: 15.w),
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(15.r),
                               ),
+                              color: item.color,
                             ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                InkWell(
-                                  onTap: (){
-                                    print("Shop Now");
-                                  },
-                                  child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(item.bodyText.toString(),style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,decoration: TextDecoration.underline,fontSize: 18.sp),)
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 19.37.w),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text(
+                                        item.title,
+                                        style:
+                                            CustomTextStyle.header2Bold(context)
+                                                .copyWith(
+                                                    color: Colors.white,
+                                                    fontStyle:
+                                                        FontStyle.italic),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                ClipRRect(
-
-                                  child: Image.asset("assets/img/Snacks.png"),
-                                  borderRadius: BorderRadius.circular(15.r),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                ),
-              ))
+                                  Expanded(
+                                    flex: 2,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        InkWell(
+                                          onTap: () {
+                                            print("Shop Now");
+                                          },
+                                          child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                item.bodyText.toString(),
+                                                style:
+                                                    CustomTextStyle.header2Semi(
+                                                            context)
+                                                        .copyWith(
+                                                  color: Colors.black,
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                ),
+                                              )),
+                                        ),
+                                        ClipRRect(
+                                          child: Image.asset(
+                                              "assets/img/Snacks.png"),
+                                          borderRadius:
+                                              BorderRadius.circular(15.r),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ))
                   .toList()),
         ),
       ],

@@ -1,3 +1,4 @@
+import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,7 +7,7 @@ class Clipper extends CustomPainter{
   @override
   void paint(Canvas canvas, Size size) {
 
-    final paint = Paint()..style = PaintingStyle.stroke..strokeWidth = 2.0..color = Colors.deepOrangeAccent;
+    final paint = Paint()..style = PaintingStyle.stroke..strokeWidth = 2.0..color = irisOrange;
     final paint1 = Paint()..style = PaintingStyle.stroke..strokeWidth = 3.0..color = const Color(0xFFEFF4FF);
     final path = Path();
     final path1 = Path();

@@ -1,3 +1,4 @@
+import 'package:efgecom/config/custom_text_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,8 +22,7 @@ class ProductTile extends StatelessWidget {
       required this.newPrice,
       required this.oldPrice,
       required this.rating,
-        required this.reviews
-      })
+      required this.reviews})
       : super(key: key);
 
   @override
@@ -58,23 +58,17 @@ class ProductTile extends StatelessWidget {
                     children: [
                       Text(
                         titleEng,
-                        style: TextStyle(
-                            color: secondaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12.sp),
+                        style: CustomTextStyle.bodyText2(context),
                       ),
                       Text(
                         titleBang,
-                        style: TextStyle(
-                            color: secondaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12.sp),
+                        style: CustomTextStyle.bodyText2(context),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 10.h,
+                  height: 8.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 7.59.w),
@@ -84,29 +78,29 @@ class ProductTile extends StatelessWidget {
                       children: [
                         Text(
                           "Tk-$newPrice/kg",
-                          style: TextStyle(
-                              color: buttonColor,
-                              fontSize: 13.5.sp,
-                              fontWeight: FontWeight.bold),
+                          style: CustomTextStyle.bodyText2(context)
+                              .copyWith(color: buttonColor, fontSize: 13.5.sp),
                         ),
                         SizedBox(
-                          width: 4.26.w,
+                          width: 8.w,
                         ),
-                        Text("Tk-$oldPrice/kg",
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 13.5.sp,
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.lineThrough)),
+                        Text(
+                          "Tk-$oldPrice/kg",
+                          style: CustomTextStyle.bodyText2(context).copyWith(
+                              color: Colors.grey,
+                              fontSize: 13.5.sp,
+                              decoration: TextDecoration.lineThrough),
+                        ),
                       ],
                     ),
                   ),
                 ),
                 SizedBox(height: 10.h),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 7.59.w),
+                  padding: EdgeInsets.symmetric(horizontal: 7.59.w,),
                   child: SizedBox(
-                    height: 14.h,
+                    //height: 14.h,
+                    height: 22.h,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -118,17 +112,17 @@ class ProductTile extends StatelessWidget {
                         SizedBox(width: 4.56.w),
                         Text(
                           "$rating",
-                          style: TextStyle(
-                              fontSize: 11.64.sp,
-                              color: secondaryColor,
-                              fontWeight: FontWeight.w400),
+                          style: CustomTextStyle.linkText(context).copyWith(
+                            fontSize: 11.64.sp,
+                          ),
                         ),
                         SizedBox(width: 11.64.w),
-                        Text("$reviews Reviews",
-                            style: TextStyle(
-                                fontSize: 11.64.sp,
-                                color: secondaryColor,
-                                fontWeight: FontWeight.w400))
+                        Text(
+                          "$reviews Reviews",
+                          style: CustomTextStyle.linkText(context).copyWith(
+                            fontSize: 11.64.sp,
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -136,7 +130,7 @@ class ProductTile extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 7.h),
+          SizedBox(height: 8.h),
           SizedBox(
             height: 28.h,
             width: 160.w,
@@ -148,22 +142,23 @@ class ProductTile extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.r),
                   )),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    "Add to Cart",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 11.88.sp,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Icon(
-                    Icons.shopping_cart_outlined,
-                    color: Colors.white,
-                    size: 20.85.h,
-                  )
-                ],
+              child: Padding(
+                padding: EdgeInsets.all(2.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      "Add to Cart",
+                      style: CustomTextStyle.bodySmall(context)
+                          .copyWith(fontSize: 11.88.sp, color: Colors.white),
+                    ),
+                    Icon(
+                      Icons.shopping_cart_outlined,
+                      color: Colors.white,
+                      size: 20.85.h,
+                    )
+                  ],
+                ),
               ),
             ),
           ),
