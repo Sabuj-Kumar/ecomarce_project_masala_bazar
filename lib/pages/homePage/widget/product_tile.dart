@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../config/theme_config.dart';
 
-class ProductTile extends StatelessWidget {
+class ProductTile extends StatefulWidget {
   final String imgUrl;
   final String titleBang;
   final String titleEng;
@@ -26,142 +26,171 @@ class ProductTile extends StatelessWidget {
       : super(key: key);
 
   @override
+  State<ProductTile> createState() => _ProductTileState();
+}
+
+class _ProductTileState extends State<ProductTile> {
+  bool favorite = false;
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.sp), color: Colors.white),
       width: 182.w,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Stack(
         children: [
-          InkWell(
-            onTap: () {
-              print("Pressed Column");
-            },
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 14.29.h,
-                ),
-                Image.asset(
-                  imgUrl,
-                  height: 98.2.h,
-                  width: 148.07.w,
-                ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 7.59.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        titleEng,
-                        style: CustomTextStyle.bodyText2(context),
-                      ),
-                      Text(
-                        titleBang,
-                        style: CustomTextStyle.bodyText2(context),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 7.59.w),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Row(
-                      children: [
-                        Text(
-                          "Tk-$newPrice/kg",
-                          style: CustomTextStyle.bodyText2(context)
-                              .copyWith(color: buttonColor, fontSize: 13.5.sp),
-                        ),
-                        SizedBox(
-                          width: 8.w,
-                        ),
-                        Text(
-                          "Tk-$oldPrice/kg",
-                          style: CustomTextStyle.bodyText2(context).copyWith(
-                              color: Colors.grey,
-                              fontSize: 13.5.sp,
-                              decoration: TextDecoration.lineThrough),
-                        ),
-                      ],
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  print("Pressed Column");
+                },
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 14.29.h,
                     ),
-                  ),
+                    Image.asset(
+                      widget.imgUrl,
+                      height: 98.2.h,
+                      width: 148.07.w,
+                    ),
+                    SizedBox(
+                      height: 5.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 7.59.w),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.titleEng,
+                            style: CustomTextStyle.bodyText2(context),
+                          ),
+                          // Text(
+                          //   titleBang,
+                          //   style: CustomTextStyle.bodyText2(context),
+                          // ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 7.59.w),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Tk-${widget.newPrice}/kg",
+                              style: CustomTextStyle.bodySmall(context)
+                                  .copyWith(
+                                      color: buttonColor, fontSize: 13.5.sp),
+                            ),
+                            Text(
+                              "Tk-${widget.oldPrice}/kg",
+                              style: CustomTextStyle.linkText(context).copyWith(
+                                  color: Colors.grey,
+                                  decoration: TextDecoration.lineThrough),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10.h),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 7.59.w,
+                      ),
+                      child: SizedBox(
+                        //height: 14.h,
+                        height: 22.h,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  size: 14.h,
+                                  color: Colors.amber,
+                                ),
+                                SizedBox(width: 4.56.w),
+                                Text(
+                                  "${widget.rating}",
+                                  style: CustomTextStyle.body(context),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              "${widget.reviews} Reviews",
+                              style: CustomTextStyle.body(context),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 10.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 7.59.w,),
-                  child: SizedBox(
-                    //height: 14.h,
-                    height: 22.h,
+              ),
+              SizedBox(height: 8.h),
+              SizedBox(
+                height: 28.h,
+                width: 160.w,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      primary: buttonColor,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.r),
+                      )),
+                  child: Padding(
+                    padding: EdgeInsets.all(2.h),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        Text(
+                          "Add to Cart",
+                          style: CustomTextStyle.bodySmall(context).copyWith(
+                              fontSize: 11.88.sp, color: Colors.white),
+                        ),
                         Icon(
-                          Icons.star,
-                          size: 14.h,
-                          color: Colors.amber,
-                        ),
-                        SizedBox(width: 4.56.w),
-                        Text(
-                          "$rating",
-                          style: CustomTextStyle.linkText(context).copyWith(
-                            fontSize: 11.64.sp,
-                          ),
-                        ),
-                        SizedBox(width: 11.64.w),
-                        Text(
-                          "$reviews Reviews",
-                          style: CustomTextStyle.linkText(context).copyWith(
-                            fontSize: 11.64.sp,
-                          ),
+                          Icons.shopping_cart_outlined,
+                          color: Colors.white,
+                          size: 20.85.h,
                         )
                       ],
                     ),
                   ),
                 ),
-              ],
-            ),
-          ),
-          SizedBox(height: 8.h),
-          SizedBox(
-            height: 28.h,
-            width: 160.w,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  primary: buttonColor,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.r),
-                  )),
-              child: Padding(
-                padding: EdgeInsets.all(2.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      "Add to Cart",
-                      style: CustomTextStyle.bodySmall(context)
-                          .copyWith(fontSize: 11.88.sp, color: Colors.white),
-                    ),
-                    Icon(
-                      Icons.shopping_cart_outlined,
-                      color: Colors.white,
-                      size: 20.85.h,
-                    )
-                  ],
-                ),
               ),
-            ),
+            ],
           ),
+          Positioned(
+            left: 150.68.w,
+            top: 9.1.h,
+            child: InkWell(
+                onTap: () {
+                  favorite = !favorite;
+                  setState(() {});
+                },
+                child: !favorite
+                    ? const Icon(
+                        Icons.favorite_border_rounded,
+                        color: buttonColor,
+                      )
+                    : const Icon(
+                        Icons.favorite_rounded,
+                        color: buttonColor,
+                      )),
+          )
         ],
       ),
     );

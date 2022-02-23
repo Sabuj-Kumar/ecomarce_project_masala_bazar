@@ -24,7 +24,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/katla.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size)',
+          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           newPrice: 200,
           oldPrice: 200,
           rating: 4.6,
@@ -32,7 +32,23 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/katla.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size)',
+          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          newPrice: 200,
+          oldPrice: 200,
+          rating: 4.6,
+          reviews: 86),
+      FeaturedProductModel(
+          imgUrl: 'assets/img/katla.png',
+          titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          newPrice: 200,
+          oldPrice: 200,
+          rating: 4.6,
+          reviews: 86),
+      FeaturedProductModel(
+          imgUrl: 'assets/img/katla.png',
+          titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           newPrice: 200,
           oldPrice: 200,
           rating: 4.6,
@@ -81,10 +97,9 @@ class _FeaturedProductState extends State<FeaturedProduct> {
           child: ListView.separated(
               separatorBuilder: (context, index) {
                 return SizedBox(
-                  width: 24.w,
+                  width: 7.w,
                 );
               },
-              physics: const NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: featured.length,
               itemBuilder: (context, index) {
