@@ -22,33 +22,9 @@ class NavigationBBar extends StatelessWidget {
         Stack(
             alignment: Alignment.center,
             children: [
-              ClipPath(
-                clipper: CustomClipperDown(),
-                child: Container(
-                  height: height * 0.1125,
-                  width: width * 0.932,
-                  decoration:  BoxDecoration(
-                    color: Colors.amberAccent,
-                    borderRadius: const BorderRadius.all(Radius.circular(13.0)),
-                    border: Border.all(color: Colors.amberAccent),
-
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 3.2.sp,
-                child: ClipPath(
-                  clipper: CustomClipperUp(),
-                  child: Container(
-                    height: height * 0.1075,
-                    width: width * 0.93,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:  const BorderRadius.all(Radius.circular(13.0)),
-                      border: Border.all(color: Colors.amberAccent),
-                    ),
-                  ),
-                ),
+              CustomPaint(
+                size: Size(width,height * 0.1125),
+                painter: Clipper(),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

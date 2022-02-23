@@ -1,6 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+class Clipper extends CustomPainter{
+
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    final paint = Paint()..style = PaintingStyle.stroke..strokeWidth = 2.0..color = Colors.deepOrangeAccent;
+    final paint1 = Paint()..style = PaintingStyle.stroke..strokeWidth = 3.0..color = const Color(0xFFEFF4FF);
+    final path = Path();
+    final path1 = Path();
+
+    path.addRRect(RRect.fromLTRBR(size.width * 0.02,size.height * 0.4,size.width * 0.98,size.height,const Radius.circular(15)));
+    path.moveTo(size.width * 0.38, size.height * 0.4);
+    path.quadraticBezierTo(size.width * 0.41, size.height * 0.02, size.width * 0.5, size.height * 0.01);
+    path.quadraticBezierTo(size.width * 0.59, size.height * 0.02, size.width * 0.62, size.height * 0.4);
+
+    path.moveTo(size.width * 0.38, size.height * 0.4);
+    path.lineTo(size.width * 0.62, size.height * 0.4);
+    canvas.drawPath(path,paint);
+    path.close();
+    canvas.drawPath(path,paint);
+
+    path1.moveTo(size.width * 0.3835, size.height * 0.4);
+    path1.lineTo(size.width * 0.6165, size.height * 0.4);
+    path1.close();
+    canvas.drawPath(path1,paint1);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
 class CustomClipperDown extends CustomClipper<Path>{
 
   @override
