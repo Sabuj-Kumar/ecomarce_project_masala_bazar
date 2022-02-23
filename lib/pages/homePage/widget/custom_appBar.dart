@@ -37,26 +37,36 @@ class _CustomAppBarState extends State<CustomAppBar> {
         width: _width,
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SvgPicture.asset(
-                  'assets/logo/masalaBazaar_logo.svg',
-                  //width: 100,
-                  height: 25.h,
-                  width: 19.17.w,
-                ),
-                InkWell(
-                  onTap: () {
-                  },
-                  borderRadius: BorderRadius.circular(20),
-                  radius: 100,
-                  child: SvgPicture.asset(
-                    'assets/icons/notification_bell.svg',
-                    width: 20.w,
+            Padding(
+              padding: EdgeInsets.only(left: 15.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // SvgPicture.asset(
+                  //   'assets/logo/masalaBazaar_logo.svg',
+                  //   //width: 100,
+                  //   height: 25.h,
+                  //   width: 19.17.w,
+                  // ),
+                  InkWell(
+                    onTap: () {
+                    },
+                    child: SvgPicture.asset(
+                      'assets/icons/search_icon.svg', width: 19.17.w,
+                    ),
                   ),
-                ),
-              ],
+                  InkWell(
+                    onTap: () {
+                    },
+                    borderRadius: BorderRadius.circular(20),
+                    radius: 100,
+                    child: SvgPicture.asset(
+                      'assets/icons/notification_bell.svg',
+                      width: 20.w,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 8.92.h,

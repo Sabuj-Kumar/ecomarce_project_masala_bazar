@@ -63,7 +63,7 @@ class _TopBannerState extends State<TopBanner> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.all(
-                                        Radius.circular(15.r),
+                                        Radius.circular(12.r),
                                       ),
                                       image: DecorationImage(
                                           fit: BoxFit.cover,
@@ -82,8 +82,8 @@ class _TopBannerState extends State<TopBanner> {
                                     ? Colors.orange.shade700
                                     : Colors.pinkAccent,
                                 borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10.r),
-                                    bottomLeft: Radius.circular(10.r),
+                                    topLeft: Radius.circular(15.r),
+                                    bottomLeft: Radius.circular(15.r),
                                     topRight: Radius.circular(100.r),
                                     bottomRight: Radius.circular(100.r))),
                           ),
@@ -106,22 +106,26 @@ class _TopBannerState extends State<TopBanner> {
                                         style:
                                             CustomTextStyle.header2Semi(context)
                                                 .copyWith(
-                                          height: 1.6.h,
+                                              fontSize: 18.sp,
+                                          height: 1.8.h,
                                           color: Colors.white,
                                         )),
                                   ),
+                                ),
+                                SizedBox(
+                                  height: 2.h,
                                 ),
                                 Text(
                                   item.date!,
                                   style: CustomTextStyle.body(context).copyWith(color: Colors.white),
                                 ),
                                 SizedBox(
-                                  height: 20.h,
+                                  height: 8.h,
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(left: 40.89.w),
                                   child: SizedBox(
-                                    height: 27.h,
+                                    height: 28.h,
                                     width: 100.w,
                                     child: ElevatedButton(
                                         onPressed: () {},

@@ -9,7 +9,6 @@ import '../widget/special_offer.dart';
 import '../widget/category_list.dart';
 import '../widget/custom_appBar.dart';
 import '../widget/featured_product.dart';
-import '../widget/search_container.dart';
 import '../widget/top_banner.dart';
 
 
@@ -29,11 +28,8 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: [
           const CustomAppBar(),
-          SizedBox(
-            height: _height * 0.008,
-          ),
-          const SearchContainer(),
-          SizedBox(height: 18.h,),
+          // const SearchContainer(),
+          SizedBox(height: 53.h,),
           const TopBanner(),
           SizedBox(height: 25.25.h,),
           const CategoryList(),
