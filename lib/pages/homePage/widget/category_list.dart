@@ -138,7 +138,11 @@ class _CategoryListState extends State<CategoryList> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Image.asset(slider[index].imgUrl),
+                                    ClipRRect(
+                                        borderRadius:
+                                        BorderRadius.circular(10.r),
+                                        child: Image.asset(slider[index].imgUrl)
+                                    ),
                                   ],
                                 ),
                               ),

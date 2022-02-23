@@ -26,7 +26,6 @@ class _HomePageState extends State<HomePage> {
     final _height = MediaQuery.of(context).size.height;
     final _width = MediaQuery.of(context).size.width;
     return CustomScaffold(
-
       child: Column(
         children: [
           const CustomAppBar(),
@@ -34,7 +33,6 @@ class _HomePageState extends State<HomePage> {
             height: _height * 0.008,
           ),
           const SearchContainer(),
-          //Container(height: _height * 0.25,width:_width * 0.915,color: Colors.red,),
           SizedBox(height: 18.h,),
           const TopBanner(),
           SizedBox(height: 25.25.h,),
