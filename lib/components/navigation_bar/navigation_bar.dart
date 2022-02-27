@@ -101,7 +101,6 @@ class NavigationBBar extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   Padding(
                     padding:  EdgeInsets.only(top: 38.h, right: 12.w),
                     child: InkWell(
