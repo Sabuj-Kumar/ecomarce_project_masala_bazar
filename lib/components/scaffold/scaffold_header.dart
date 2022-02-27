@@ -8,6 +8,7 @@ class ScaffoldHeader extends StatelessWidget {
   final Widget? trailing;
   final EdgeInsetsGeometry? padding;
   final bool allowBack;
+
   const ScaffoldHeader({
     Key? key,
     required this.title,
