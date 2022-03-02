@@ -1,8 +1,5 @@
 import 'dart:developer';
 import 'package:connectivity/connectivity.dart';
-import 'package:efgecom/pages/sinInAndsignUpPage/view/forget_password_page.dart';
-import 'package:efgecom/pages/sinInAndsignUpPage/view/sign_in_page.dart';
-import 'package:efgecom/pages/sinInAndsignUpPage/view/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -15,6 +12,8 @@ import 'package:efgecom/config/app_platform_config.dart';
 import 'package:efgecom/helpers/router.dart';
 import 'package:efgecom/providers/user_provider.dart';
 import 'package:efgecom/services/connectivity_service.dart';
+
+import 'mainPage/mainPage.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({Key? key}) : super(key: key);
@@ -169,6 +168,6 @@ class AppHandler extends StatelessWidget {
     //   return const AuthPage();
     // }
 
-    return const SignInPage();
+    return const MainPage();
   }
 }

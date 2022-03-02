@@ -1,3 +1,4 @@
+import 'package:efgecom/pages/sinInAndsignUpPage/view/update_password.dart';
 import 'package:flutter/material.dart';
 import 'package:efgecom/components/scaffold/custom_scaffold.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -5,31 +6,33 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../config/custom_text_style.dart';
 import '../../../config/theme_config.dart';
 import '../widgets/image_and_text.dart';
-import '../widgets/sign_in_and_sign_up_button.dart';
+
 
 class ResetPasswordPage extends StatefulWidget {
-  const ResetPasswordPage({Key? key, required this.value}) : super(key: key);
-  final String value;
+  const ResetPasswordPage({Key? key, required this.number}) : super(key: key);
+  final String number;
   @override
   State<ResetPasswordPage> createState() => _ResetPasswordPageState();
 }
 
 class _ResetPasswordPageState extends State<ResetPasswordPage> {
-  String value = "123456789";
+  String number ="";
   int len = 0;
+  String? otp;
   @override
   void initState() {
-    len = widget.value.length;
-    value = widget.value;
-    print(value);
+    len = widget.number.length;
+    number = widget.number;
+    print(number);
     print("$len");
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+        body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       SizedBox(height: 45.h),
       Padding(
         padding: EdgeInsets.only(left: 20.0.w, right: 20.0.w),
@@ -38,7 +41,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             ImageAndText(
               text: "Reset Password",
               text2:
-                  "We have sent the verification code to +880*******${value.substring(len - 3)}. Change?",
+                  "We have sent the verification code to +880*******${number.substring(len - 3)}. Change?",
             ),
             SizedBox(height: 50.92.h),
             Row(
@@ -76,8 +79,12 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               borderColor: fuschiaBlueGem,
               enabledBorderColor: fuschiaBlueGem,
               focusedBorderColor: fuschiaBlueGem,
-              onCodeChanged: (String code) {},
-              onSubmit: (String code) {},
+              onCodeChanged: (String code) {
+                otp = code;
+              },
+              onSubmit: (String code) {
+                otp = code;
+              },
             ),
             SizedBox(height: 20.h),
             Text(
@@ -90,10 +97,25 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           ],
         ),
       ),
-      SizedBox(height: 335.89.h),
-      const SignInSingUpButton(
-        buttonName: "Continue",
-      ),
+      SizedBox(height: 250.h),
+          ElevatedButton(
+              onPressed: () {
+                 // Navigator.push(context, MaterialPageRoute(builder: (context) => const UpdatePasswordPage()));
+                 Navigator.pushNamed(context, '/updatePassPage');
+              },
+              style: ElevatedButton.styleFrom(
+                elevation: 0.5,
+                primary: irisYellow,
+                padding: EdgeInsets.only(
+                    left: 159.w, right: 159.w, top: 15.h, bottom: 15.h),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r)),
+                side: BorderSide(color: Colors.red.withOpacity(0.5), width: 1.w),
+              ),
+              child: Text(
+                "Continue",
+                style: CustomTextStyle.header2Semi(context),
+              )),
     ]));
   }
 }

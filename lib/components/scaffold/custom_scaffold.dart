@@ -22,7 +22,7 @@ class CustomScaffold extends StatelessWidget {
           height: MediaQuery.of(context).size.height,
           child: ListView(
             children: [
-              // header ?? const SizedBox(),
+              header ?? const SizedBox(),
               child,
               PlatformPadding.bottomPadding(),
             ],

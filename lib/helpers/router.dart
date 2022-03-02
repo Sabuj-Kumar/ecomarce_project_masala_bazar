@@ -3,9 +3,11 @@ import 'package:efgecom/pages/sinInAndsignUpPage/view/sign_up_page.dart';
 import 'package:efgecom/pages/wrapper.dart';
 import 'package:fluro/fluro.dart';
 import 'package:efgecom/pages/mainPage/mainPage.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../pages/sinInAndsignUpPage/view/reset_password_page.dart';
 import '../pages/sinInAndsignUpPage/view/sign_in_page.dart';
+import '../pages/sinInAndsignUpPage/view/update_password.dart';
 
 class PageRouter {
   static FluroRouter router = FluroRouter();
@@ -18,7 +20,9 @@ class PageRouter {
     router.define('/signInPage', handler: _signInHandler,transitionType: TransitionType.fadeIn);
     router.define('/signUpPage', handler: _singUpHandler,transitionType: TransitionType.fadeIn);
     router.define('/forgetPassPage', handler: _forgetPassHandler,transitionType: TransitionType.fadeIn);
-    router.define('/resetPassPage/:value', handler: _resetPassHandler,transitionType: TransitionType.fadeIn);
+    router.define('/resetPassPage/:number', handler: _resetPassHandler,transitionType: TransitionType.fadeIn);
+    router.define('/updatePassPage', handler: _updatePassHandler,transitionType: TransitionType.fadeIn);
+
   }
 
   //Add your handlers here
@@ -36,5 +40,7 @@ class PageRouter {
   static final Handler _signInHandler =  Handler(handlerFunc: (context,Map<String,dynamic> params) => const SignInPage());
   static final Handler _singUpHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => const SignUpPage());
   static final Handler _forgetPassHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => const ForgetPasswordPage());
-  static final Handler _resetPassHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => ResetPasswordPage(value: params['value'][0]));
+  static final Handler _resetPassHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => ResetPasswordPage(number: params['number'][0]));
+  static final Handler _updatePassHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => const UpdatePasswordPage());
+
 }

@@ -1,4 +1,5 @@
 import 'package:efgecom/config/custom_text_style.dart';
+import 'package:efgecom/pages/categories/fish_meat/view/fishMeat.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,14 @@ class _CategoryListState extends State<CategoryList> {
                   child: SizedBox(
                     width: 122.w,
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => FishMeat(
+                                      title: slider[index].title,
+                                    )));
+                      },
                       child: Card(
                           margin: EdgeInsets.zero,
                           color: slider[index].id == 0
@@ -140,9 +148,9 @@ class _CategoryListState extends State<CategoryList> {
                                   children: [
                                     ClipRRect(
                                         borderRadius:
-                                        BorderRadius.circular(10.r),
-                                        child: Image.asset(slider[index].imgUrl)
-                                    ),
+                                            BorderRadius.circular(10.r),
+                                        child:
+                                            Image.asset(slider[index].imgUrl)),
                                   ],
                                 ),
                               ),

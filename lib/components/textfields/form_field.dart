@@ -48,6 +48,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
 
     return TextFormField(
+      textAlignVertical: obscure?TextAlignVertical.bottom:TextAlignVertical.center,
       controller: widget.controller,
       textInputAction: widget.textInputAction,
       keyboardType: widget.keyboardType,
@@ -57,9 +58,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       style: CustomTextStyle.body(context).copyWith(
         color: Colors.black,fontSize: 12.0.w,fontWeight: FontWeight.w400
       ),
-
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.only(top: 10.0.h,left: 15.0.w),
           errorText: widget.errorText,
           errorStyle: CustomTextStyle.body(context).copyWith(
             color: Colors.red,
@@ -83,6 +82,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               CustomTextStyle.subHeader2(context).copyWith(color: Colors.black),
           hintText: widget.hintText,
           hintStyle: CustomTextStyle.body(context).copyWith(color: textLight),
+
           prefixIcon: widget.prefixIcon,
           suffixIcon: widget.suffixVisibilityIcon!
               ? obscure
@@ -93,7 +93,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           print(obscure);
                         });
                       },
-                      icon: const Icon(Icons.visibility_off_outlined))
+                      icon: const Icon(Icons.visibility_off_outlined,color: Colors.grey,))
                   : IconButton(
                       onPressed: () {
                         setState(() {
@@ -101,14 +101,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           print(obscure);
                         });
                       },
-                      icon: const Icon(Icons.visibility_outlined))
+                      icon: const Icon(Icons.visibility_outlined,color: secondaryColor,))
               : null),
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value == null || value.isEmpty) {
           return Validation(value,widget.hintText).emptyCheck();
-        } else {
+        } else if(value.isNotEmpty){
           return Validation(value,widget.hintText).checkValidation();
         }
+        return null;
       },
     );
   }
@@ -122,11 +123,11 @@ class Validation {
   Validation(this.value,this.hintText);
 
   String emptyCheck() {
-    return "Enter The $hintText";
+    return "$hintText.";
   }
 
-  String checkValidation() {
-    return "";
+  String? checkValidation() {
+    return null;
   }
 
 

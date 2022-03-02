@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../components/textfields/custom_text_form_field.dart';
 import '../../../components/textfields/form_field.dart';
 import '../../../config/custom_text_style.dart';
 import '../../../config/theme_config.dart';
 
 class SignUpForm extends StatefulWidget {
-  const SignUpForm({Key? key}) : super(key: key);
-
+  const SignUpForm({Key? key,this.emailOrMobile,this.confirmPassword,this.password}) : super(key: key);
+  final TextEditingController? emailOrMobile;
+  final TextEditingController? password;
+  final TextEditingController? confirmPassword;
   @override
   _SignUpFormState createState() => _SignUpFormState();
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-  final TextEditingController? _emailOrMobile = TextEditingController();
-  final TextEditingController? _password = TextEditingController();
-  final TextEditingController? _confirmPassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,14 +31,14 @@ class _SignUpFormState extends State<SignUpForm> {
         ),
         CustomTextField(
           suffixVisibilityIcon: false,
-          controller: _emailOrMobile,
+          controller: widget.emailOrMobile,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           hintText: "Enter your email address/ phone number",
           obscureCharacter: '*',
         ),
         SizedBox(
-          height: 21.5.h,
+          height: 8.h,
         ),
         Align(
           alignment: Alignment.topLeft,
@@ -55,7 +53,7 @@ class _SignUpFormState extends State<SignUpForm> {
         CustomTextField(
           suffixVisibilityIcon: true,
           obscured: true,
-          controller: _password,
+          controller: widget.password,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           hintText: "Enter your password",
@@ -80,7 +78,7 @@ class _SignUpFormState extends State<SignUpForm> {
           ],
         ),
         SizedBox(
-          height: 15.11.h,
+          height: 5.h,
         ),
         Align(
           alignment: Alignment.topLeft,
@@ -95,7 +93,7 @@ class _SignUpFormState extends State<SignUpForm> {
         CustomTextField(
           suffixVisibilityIcon: true,
           obscured: true,
-          controller: _confirmPassword,
+          controller: widget.confirmPassword,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.done,
           hintText: "Enter your password",

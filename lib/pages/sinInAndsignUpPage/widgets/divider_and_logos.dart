@@ -15,8 +15,6 @@ class DividerAndLogoWithSignUp extends StatefulWidget {
 class _DividerAndLogoWithSignUpState extends State<DividerAndLogoWithSignUp> {
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Column(
       children: [
         Stack(
@@ -26,8 +24,7 @@ class _DividerAndLogoWithSignUpState extends State<DividerAndLogoWithSignUp> {
               color: Colors.black.withOpacity(0.5),
               height: 25.h,
             ),
-            Positioned(
-              left: width * 0.50.w,
+            Center(
               child: Container(
                 height: 25.h,
                 width: 55.53.w,
@@ -51,14 +48,14 @@ class _DividerAndLogoWithSignUpState extends State<DividerAndLogoWithSignUp> {
           ],
         ),
         SizedBox(
-          height: 27.44.h,
+          height: 20.h,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SvgPicture.asset("assets/logo/google_logo.svg"),
-            SvgPicture.asset("assets/logo/facebook_logo.svg"),
-            SvgPicture.asset("assets/logo/apple_logo.svg"),
+            SvgPicture.asset("assets/logo/google_logo.svg",height: 55.h,width: 55.w,),
+            SvgPicture.asset("assets/logo/facebook_logo.svg",height: 55.h,width: 55.w),
+            SvgPicture.asset("assets/logo/apple_logo.svg",height: 55.h,width: 55.w),
           ],
         ),
       ],

@@ -61,6 +61,7 @@ dependencies:
   carousel_slider: ^4.0.0
   google_fonts: ^2.3.1
   flutter_otp_text_field: ^1.0.0
+  number_paginator: ^0.0.2
 
 dev_dependencies:
   moor_generator: ^4.5.1

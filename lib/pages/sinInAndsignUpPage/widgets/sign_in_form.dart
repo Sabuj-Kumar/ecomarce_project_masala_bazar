@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../components/textfields/custom_text_form_field.dart';
 import '../../../components/textfields/form_field.dart';
 import '../../../config/custom_text_style.dart';
 import '../../../config/theme_config.dart';
 
 class SignInForm extends StatefulWidget {
-  const SignInForm({Key? key}) : super(key: key);
-
+  const SignInForm({Key? key,required this.password,required this.emailOrMobile}) : super(key: key);
+  final TextEditingController  emailOrMobile;
+  final TextEditingController  password;
   @override
   _SignInFormState createState() => _SignInFormState();
 }
 
 class _SignInFormState extends State<SignInForm> {
-  final TextEditingController? _emailOrMobile = TextEditingController();
-  final TextEditingController? _password = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +31,14 @@ class _SignInFormState extends State<SignInForm> {
         ),
         CustomTextField(
           suffixVisibilityIcon: false,
-          controller: _emailOrMobile,
+          controller: widget.emailOrMobile,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           hintText: "Enter your email address/ phone number",
           obscureCharacter: '*',
         ),
         SizedBox(
-          height: 21.5.h,
+          height: 15.h,
         ),
         Align(
           alignment: Alignment.topLeft,
@@ -54,7 +53,7 @@ class _SignInFormState extends State<SignInForm> {
         CustomTextField(
           suffixVisibilityIcon: true,
           obscured: true,
-          controller: _password,
+          controller: widget.password,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           hintText: "Enter your password",

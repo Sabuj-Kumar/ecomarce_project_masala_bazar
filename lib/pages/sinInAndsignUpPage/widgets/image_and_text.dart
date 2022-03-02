@@ -13,19 +13,19 @@ class ImageAndText extends StatelessWidget {
     return Column(
       children: [
         Image.asset("assets/img/mbOnline.png",
-            width: 110.37.w, height: 94.27.w),
+            width: 80.37.w, height: 70.27.w),
         SizedBox(
-          height: 22.02.h,
+          height: 20.h,
         ),
         Text(
           text!,
           style: CustomTextStyle.subHeader1(context).copyWith(
-              fontSize: 24.sp,
+              fontSize: 20.sp,
               color: fuschiaText,
               fontWeight: FontWeight.w600),
         ),
         SizedBox(
-          height: 15.38.h,
+          height: 15.h,
         ),
         SizedBox(
           height: 60.h,
@@ -35,6 +35,7 @@ class ImageAndText extends StatelessWidget {
             style: CustomTextStyle.subHeader2(context).copyWith(
               color: fuschiaText,
               fontWeight: FontWeight.bold,
+              fontSize: 14.sp
             ),
             textAlign: TextAlign.center,
           ),
