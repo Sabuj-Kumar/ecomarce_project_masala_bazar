@@ -43,8 +43,9 @@ class _ProductTileState extends State<ProductTile> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
-                onTap: () {
-                  // print("Pressed Column");
+                onTap: (){
+                  Navigator.pushNamed(context, '/productDetailsPage');
+                  print("product detail page pressed.");
                 },
                 child: Column(
                   children: [

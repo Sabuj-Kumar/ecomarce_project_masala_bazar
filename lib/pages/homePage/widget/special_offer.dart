@@ -122,7 +122,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
                                       children: [
                                         InkWell(
                                           onTap: () {
-                                            // print("Shop Now");
+                                            print("Shop Now");
                                           },
                                           child: Align(
                                               alignment: Alignment.centerLeft,

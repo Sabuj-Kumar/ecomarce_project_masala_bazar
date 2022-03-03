@@ -5,6 +5,7 @@ import 'package:fluro/fluro.dart';
 import 'package:efgecom/pages/mainPage/mainPage.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../pages/Product_Details_Page/Pages/product_details_main_page.dart';
 import '../pages/sinInAndsignUpPage/view/reset_password_page.dart';
 import '../pages/sinInAndsignUpPage/view/sign_in_page.dart';
 import '../pages/sinInAndsignUpPage/view/update_password.dart';
@@ -22,6 +23,7 @@ class PageRouter {
     router.define('/forgetPassPage', handler: _forgetPassHandler,transitionType: TransitionType.fadeIn);
     router.define('/resetPassPage/:number', handler: _resetPassHandler,transitionType: TransitionType.fadeIn);
     router.define('/updatePassPage', handler: _updatePassHandler,transitionType: TransitionType.fadeIn);
+    router.define('/productDetailsPage', handler: _productDetailHandler,transitionType: TransitionType.fadeIn);
 
   }
 
@@ -42,5 +44,5 @@ class PageRouter {
   static final Handler _forgetPassHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => const ForgetPasswordPage());
   static final Handler _resetPassHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => ResetPasswordPage(number: params['number'][0]));
   static final Handler _updatePassHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => const UpdatePasswordPage());
-
+  static final Handler _productDetailHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => const ProductDetailsPage());
 }

@@ -83,7 +83,7 @@ class _SignInPageState extends State<SignInPage> {
                           BorderSide(color: Colors.red.withOpacity(0.5), width: 1.w),
                     ),
                     child: Text(
-                      "Sing In",
+                      "Sign In",
                       style: CustomTextStyle.header2Semi(context),
                     )),
 

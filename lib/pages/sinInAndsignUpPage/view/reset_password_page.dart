@@ -5,7 +5,6 @@ import '../../../config/custom_text_style.dart';
 import '../../../config/theme_config.dart';
 import '../widgets/image_and_text.dart';
 
-
 class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({Key? key, required this.number}) : super(key: key);
   final String number;
@@ -14,7 +13,7 @@ class ResetPasswordPage extends StatefulWidget {
 }
 
 class _ResetPasswordPageState extends State<ResetPasswordPage> {
-  String number ="";
+  String number = "";
   int len = 0;
   String? otp;
   @override
@@ -26,13 +25,14 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-
         body: ListView(
-          children: [
-            Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      SizedBox(height: 45.h),
-      Padding(
+      children: [
+        Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          SizedBox(height: 45.h),
+          Padding(
             padding: EdgeInsets.only(left: 20.0.w, right: 20.0.w),
             child: Column(
               children: [
@@ -94,29 +94,39 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 )
               ],
             ),
-      ),
-      SizedBox(height: 250.h),
-              ElevatedButton(
-                  onPressed: () {
-                     // Navigator.push(context, MaterialPageRoute(builder: (context) => const UpdatePasswordPage()));
-                     Navigator.pushNamed(context, '/updatePassPage');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0.5,
-                    primary: irisYellow,
-                    padding: EdgeInsets.only(
-                        left: 159.w, right: 159.w, top: 15.h, bottom: 15.h),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r)),
-                    side: BorderSide(color: Colors.red.withOpacity(0.5), width: 1.w),
-                  ),
-                  child: Text(
-                    "Continue",
-                    style: CustomTextStyle.header2Semi(context),
-                  )),
-    ]),
-          ],
-        ));
+          ),
+          SizedBox(height: 250.h),
+          ElevatedButton(
+              onPressed: () {
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => const UpdatePasswordPage()));
+                Navigator.pushNamed(context, '/updatePassPage');
+              },
+              style: ElevatedButton.styleFrom(
+                elevation: 0.5,
+                primary: irisYellow,
+                padding: EdgeInsets.only(
+                    left: 159.w, right: 159.w, top: 15.h, bottom: 15.h),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r)),
+                side:
+                    BorderSide(color: Colors.red.withOpacity(0.5), width: 1.w),
+              ),
+              child: Text(
+                "Continue",
+                style: CustomTextStyle.header2Semi(context),
+              )),
+          SizedBox(height: 20.h),
+          Container(
+              width: width * 0.5.w,
+              height: height * 0.006.h,
+              decoration: BoxDecoration(
+                  color: secondaryColor,
+                borderRadius: BorderRadius.circular(20.r)
+              ),
+          )
+        ]),
+      ],
+    ));
   }
 }
 //EdgeInsets.only(left: 20.0.h, right: 20.0.h)

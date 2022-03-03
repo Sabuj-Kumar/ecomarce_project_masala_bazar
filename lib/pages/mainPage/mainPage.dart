@@ -57,7 +57,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
             pageList[_index],
             RoundedTabBarWidget(
               icons: const [
-                "assets/icons/Home.svg",
+                "assets/icons/home.svg",
                 "assets/icons/message.svg",
                 "assets/icons/cart.svg",
                 "assets/icons/category.svg",

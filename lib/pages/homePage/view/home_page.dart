@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 25.h,
           ),
-          FlashDeals(),
+          const FlashDeals(),
           SizedBox(height: 25.h,),
           const SpecialOffers()
            // TopBanner()
