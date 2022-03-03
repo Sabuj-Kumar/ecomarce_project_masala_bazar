@@ -1,6 +1,5 @@
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:efgecom/components/cards/custom_card.dart';
 import 'package:efgecom/components/scaffold/connectivity_bar.dart';
 import 'package:efgecom/components/scaffold/custom_scaffold.dart';
@@ -31,7 +30,7 @@ class _DashboardPageState extends State<DashboardPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Connectivitybar(),
+            const ConnectivityBar(),
             const SizedBox(
               height: 5,
             ),

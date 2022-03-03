@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class TabbarItemWidget extends StatefulWidget {
-  late final bool isSelected;
-  late final String icons;
-  late final String iconName;
+class TabBarItemWidget extends StatefulWidget {
+  final bool isSelected;
+  final String icons;
+  final String iconName;
   final Function? onItemPressed;
-  late final Color itemNormalColor;
-  late final Color itemSelectedColor;
-  late final Color? itemBackgroundColor;
+  final Color itemNormalColor;
+  final Color itemSelectedColor;
+  final Color? itemBackgroundColor;
 
-  TabbarItemWidget({
+  const TabBarItemWidget({
+    Key? key,
     required this.icons,
     required this.isSelected,
     required this.iconName,
@@ -19,22 +20,21 @@ class TabbarItemWidget extends StatefulWidget {
     this.itemBackgroundColor,
     required this.itemSelectedColor,
     required this.itemNormalColor,
-  });
+  }) : super(key: key);
   @override
-  _TabbarItemWidgetState createState() => _TabbarItemWidgetState();
+  _TabBarItemWidgetState createState() => _TabBarItemWidgetState();
 }
 
-class _TabbarItemWidgetState extends State<TabbarItemWidget> {
+class _TabBarItemWidgetState extends State<TabBarItemWidget> {
   @override
   Widget build(BuildContext context) {
-
     final _iconColor = (widget.isSelected == false)
         ? widget.itemNormalColor
         : widget.itemSelectedColor;
     return Stack(
       children: [
         InkWell(
-          onTap: (){
+          onTap: () {
             if (widget.onItemPressed != null) {
               widget.onItemPressed!();
             }
@@ -43,8 +43,14 @@ class _TabbarItemWidgetState extends State<TabbarItemWidget> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture.asset(widget.icons,color: _iconColor,),
-              Text(widget.iconName,style: TextStyle(color: _iconColor,fontSize: 12.sp),),
+              SvgPicture.asset(
+                widget.icons,
+                color: _iconColor,
+              ),
+              Text(
+                widget.iconName,
+                style: TextStyle(color: _iconColor, fontSize: 12.sp),
+              ),
             ],
           ),
         ),

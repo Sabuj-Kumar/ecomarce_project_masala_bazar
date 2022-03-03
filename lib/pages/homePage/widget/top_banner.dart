@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:efgecom/config/custom_text_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -62,15 +61,14 @@ class _TopBannerState extends State<TopBanner> {
                                 flex: 4,
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(12.r),
-                                      ),
-                                      image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: item.imgUrl == null
-                                              ? const AssetImage(
-                                                  'assets/img/placeholder.jpg')
-                                              : AssetImage(item.imgUrl))),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(12.r),
+                                    ),
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(item.imgUrl),
+                                    ),
+                                  ),
                                 ),
                               )
                             ],
@@ -106,7 +104,7 @@ class _TopBannerState extends State<TopBanner> {
                                         style:
                                             CustomTextStyle.header2Semi(context)
                                                 .copyWith(
-                                              fontSize: 18.sp,
+                                          fontSize: 18.sp,
                                           height: 1.8.h,
                                           color: Colors.white,
                                         )),
@@ -117,7 +115,8 @@ class _TopBannerState extends State<TopBanner> {
                                 ),
                                 Text(
                                   item.date!,
-                                  style: CustomTextStyle.body(context).copyWith(color: Colors.white),
+                                  style: CustomTextStyle.body(context)
+                                      .copyWith(color: Colors.white),
                                 ),
                                 SizedBox(
                                   height: 8.h,
@@ -135,11 +134,13 @@ class _TopBannerState extends State<TopBanner> {
                                             elevation: 0),
                                         child: Padding(
                                           padding: EdgeInsets.symmetric(
-                                              horizontal: 14.5.w,
+                                            horizontal: 14.5.w,
                                           ),
                                           child: Text(
                                             'Shop now',
-                                            style: CustomTextStyle.subHeader2(context).copyWith(color: Colors.white),
+                                            style: CustomTextStyle.subHeader2(
+                                                    context)
+                                                .copyWith(color: Colors.white),
                                           ),
                                         )),
                                   ),

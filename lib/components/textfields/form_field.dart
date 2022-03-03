@@ -90,7 +90,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       onPressed: () {
                         setState(() {
                           obscure = !obscure;
-                          print(obscure);
                         });
                       },
                       icon: const Icon(Icons.visibility_off_outlined,color: Colors.grey,))
@@ -98,7 +97,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       onPressed: () {
                         setState(() {
                           obscure = !obscure;
-                          print(obscure);
                         });
                       },
                       icon: const Icon(Icons.visibility_outlined,color: secondaryColor,))

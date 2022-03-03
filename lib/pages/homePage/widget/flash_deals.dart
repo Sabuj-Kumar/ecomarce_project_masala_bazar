@@ -1,5 +1,4 @@
 import 'package:efgecom/pages/homePage/widget/product_tile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +7,7 @@ import '../../../config/theme_config.dart';
 import '../../../models/featured_product_model.dart';
 
 class FlashDeals extends StatefulWidget {
-  FlashDeals({
+  const FlashDeals({
     Key? key,
     this.text,
   }) : super(key: key);

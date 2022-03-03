@@ -2,14 +2,14 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Connectivitybar extends StatefulWidget {
-  const Connectivitybar({Key? key}) : super(key: key);
+class ConnectivityBar extends StatefulWidget {
+  const ConnectivityBar({Key? key}) : super(key: key);
 
   @override
-  _ConnectivitybarState createState() => _ConnectivitybarState();
+  _ConnectivityBarState createState() => _ConnectivityBarState();
 }
 
-class _ConnectivitybarState extends State<Connectivitybar> {
+class _ConnectivityBarState extends State<ConnectivityBar> {
   @override
   Widget build(BuildContext context) {
     final connectionStatus = Provider.of<ConnectivityResult>(context);

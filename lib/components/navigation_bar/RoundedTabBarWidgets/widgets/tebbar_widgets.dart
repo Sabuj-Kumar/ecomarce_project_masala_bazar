@@ -6,13 +6,14 @@ import '../../../../config/theme_config.dart';
 
 class TabBarWidget extends StatefulWidget {
   final int selectedIndex;
-  late final Color itemNormalColor;
-  late final Color itemSelectedColor;
-  late final Color tabBarBackgroundColor;
+  final Color itemNormalColor;
+  final Color itemSelectedColor;
+  final Color tabBarBackgroundColor;
   final Function? tabBarSelected;
   final List<String> iconNames;
   final List<String> icons;
-  TabBarWidget({
+  const TabBarWidget({
+    Key? key,
     required this.icons,
     required this.selectedIndex,
     this.tabBarSelected,
@@ -20,13 +21,13 @@ class TabBarWidget extends StatefulWidget {
     required this.itemSelectedColor,
     required this.itemNormalColor,
     required this.iconNames,
-  });
+  }) : super(key: key);
   @override
   _TabBarWidgetState createState() => _TabBarWidgetState();
 }
 
 class _TabBarWidgetState extends State<TabBarWidget> {
-  late int _selectedTabbarMenuIndex;
+  late int _selectedTabBarMenuIndex;
   late List<String> _tabIcons;
   late List<String> _iconNames;
   final double _defaultHorizontalPadding = 20.0;
@@ -34,14 +35,14 @@ class _TabBarWidgetState extends State<TabBarWidget> {
   @override
   void initState() {
     super.initState();
-    _selectedTabbarMenuIndex = widget.selectedIndex;
+    _selectedTabBarMenuIndex = widget.selectedIndex;
     _tabIcons = widget.icons;
     _iconNames = widget.iconNames;
   }
 
   void _onTabItemPressed({required int tabItemIndex}) {
     setState(() {
-      _selectedTabbarMenuIndex = tabItemIndex;
+      _selectedTabBarMenuIndex = tabItemIndex;
       print("tabItemIdex ${tabItemIndex}");
       if (widget.tabBarSelected != null) {
         widget.tabBarSelected!(tabItemIndex);
@@ -51,7 +52,6 @@ class _TabBarWidgetState extends State<TabBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     final double _maxWidth = MediaQuery.of(context).size.width;
     double _containerWidth = _maxWidth - (_defaultHorizontalPadding * 2.0);
     _containerWidth = (_containerWidth > 480.0) ? 480.0 : _containerWidth;
@@ -81,15 +81,14 @@ class _TabBarWidgetState extends State<TabBarWidget> {
   }
 
   List<Widget> _getTabBarItems() {
-
     return List.generate(
         _tabIcons.length,
-        (index) => TabbarItemWidget(
+        (index) => TabBarItemWidget(
               icons: widget.icons[index],
               itemBackgroundColor: widget.tabBarBackgroundColor,
               itemNormalColor: widget.itemNormalColor,
               itemSelectedColor: widget.itemSelectedColor,
-              isSelected: (_selectedTabbarMenuIndex == index),
+              isSelected: (_selectedTabBarMenuIndex == index),
               iconName: _iconNames[index],
               onItemPressed: () => _onTabItemPressed(
                 tabItemIndex: index,

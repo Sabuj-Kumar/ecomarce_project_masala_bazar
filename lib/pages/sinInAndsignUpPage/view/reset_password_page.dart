@@ -1,6 +1,4 @@
-import 'package:efgecom/pages/sinInAndsignUpPage/view/update_password.dart';
 import 'package:flutter/material.dart';
-import 'package:efgecom/components/scaffold/custom_scaffold.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../config/custom_text_style.dart';
@@ -23,8 +21,6 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   void initState() {
     len = widget.number.length;
     number = widget.number;
-    print(number);
-    print("$len");
     super.initState();
   }
 

@@ -1,5 +1,4 @@
 import 'package:efgecom/config/custom_text_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -45,7 +44,7 @@ class _ProductTileState extends State<ProductTile> {
             children: [
               InkWell(
                 onTap: () {
-                  print("Pressed Column");
+                  // print("Pressed Column");
                 },
                 child: Column(
                   children: [

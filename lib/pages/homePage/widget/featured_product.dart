@@ -1,5 +1,4 @@
 import 'package:efgecom/pages/homePage/widget/product_tile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +23,8 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/katla.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng:
+              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           newPrice: 200,
           oldPrice: 200,
           rating: 4.6,
@@ -32,7 +32,8 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/katla.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng:
+              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           newPrice: 200,
           oldPrice: 200,
           rating: 4.6,
@@ -40,7 +41,8 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/katla.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng:
+              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           newPrice: 200,
           oldPrice: 200,
           rating: 4.6,
@@ -48,7 +50,8 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/katla.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng:
+              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           newPrice: 200,
           oldPrice: 200,
           rating: 4.6,

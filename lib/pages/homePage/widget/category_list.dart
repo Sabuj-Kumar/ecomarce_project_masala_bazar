@@ -1,6 +1,5 @@
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:efgecom/pages/categories/fish_meat/view/fishMeat.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

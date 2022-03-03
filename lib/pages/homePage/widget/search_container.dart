@@ -1,5 +1,4 @@
 import 'package:efgecom/config/custom_text_style.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +12,7 @@ class SearchContainer extends StatefulWidget {
 }
 
 class _SearchContainerState extends State<SearchContainer> {
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

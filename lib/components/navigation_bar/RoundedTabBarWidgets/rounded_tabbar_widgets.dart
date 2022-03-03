@@ -1,9 +1,8 @@
-library rounded_tabbar_widget;
+// library rounded_tabbar_widget;
 import 'package:efgecom/components/navigation_bar/RoundedTabBarWidgets/widgets/tebbar_widgets.dart';
 import 'package:flutter/material.dart';
 
-class RoundedTabbarWidget extends StatefulWidget {
-
+class RoundedTabBarWidget extends StatefulWidget {
   final List<String>? iconNames;
   final List<String> icons;
   final Color? itemNormalColor;
@@ -11,25 +10,24 @@ class RoundedTabbarWidget extends StatefulWidget {
   final Color? tabBarBackgroundColor;
   final Function? onTabItemIndexChanged;
   final int currentIndex;
-   const RoundedTabbarWidget({
-     required this.icons,
-     required this.currentIndex,
+  const RoundedTabBarWidget({
+    Key? key,
+    required this.icons,
+    required this.currentIndex,
     this.onTabItemIndexChanged,
     this.tabBarBackgroundColor = Colors.black87,
     this.itemSelectedColor = Colors.yellow,
     this.itemNormalColor = Colors.yellow,
-     this.iconNames
-  });
+    this.iconNames,
+  }) : super(key: key);
 
   @override
-  _RoundedTabbarWidgetState createState() => _RoundedTabbarWidgetState();
+  _RoundedTabBarWidgetState createState() => _RoundedTabBarWidgetState();
 }
 
-class _RoundedTabbarWidgetState extends State<RoundedTabbarWidget>{
-
+class _RoundedTabBarWidgetState extends State<RoundedTabBarWidget> {
   @override
   Widget build(BuildContext context) {
-
     return Positioned(
       child: TabBarWidget(
         icons: widget.icons,
@@ -41,7 +39,6 @@ class _RoundedTabbarWidgetState extends State<RoundedTabbarWidget>{
         tabBarSelected: (int index) {
           setState(() {
             widget.onTabItemIndexChanged!(index);
-            print("Current index ${index}");
           });
         },
       ),

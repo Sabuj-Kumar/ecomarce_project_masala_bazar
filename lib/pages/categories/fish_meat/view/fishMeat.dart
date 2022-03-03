@@ -21,7 +21,6 @@ class FishMeat extends StatefulWidget {
 class _FishMeatState extends State<FishMeat> {
   late List<FeaturedProductModel> featured;
   final int _numPages = 10;
-  int _currentPage = 0;
 
   @override
   void initState() {
@@ -257,7 +256,6 @@ class _FishMeatState extends State<FishMeat> {
                         buttonSelectedBackgroundColor: irisOrange,
                         onPageChange: (int index) {
                           setState(() {
-                            _currentPage = index;
                           });
                         },
                       ),

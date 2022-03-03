@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -39,7 +38,6 @@ class _SpecialOffersState extends State<SpecialOffers> {
   @override
   Widget build(BuildContext context) {
     var _height = MediaQuery.of(context).size.height;
-    var _width = MediaQuery.of(context).size.width;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,7 +122,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
                                       children: [
                                         InkWell(
                                           onTap: () {
-                                            print("Shop Now");
+                                            // print("Shop Now");
                                           },
                                           child: Align(
                                               alignment: Alignment.centerLeft,

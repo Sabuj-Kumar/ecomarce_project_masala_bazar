@@ -1,11 +1,9 @@
 import 'package:efgecom/config/theme_config.dart';
 import 'package:efgecom/pages/homePage/view/home_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:efgecom/pages/mainPage/dashboard_page.dart';
 import 'package:efgecom/pages/menu/side_menu.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../../components/navigation_bar/RoundedTabBarWidgets/rounded_tabbar_widgets.dart';
 
 class MainPage extends StatefulWidget {
@@ -52,13 +50,12 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
             pageList[_index],
-            RoundedTabbarWidget(
+            RoundedTabBarWidget(
               icons: const [
                 "assets/icons/home.svg",
                 "assets/icons/message.svg",
@@ -66,13 +63,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                 "assets/icons/category.svg",
                 "assets/icons/profileIcon.svg",
               ],
-              iconNames: const [
-                "Home",
-                "Inbox",
-                "Cart",
-                "Category",
-                "Profile"
-              ],
+              iconNames: const ["Home", "Inbox", "Cart", "Category", "Profile"],
               onTabItemIndexChanged: (index) {
                 setState(() {
                   _index = index;
