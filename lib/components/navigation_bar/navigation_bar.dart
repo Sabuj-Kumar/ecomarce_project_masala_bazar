@@ -5,8 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'custom_clipper.dart';
 
-class NavigationBBar extends StatelessWidget {
-  const NavigationBBar(
+class NavigationBar extends StatelessWidget {
+  const NavigationBar(
       {Key? key, required this.onClick, required this.currentPage})
       : super(key: key);
 
@@ -40,7 +40,7 @@ class NavigationBBar extends StatelessWidget {
                         Padding(
                             padding: EdgeInsets.only(top: 4.0.h, bottom: 3.0.h),
                             child: SvgPicture.asset(
-                              'assets/icons/home.svg',
+                              'assets/icons/Home.svg',
                               width: 22.w,
                               height: 22.w,
                               color: currentPage != 0
