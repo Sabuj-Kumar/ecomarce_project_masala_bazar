@@ -76,10 +76,10 @@ class _MenuState extends State<Menu> {
               },
             ),
             DrawerListTile(
-              title: "Index 2",
+              title: "Sign In",
               svgSrc: "assets/icons/menu_doc.svg",
               press: () {
-                Navigator.of(context).pushNamed('/mainPage?index=2');
+                Navigator.pushNamed(context, "signInPage");
               },
             ),
             DrawerListTile(
