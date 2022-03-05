@@ -1,7 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:efgecom/components/appbars/custom_appbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../Widgets/draggable_widgerts.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({Key? key}) : super(key: key);
@@ -24,21 +28,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("okay boss"),
-        centerTitle: true,
-        backgroundColor: Colors.purple,
+      appBar: const CustomAppbar(
+        title: 'Product Details',
       ),
       body: SafeArea(
-        child: Column(children: [
+        child: Stack(children: [
           CarouselSlider.builder(
             itemCount: images.length,
             itemBuilder: (context, index, realIdex) {
-              return buildImage(images[index], index,width);
+              return buildImage(images[index], index, width);
             },
             options: CarouselOptions(
-              height: height * 0.2,
-
+              height: height * 0.25,
               viewportFraction: 1,
               initialPage: 1,
               enableInfiniteScroll: false,
@@ -51,26 +52,33 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               },
             ),
           ),
-          SizedBox(height: 10.h,),
-          buildIndicator(),
+          Positioned(
+              top: height * 0.25.h,
+              left: width * 0.5.w,
+              child: buildIndicator()),
+          const DragAbleList()
         ]),
       ),
     );
   }
 
-  Widget buildImage(String imaUrl, int index,double width) => SizedBox(
-    width: width,
-    child: Image.asset(
-      imaUrl,
-      fit: BoxFit.cover,
-    ),
-  );
+  Widget buildImage(String imaUrl, int index, double width) => SizedBox(
+        width: width,
+        child: Image.asset(
+          imaUrl,
+          fit: BoxFit.cover,
+        ),
+      );
   Widget buildIndicator() => AnimatedSmoothIndicator(
         count: images.length,
         activeIndex: _index,
-        effect: const SlideEffect(
+        effect:  SlideEffect(
           activeDotColor: Colors.deepOrange,
-          dotColor: Colors.grey,
+          dotColor: Colors.white,
+          radius: 10,
+          dotHeight: 10.h,
+          dotWidth: 10.w,
+          spacing: 15.w
         ),
       );
 }

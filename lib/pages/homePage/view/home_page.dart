@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                 flexibleSpace: FlexibleSpaceBar(
                   background: Padding(
                     padding: EdgeInsets.only(top: 20.h),
-                    child: Location(),
+                    child: const Location(),
                   ),
 
                 ),
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SearchContainer(),
+                    const SearchContainer(),
                     InkWell(
                       onTap: () {
                       },
