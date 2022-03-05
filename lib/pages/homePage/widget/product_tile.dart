@@ -182,7 +182,7 @@ class _ProductTileState extends State<ProductTile> {
                   setState(() {});
                 },
                 child: !favorite
-                    ? const Icon(
+                    ?  const Icon(
                         Icons.favorite_border_rounded,
                         color: buttonColor,
                       )

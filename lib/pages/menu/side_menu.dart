@@ -89,7 +89,7 @@ class _MenuState extends State<Menu> {
             ),
             DrawerListTile(
               title: langCode == 'en' ? "বাংলা" : "English",
-              svgSrc: "assets/icons/translation.svg",
+              svgSrc: "assets/icons/unknown.svg",
               press: () async {
                 langCode = langCode == 'en' ? 'bn' : 'en';
 

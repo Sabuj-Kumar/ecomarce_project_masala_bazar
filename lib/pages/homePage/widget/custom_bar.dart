@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomAppBar extends StatefulWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+class CustomBar extends StatefulWidget {
+  const CustomBar({Key? key}) : super(key: key);
 
   @override
-  State<CustomAppBar> createState() => _CustomAppBarState();
+  State<CustomBar> createState() => _CustomBarState();
 }
 
-class _CustomAppBarState extends State<CustomAppBar> {
+class _CustomBarState extends State<CustomBar> {
   // Initial Selected Value
   String dropdownvalue = 'Mirpur Cantonment, Dhaka';
 

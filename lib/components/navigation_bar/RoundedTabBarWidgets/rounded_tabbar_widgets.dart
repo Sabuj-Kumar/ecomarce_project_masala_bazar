@@ -1,4 +1,3 @@
-// library rounded_tabbar_widget;
 import 'package:efgecom/components/navigation_bar/RoundedTabBarWidgets/widgets/tebbar_widgets.dart';
 import 'package:flutter/material.dart';
 
