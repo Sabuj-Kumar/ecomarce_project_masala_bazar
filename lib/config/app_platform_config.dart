@@ -1,9 +1,9 @@
 // ignore: constant_identifier_names
 // const String CURRENT_PLATFORM = 'web';
 // ignore: constant_identifier_names
-const String CURRENT_PLATFORM = 'ios';
+//const String CURRENT_PLATFORM = 'ios';
 // ignore: constant_identifier_names
-// const String CURRENT_PLATFORM = 'android';
+const String CURRENT_PLATFORM = 'android';
 // ignore: constant_identifier_names
 // const String CURRENT_PLATFORM = 'macos';
 // ignore: constant_identifier_names

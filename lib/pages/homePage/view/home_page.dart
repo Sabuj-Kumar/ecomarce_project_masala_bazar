@@ -33,11 +33,14 @@ class _HomePageState extends State<HomePage> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                toolbarHeight: 30.h,
-                backgroundColor: Colors.red,
+                toolbarHeight: 45.h,
                 elevation: 0,
+                backgroundColor: deepBgColor,
                 flexibleSpace: FlexibleSpaceBar(
-                  background: Location(),
+                  background: Padding(
+                    padding: EdgeInsets.only(top: 20.h),
+                    child: Location(),
+                  ),
 
                 ),
               ),
@@ -55,8 +58,6 @@ class _HomePageState extends State<HomePage> {
                     InkWell(
                       onTap: () {
                       },
-                      borderRadius: BorderRadius.circular(20),
-                      radius: 100,
                       child: SvgPicture.asset(
                         'assets/icons/notification_bell.svg',
                         width: 23.w,
@@ -91,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 FlashDeals(),
                 SizedBox(
-                  height: 25.h,
+                  height: 20.h,
                 ),
                 const SpecialOffers()
                 // TopBanner()

@@ -1,5 +1,4 @@
 import 'package:efgecom/config/custom_text_style.dart';
-import 'package:efgecom/pages/categories/fish_meat/view/fishMeat.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -88,12 +87,7 @@ class _CategoryListState extends State<CategoryList> {
                     width: 122.w,
                     child: InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => FishMeat(
-                                      title: slider[index].title,
-                                    )));
+                        Navigator.pushNamed(context, '/fishMeat/${slider[index].title.toString()}');
                       },
                       child: Card(
                           margin: EdgeInsets.zero,
