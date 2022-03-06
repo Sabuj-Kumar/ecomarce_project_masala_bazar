@@ -21,39 +21,43 @@ class _FeaturedProductState extends State<FeaturedProduct> {
     super.initState();
     featured = [
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
     ];
@@ -95,8 +99,8 @@ class _FeaturedProductState extends State<FeaturedProduct> {
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 1.h),
-          //height: 280.h,
-          height: 300.h,
+          height: 295.h,
+          //height: 300.h,
           child: ListView.separated(
               separatorBuilder: (context, index) {
                 return SizedBox(
@@ -106,14 +110,19 @@ class _FeaturedProductState extends State<FeaturedProduct> {
               scrollDirection: Axis.horizontal,
               itemCount: featured.length,
               itemBuilder: (context, index) {
-                return ProductTile(
-                    imgUrl: featured[index].imgUrl,
+                return ClipRRect(
+                    borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(borderCurve.r),
+                        bottomRight: Radius.circular(borderCurve.r)),
+                    child: ProductTile(
+                imgUrl: featured[index].imgUrl,
                     titleBang: featured[index].titleBang,
                     titleEng: featured[index].titleEng,
                     newPrice: featured[index].newPrice,
                     oldPrice: featured[index].oldPrice,
+                    discountPrice: featured[index].discountPrice,
                     rating: featured[index].rating,
-                    reviews: featured[index].reviews);
+                    reviews: featured[index].reviews),);
               }),
         ),
       ],

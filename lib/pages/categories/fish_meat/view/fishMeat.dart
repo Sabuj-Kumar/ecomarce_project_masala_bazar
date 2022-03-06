@@ -28,75 +28,75 @@ class _FishMeatState extends State<FishMeat> {
     super.initState();
     featured = [
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
     ];
@@ -180,21 +180,29 @@ class _FishMeatState extends State<FishMeat> {
                       physics: const NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 13.w / 21.h,
-                        mainAxisSpacing: 5,
+                        //childAspectRatio: 13.w / 21.h,
+                        childAspectRatio: 13.sw / 9.5.sh,
+                        mainAxisSpacing: 15.h,
+                        crossAxisSpacing: 10.w
                         //childAspectRatio: MediaQuery.of(context).devicePixelRatio * 0.55
                       ),
                       itemBuilder: (context, index) {
                         return Container(
                           margin: EdgeInsets.symmetric(horizontal: 2.5.w),
-                          child: ProductTile(
-                              imgUrl: featured[index].imgUrl,
-                              titleBang: featured[index].titleBang,
-                              titleEng: featured[index].titleEng,
-                              newPrice: featured[index].newPrice,
-                              oldPrice: featured[index].oldPrice,
-                              rating: featured[index].rating,
-                              reviews: featured[index].reviews),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(borderCurve.r),
+                                bottomRight: Radius.circular(borderCurve.r)),
+                            child: ProductTile(
+                                imgUrl: featured[index].imgUrl,
+                                titleBang: featured[index].titleBang,
+                                titleEng: featured[index].titleEng,
+                                newPrice: featured[index].newPrice,
+                                oldPrice: featured[index].oldPrice,
+                                discountPrice: featured[index].discountPrice,
+                                rating: featured[index].rating,
+                                reviews: featured[index].reviews),
+                          ),
                         );
                       }),
                 ),
@@ -209,7 +217,7 @@ class _FishMeatState extends State<FishMeat> {
                       borderRadius: BorderRadius.circular(5.r),
                     ),
                     buttonUnselectedForegroundColor: secondaryColor,
-                    buttonSelectedBackgroundColor: irisOrange,
+                    buttonSelectedBackgroundColor: offers,
                     onPageChange: (int index) {
                       setState(() {});
                     },

@@ -1,15 +1,20 @@
+import 'dart:developer';
+
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../components/layers/offer_layer.dart';
 import '../../../config/theme_config.dart';
 
 class ProductTile extends StatefulWidget {
   final String imgUrl;
   final String titleBang;
   final String titleEng;
-  final int newPrice;
-  final int oldPrice;
+  final double newPrice;
+  final double oldPrice;
+  final double? discountPrice;
   final double rating;
   final int reviews;
 
@@ -20,6 +25,7 @@ class ProductTile extends StatefulWidget {
       required this.titleEng,
       required this.newPrice,
       required this.oldPrice,
+      this.discountPrice,
       required this.rating,
       required this.reviews})
       : super(key: key);
@@ -35,7 +41,8 @@ class _ProductTileState extends State<ProductTile> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.sp), color: Colors.white),
+          borderRadius: BorderRadius.circular(borderCurve.r),
+          color: Colors.white),
       width: 182.w,
       child: Stack(
         children: [
@@ -43,19 +50,48 @@ class _ProductTileState extends State<ProductTile> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, '/productDetailsPage');
-                  print("product detail page pressed.");
+                  log("product detail page pressed.");
                 },
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 14.29.h,
-                    ),
-                    Image.asset(
-                      widget.imgUrl,
-                      height: 98.2.h,
-                      width: 148.07.w,
+                    Container(
+                      height: 125.h,
+                      child: Stack(
+                        children: [
+                          CustomPaint(
+                            size: Size(182.w, 125.h),
+                            painter: OfferLayer(),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 25.h),
+                            child: Center(
+                              child: Image.asset(
+                                widget.imgUrl,
+                                scale: 1.6.r,
+                                // height: 98.2.h,
+                                // width: 148.07.w,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 19.h,
+                            width: 57.w,
+                            margin: EdgeInsets.only(left: 4.31.w, top: 7.91.h),
+                            decoration: BoxDecoration(
+                                color: buttonColor,
+                                borderRadius:
+                                    BorderRadius.circular(borderCurve.r)),
+                            child: Center(
+                              child: Text(
+                                '${widget.discountPrice?.toInt()} Tk off',
+                                style: CustomTextStyle.linkText(context).copyWith(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 5.h,
@@ -65,9 +101,13 @@ class _ProductTileState extends State<ProductTile> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.titleEng,
-                            style: CustomTextStyle.bodyText2(context),
+                          Container(
+                            margin: EdgeInsets.only(right: 25.w),
+                            child: Text(
+                              widget.titleEng,
+                              style: CustomTextStyle.bodyText2(context)
+                                  .copyWith(color: fuschiaText),
+                            ),
                           ),
                           // Text(
                           //   titleBang,
@@ -84,19 +124,21 @@ class _ProductTileState extends State<ProductTile> {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "Tk-${widget.newPrice}/kg",
-                              style: CustomTextStyle.bodySmall(context)
-                                  .copyWith(
-                                      color: buttonColor, fontSize: 13.5.sp),
-                            ),
                             Text(
                               "Tk-${widget.oldPrice}/kg",
                               style: CustomTextStyle.linkText(context).copyWith(
                                   color: Colors.grey,
                                   decoration: TextDecoration.lineThrough),
+                            ),
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            Text(
+                              "Tk-${widget.newPrice}/kg",
+                              style: CustomTextStyle.bodySmall(context)
+                                  .copyWith(
+                                      color: buttonColor, fontSize: 14.sp),
                             ),
                           ],
                         ),
@@ -112,24 +154,17 @@ class _ProductTileState extends State<ProductTile> {
                         height: 22.h,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.star,
-                                  size: 14.h,
-                                  color: Colors.amber,
-                                ),
-                                SizedBox(width: 4.56.w),
-                                Text(
-                                  "${widget.rating}",
-                                  style: CustomTextStyle.body(context),
-                                ),
-                              ],
+                            SvgPicture.asset(
+                              'assets/icons/ratings.svg',
+                              width: 80.w,
+                            ),
+                            SizedBox(
+                              width: 5.w,
                             ),
                             Text(
-                              "${widget.reviews} Reviews",
+                              "(${widget.reviews})",
                               style: CustomTextStyle.body(context),
                             )
                           ],
@@ -149,7 +184,7 @@ class _ProductTileState extends State<ProductTile> {
                       primary: buttonColor,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.r),
+                        borderRadius: BorderRadius.circular(borderCurve.r),
                       )),
                   child: Padding(
                     padding: EdgeInsets.all(2.h),
@@ -161,11 +196,10 @@ class _ProductTileState extends State<ProductTile> {
                           style: CustomTextStyle.bodySmall(context).copyWith(
                               fontSize: 11.88.sp, color: Colors.white),
                         ),
-                        Icon(
-                          Icons.shopping_cart_outlined,
-                          color: Colors.white,
-                          size: 20.85.h,
-                        )
+                        SvgPicture.asset(
+                          'assets/icons/cart.svg',
+                          height: 20.h,
+                        ),
                       ],
                     ),
                   ),
@@ -182,7 +216,7 @@ class _ProductTileState extends State<ProductTile> {
                   setState(() {});
                 },
                 child: !favorite
-                    ?  const Icon(
+                    ? const Icon(
                         Icons.favorite_border_rounded,
                         color: buttonColor,
                       )

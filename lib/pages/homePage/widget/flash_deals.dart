@@ -25,51 +25,57 @@ class _FlashDealsState extends State<FlashDeals> {
     super.initState();
     featured = [
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng: 'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
     ];
@@ -124,10 +130,9 @@ class _FlashDealsState extends State<FlashDeals> {
               TextSpan(
                 text: "Offer ends in:",
                 style: CustomTextStyle.bodySmall(context).copyWith(
-                  fontSize: 14.sp,
-                  color: buttonColor.withOpacity(0.9),
-                  fontWeight: FontWeight.w400
-                ),
+                    fontSize: 14.sp,
+                    color: buttonColor.withOpacity(0.9),
+                    fontWeight: FontWeight.w400),
               ),
             ]),
           ),
@@ -145,7 +150,7 @@ class _FlashDealsState extends State<FlashDeals> {
                     padding: EdgeInsets.symmetric(horizontal: 0.1.h),
                     child: Container(
                         decoration: BoxDecoration(
-                            color: irisOrange,
+                            color: offers,
                             borderRadius: BorderRadius.circular(8.w)),
                         child: Padding(
                           padding: EdgeInsets.all(7.0.w),
@@ -163,8 +168,7 @@ class _FlashDealsState extends State<FlashDeals> {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 12.sp,
-                                    letterSpacing: 0.2
-                                ),
+                                    letterSpacing: 0.2),
                               ),
                             ]),
                           ),
@@ -176,28 +180,35 @@ class _FlashDealsState extends State<FlashDeals> {
             height: 10.h,
           ),
           Container(
-            height: 970.h,
+            height: 910.h,
             child: GridView.builder(
                 itemCount: featured.length,
                 scrollDirection: Axis.vertical,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 13.w / 21.h,
-                  mainAxisSpacing: 5,
+                  //childAspectRatio: 13.w / 19.h,
+                  childAspectRatio: 13.sw / 9.sh,
+                  mainAxisSpacing: 15.h,
                   //childAspectRatio: MediaQuery.of(context).devicePixelRatio * 0.55
                 ),
                 itemBuilder: (context, index) {
                   return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 3.4.w),
-                    child: ProductTile(
-                        imgUrl: featured[index].imgUrl,
-                        titleBang: featured[index].titleBang,
-                        titleEng: featured[index].titleEng,
-                        newPrice: featured[index].newPrice,
-                        oldPrice: featured[index].oldPrice,
-                        rating: featured[index].rating,
-                        reviews: featured[index].reviews),
+                    margin: EdgeInsets.symmetric(horizontal: 6.w),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(borderCurve.r),
+                          bottomRight: Radius.circular(borderCurve.r)),
+                      child: ProductTile(
+                          imgUrl: featured[index].imgUrl,
+                          titleBang: featured[index].titleBang,
+                          titleEng: featured[index].titleEng,
+                          newPrice: featured[index].newPrice,
+                          oldPrice: featured[index].oldPrice,
+                          discountPrice: featured[index].discountPrice,
+                          rating: featured[index].rating,
+                          reviews: featured[index].reviews),
+                    ),
                   );
                 }),
           )

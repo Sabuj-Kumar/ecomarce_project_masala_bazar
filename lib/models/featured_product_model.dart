@@ -2,8 +2,9 @@ class FeaturedProductModel {
   final String imgUrl;
   final String titleBang;
   final String titleEng;
-  final int newPrice;
-  final int oldPrice;
+  final double newPrice;
+  final double oldPrice;
+  final double? discountPrice;
   final double rating;
   final int reviews;
 
@@ -13,6 +14,7 @@ class FeaturedProductModel {
       required this.titleEng,
       required this.newPrice,
       required this.oldPrice,
+      this.discountPrice,
       required this.rating,
       required this.reviews});
 }
