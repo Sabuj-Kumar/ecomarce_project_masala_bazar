@@ -41,7 +41,7 @@ class _ProductTileState extends State<ProductTile> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderCurve.r),
+          borderRadius: BorderRadius.circular(productTileCurve.r),
           color: Colors.white),
       width: 182.w,
       child: Stack(
@@ -82,7 +82,7 @@ class _ProductTileState extends State<ProductTile> {
                             decoration: BoxDecoration(
                                 color: buttonColor,
                                 borderRadius:
-                                    BorderRadius.circular(borderCurve.r)),
+                                    BorderRadius.circular(productTileCurve.r)),
                             child: Center(
                               child: Text(
                                 '${widget.discountPrice?.toInt()} Tk off',
@@ -184,7 +184,7 @@ class _ProductTileState extends State<ProductTile> {
                       primary: buttonColor,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(borderCurve.r),
+                        borderRadius: BorderRadius.circular(productTileCurve.r),
                       )),
                   child: Padding(
                     padding: EdgeInsets.all(2.h),

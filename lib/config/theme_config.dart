@@ -19,4 +19,8 @@ const fuschiaBlueGem = Color(0xFF494099);
 const defaultPadding = 16.0;
 
 
-const borderCurve = 10.0;
+const productTileCurve = 10.0;
+const categoryTileCurve = 10.0;
+const bannerTileCurve = 10.0;
+const buttonCurve = 10.0;
+const searchCurve = 10.0;

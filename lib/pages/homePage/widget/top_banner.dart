@@ -62,7 +62,7 @@ class _TopBannerState extends State<TopBanner> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(
-                                      Radius.circular(12.r),
+                                      Radius.circular(bannerTileCurve.r),
                                     ),
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
@@ -77,8 +77,8 @@ class _TopBannerState extends State<TopBanner> {
                             width: 190.19.w,
                             decoration: BoxDecoration(
                                 color: item.id == 0
-                                    ? Colors.orange.shade700
-                                    : Colors.pinkAccent,
+                                    ? offers
+                                    : fuschiaBlueGem,
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(15.r),
                                     bottomLeft: Radius.circular(15.r),

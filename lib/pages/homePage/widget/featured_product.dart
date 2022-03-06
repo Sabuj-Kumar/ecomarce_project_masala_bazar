@@ -112,8 +112,8 @@ class _FeaturedProductState extends State<FeaturedProduct> {
               itemBuilder: (context, index) {
                 return ClipRRect(
                     borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(borderCurve.r),
-                        bottomRight: Radius.circular(borderCurve.r)),
+                        topRight: Radius.circular(productTileCurve.r),
+                        bottomRight: Radius.circular(productTileCurve.r)),
                     child: ProductTile(
                 imgUrl: featured[index].imgUrl,
                     titleBang: featured[index].titleBang,

@@ -47,11 +47,11 @@ class _SearchContainerState extends State<SearchContainer> {
                 ),
               ),
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                  borderRadius: BorderRadius.all(Radius.circular(searchCurve.r)),
                   borderSide:
                   BorderSide(color: Colors.grey.withOpacity(0.15))),
               focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                  borderRadius: BorderRadius.all(Radius.circular(searchCurve.r)),
                   borderSide: const BorderSide(color: secondaryColor)),
             ),
           ),

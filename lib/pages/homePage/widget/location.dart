@@ -58,7 +58,7 @@ class _LocationState extends State<Location> {
                           return DropdownMenuItem(
                             value: items,
                             child: Text(items,
-                              style: CustomTextStyle.bodyText2(context),
+                              style: CustomTextStyle.bodyText2(context).copyWith(color: secondaryColor),
                               //style: text.headline1?.copyWith(fontSize: 12.sp),
                             ),
                           );

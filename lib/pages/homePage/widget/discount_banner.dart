@@ -23,8 +23,9 @@ class DiscountBanner extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: irisYellow,
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10.h),
-                            bottomLeft: Radius.circular(10.h))),
+                            topLeft: Radius.circular(bannerTileCurve.r),
+                            bottomLeft: Radius.circular(bannerTileCurve.r))
+                    ),
                     child: Padding(
                       padding: EdgeInsets.only(left: 15.h, top: 14.h),
                       child: Column(

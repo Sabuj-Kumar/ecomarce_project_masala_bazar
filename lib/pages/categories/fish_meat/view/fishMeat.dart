@@ -1,12 +1,10 @@
 import 'package:efgecom/components/appbars/custom_appbar.dart';
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:efgecom/config/theme_config.dart';
-import 'package:efgecom/pages/homePage/widget/featured_product.dart';
 import 'package:efgecom/pages/homePage/widget/product_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:number_paginator/number_paginator.dart';
 
 import '../../../../models/featured_product_model.dart';
 
@@ -163,7 +161,7 @@ class _FishMeatState extends State<FishMeat> {
             ),
           ),
           SizedBox(
-            height: 5.h,
+            height: 2.h,
           ),
           Expanded(
             child: ListView(
@@ -173,7 +171,7 @@ class _FishMeatState extends State<FishMeat> {
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 21.75.w),
-                  height: 1270.h,
+                  height: 1240.h,
                   child: GridView.builder(
                       itemCount: featured.length,
                       scrollDirection: Axis.vertical,
@@ -191,8 +189,8 @@ class _FishMeatState extends State<FishMeat> {
                           margin: EdgeInsets.symmetric(horizontal: 2.5.w),
                           child: ClipRRect(
                             borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(borderCurve.r),
-                                bottomRight: Radius.circular(borderCurve.r)),
+                                topRight: Radius.circular(productTileCurve.r),
+                                bottomRight: Radius.circular(productTileCurve.r)),
                             child: ProductTile(
                                 imgUrl: featured[index].imgUrl,
                                 titleBang: featured[index].titleBang,
@@ -209,7 +207,10 @@ class _FishMeatState extends State<FishMeat> {
                 SizedBox(
                   height: 20.h,
                 ),
-                Container(
+
+                //////////// Pagination and Feature Products ////////////
+
+              /*  Container(
                   margin: EdgeInsets.symmetric(horizontal: 38.w),
                   child: NumberPaginator(
                     numberPages: _numPages,
@@ -229,7 +230,7 @@ class _FishMeatState extends State<FishMeat> {
                 const FeaturedProduct(),
                 SizedBox(
                   height: 20.h,
-                ),
+                ), */
               ],
             ),
           ),

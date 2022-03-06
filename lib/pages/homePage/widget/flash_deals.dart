@@ -151,7 +151,7 @@ class _FlashDealsState extends State<FlashDeals> {
                     child: Container(
                         decoration: BoxDecoration(
                             color: offers,
-                            borderRadius: BorderRadius.circular(8.w)),
+                            borderRadius: BorderRadius.circular(productTileCurve.r)),
                         child: Padding(
                           padding: EdgeInsets.all(7.0.w),
                           child: RichText(
@@ -197,8 +197,8 @@ class _FlashDealsState extends State<FlashDeals> {
                     margin: EdgeInsets.symmetric(horizontal: 6.w),
                     child: ClipRRect(
                       borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(borderCurve.r),
-                          bottomRight: Radius.circular(borderCurve.r)),
+                          topRight: Radius.circular(productTileCurve.r),
+                          bottomRight: Radius.circular(productTileCurve.r)),
                       child: ProductTile(
                           imgUrl: featured[index].imgUrl,
                           titleBang: featured[index].titleBang,
