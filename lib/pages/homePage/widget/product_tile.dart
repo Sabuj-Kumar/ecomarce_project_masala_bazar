@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../config/theme_config.dart';
+import '../../Product_Details_Page/Pages/product_details_main_page.dart';
 
 class ProductTile extends StatefulWidget {
   final String imgUrl;
@@ -44,7 +45,15 @@ class _ProductTileState extends State<ProductTile> {
             children: [
               InkWell(
                 onTap: (){
-                  Navigator.pushNamed(context, '/productDetailsPage');
+                  //Navigator.pushNamed(context, '/productDetailsPage');
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsPage(
+                    productNameEng: widget.titleEng,
+                    productNameBng: widget.titleBang,
+                    oldPrice:widget.oldPrice.toDouble(),
+                    newPrice: widget.newPrice.toDouble(),
+                    rating: widget.rating,
+                    reviews: widget.reviews,
+                  )));
                   print("product detail page pressed.");
                 },
                 child: Column(
@@ -66,7 +75,7 @@ class _ProductTileState extends State<ProductTile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.titleEng,
+                            widget.titleEng+"\n"+widget.titleBang,
                             style: CustomTextStyle.bodyText2(context),
                           ),
                           // Text(
