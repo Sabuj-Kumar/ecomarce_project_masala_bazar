@@ -53,7 +53,7 @@ class _TabBarItemWidgetState extends State<TabBarItemWidget> {
                     position: BadgePosition.topEnd(),
                     toAnimate: false,
                     badgeContent: Text(
-                      '${context.watch<CartProvider>().counter}',
+                      '${context.watch<CartProvider>().getCounter()}',
                       style: CustomTextStyle.linkText(context).copyWith(
                           fontSize: 9.sp,
                           color: Colors.white,

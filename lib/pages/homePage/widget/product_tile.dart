@@ -1,7 +1,9 @@
 import 'package:efgecom/config/custom_text_style.dart';
+import 'package:efgecom/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/layers/offer_layer.dart';
 import '../../../config/theme_config.dart';
@@ -38,6 +40,7 @@ class _ProductTileState extends State<ProductTile> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(productTileCurve.r),
@@ -187,7 +190,9 @@ class _ProductTileState extends State<ProductTile> {
                 height: 28.h,
                 width: 160.w,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    cart.addCounter();
+                  },
                   style: ElevatedButton.styleFrom(
                       primary: buttonColor,
                       elevation: 0,
