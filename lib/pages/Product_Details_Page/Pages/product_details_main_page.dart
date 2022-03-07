@@ -8,7 +8,21 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../Widgets/draggable_widgerts.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({Key? key}) : super(key: key);
+  const ProductDetailsPage(
+      {Key? key,
+      this.newPrice,
+      this.rating,
+      this.oldPrice,
+      this.productNameBng,
+      this.productNameEng,
+      this.reviews})
+      : super(key: key);
+  final String? productNameEng;
+  final String? productNameBng;
+  final double? oldPrice;
+  final double? newPrice;
+  final int? reviews;
+  final double? rating;
 
   @override
   _ProductDetailsPageState createState() => _ProductDetailsPageState();
@@ -56,7 +70,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               top: height * 0.25.h,
               left: width * 0.5.w,
               child: buildIndicator()),
-          const DragAbleList()
+          DragAbleList(
+            productNameEng: widget.productNameEng,
+            productNameBng: widget.productNameBng,
+            reviews: widget.reviews,
+            rating: widget.rating,
+            oldPrice: widget.oldPrice,
+            newPrice: widget.newPrice,
+          )
         ]),
       ),
     );
@@ -72,13 +93,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   Widget buildIndicator() => AnimatedSmoothIndicator(
         count: images.length,
         activeIndex: _index,
-        effect:  SlideEffect(
-          activeDotColor: Colors.deepOrange,
-          dotColor: Colors.white,
-          radius: 10,
-          dotHeight: 10.h,
-          dotWidth: 10.w,
-          spacing: 15.w
-        ),
+        effect: SlideEffect(
+            activeDotColor: Colors.deepOrange,
+            dotColor: Colors.white,
+            radius: 10,
+            dotHeight: 10.h,
+            dotWidth: 10.w,
+            spacing: 15.w),
       );
 }

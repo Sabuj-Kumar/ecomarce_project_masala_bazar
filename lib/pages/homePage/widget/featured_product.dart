@@ -23,8 +23,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-          'Katla Fish processing (Big Size)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
           discountPrice: 25,
@@ -33,8 +32,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-          'Katla Fish processing (Big Size)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
           discountPrice: 25,
@@ -43,8 +41,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-          'Katla Fish processing (Big Size)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
           discountPrice: 25,
@@ -53,8 +50,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
       FeaturedProductModel(
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-          'Katla Fish processing (Big Size)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
           discountPrice: 25,
