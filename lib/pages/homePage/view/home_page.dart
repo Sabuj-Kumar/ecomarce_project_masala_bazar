@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                 elevation: 3,
                 shadowColor: deepBgColor.withOpacity(0.5),
                 //expandedHeight: 60.h,
-                pinned: true,
+                pinned: true,/**/
                 backgroundColor: deepBgColor,
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
