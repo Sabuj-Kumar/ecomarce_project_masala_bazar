@@ -1,22 +1,22 @@
-import 'dart:developer';
-
 import 'package:efgecom/config/custom_text_style.dart';
+import 'package:efgecom/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/layers/offer_layer.dart';
 import '../../../config/theme_config.dart';
 import '../../Product_Details_Page/Pages/product_details_main_page.dart';
 
 class ProductTile extends StatefulWidget {
-  final String? imgUrl;
-  final String? titleBang;
-  final String? titleEng;
-  final double? newPrice;
-  final double? oldPrice;
+  final String imgUrl;
+  final String titleBang;
+  final String titleEng;
+  final double newPrice;
+  final double oldPrice;
   final double? discountPrice;
-  final double? rating;
+  final double rating;
   final int reviews;
 
   const ProductTile(
@@ -40,6 +40,7 @@ class _ProductTileState extends State<ProductTile> {
 
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<CartProvider>(context);
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(productTileCurve.r),
@@ -52,7 +53,6 @@ class _ProductTileState extends State<ProductTile> {
             children: [
               InkWell(
                 onTap: () {
-                  //Navigator.pushNamed(context, '/productDetailsPage');
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) =>
                       ProductDetailsPage(
@@ -66,7 +66,7 @@ class _ProductTileState extends State<ProductTile> {
                 },
                 child: Column(
                   children: [
-                    SizedBox(
+                    Container(
                       height: 125.h,
                       child: Stack(
                         children: [
@@ -78,7 +78,7 @@ class _ProductTileState extends State<ProductTile> {
                             padding: EdgeInsets.only(top: 25.h),
                             child: Center(
                               child: Image.asset(
-                                widget.imgUrl!,
+                                widget.imgUrl,
                                 scale: 1.6.r,
                                 // height: 98.2.h,
                                 // width: 148.07.w,
@@ -113,8 +113,9 @@ class _ProductTileState extends State<ProductTile> {
                         children: [
                           Container(
                             margin: EdgeInsets.only(right: 25.w),
+                            height: 40.h,
                             child: Text(
-                              widget.titleEng!,
+                              widget.titleEng,
                               style: CustomTextStyle.bodyText2(context)
                                   .copyWith(color: fuschiaText),
                             ),
@@ -189,7 +190,9 @@ class _ProductTileState extends State<ProductTile> {
                 height: 28.h,
                 width: 160.w,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    cart.addCounter();
+                  },
                   style: ElevatedButton.styleFrom(
                       primary: buttonColor,
                       elevation: 0,

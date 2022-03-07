@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:connectivity/connectivity.dart';
+import 'package:efgecom/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -93,6 +94,7 @@ class _WrapperState extends State<Wrapper> with WidgetsBindingObserver {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => UserProvider()),
+        ChangeNotifierProvider(create: (context) => CartProvider()),
         StreamProvider<ConnectivityResult>.value(
           value: ConnectivityService().connectionStatusController.stream,
           initialData: ConnectivityResult.wifi,

@@ -66,7 +66,8 @@ dependencies:
 dev_dependencies:
   moor_generator: ^4.5.1
   build_runner:
-  build_web_compilers:  
+  build_web_compilers:
+  badges: ^2.0.2
   flutter_test:
     sdk: flutter
 
