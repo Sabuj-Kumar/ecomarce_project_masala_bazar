@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../components/layers/offer_layer.dart';
 import '../../../config/theme_config.dart';
+import '../../Product_Details_Page/Pages/product_details_main_page.dart';
 
 class ProductTile extends StatefulWidget {
   final String imgUrl;
@@ -51,8 +50,16 @@ class _ProductTileState extends State<ProductTile> {
             children: [
               InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, '/productDetailsPage');
-                  log("product detail page pressed.");
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>
+                      ProductDetailsPage(
+                        productNameEng: widget.titleEng,
+                        productNameBng: widget.titleBang,
+                        oldPrice: widget.oldPrice,
+                        newPrice: widget.newPrice,
+                        rating: widget.rating,
+                        reviews: widget.reviews,
+                      )));
                 },
                 child: Column(
                   children: [
@@ -103,6 +110,7 @@ class _ProductTileState extends State<ProductTile> {
                         children: [
                           Container(
                             margin: EdgeInsets.only(right: 25.w),
+                            height: 40.h,
                             child: Text(
                               widget.titleEng,
                               style: CustomTextStyle.bodyText2(context)
