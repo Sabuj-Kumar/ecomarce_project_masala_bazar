@@ -88,7 +88,7 @@ class AddToCart extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     SizedBox(width: 10.w),
-                    Icon(Icons.shopping_cart_outlined)
+                    const Icon(Icons.shopping_cart_outlined,size: 20)
                   ],
                 )),
             SizedBox(width: 8.w),

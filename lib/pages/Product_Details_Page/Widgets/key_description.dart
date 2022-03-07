@@ -34,7 +34,7 @@ class KeyDescription extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           SizedBox(
-            height: 70.h,
+            height: 85.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

@@ -167,7 +167,7 @@ class _DragAbleListState extends State<DragAbleList>
                       child: Column(
                         children: [
                           SizedBox(
-                            height:400.h,
+                            height:450.h,
                             width: width.w,
                             child: Column(
                               children: [
@@ -208,7 +208,7 @@ class _DragAbleListState extends State<DragAbleList>
                         ],
                       ),
                     ),
-                    SizedBox(height: 60.h),
+                    SizedBox(height: 40.h),
                     const FeaturedProduct(),
                     SizedBox(height: 20.h),
                     AddToCart(
