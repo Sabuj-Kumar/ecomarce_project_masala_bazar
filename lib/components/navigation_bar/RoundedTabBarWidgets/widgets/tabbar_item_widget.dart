@@ -1,6 +1,10 @@
+import 'package:efgecom/config/custom_text_style.dart';
+import 'package:efgecom/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:badges/badges.dart';
+import 'package:provider/provider.dart';
 
 class TabBarItemWidget extends StatefulWidget {
   final bool isSelected;
@@ -21,6 +25,7 @@ class TabBarItemWidget extends StatefulWidget {
     required this.itemSelectedColor,
     required this.itemNormalColor,
   }) : super(key: key);
+
   @override
   _TabBarItemWidgetState createState() => _TabBarItemWidgetState();
 }
@@ -39,20 +44,61 @@ class _TabBarItemWidgetState extends State<TabBarItemWidget> {
               widget.onItemPressed!();
             }
           },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SvgPicture.asset(
-                widget.icons,
-                color: _iconColor,
-              ),
-              Text(
-                widget.iconName,
-                style: TextStyle(color: _iconColor, fontSize: 12.sp),
-              ),
-            ],
-          ),
+          child:
+          widget.icons == 'assets/icons/cart.svg'
+              ? Center(
+                  child: Badge(
+                    elevation: 0,
+                    padding: EdgeInsets.all(7.h),
+                    position: BadgePosition.topEnd(),
+                    toAnimate: false,
+                    badgeContent: Text(
+                      '${context.watch<CartProvider>().counter}',
+                      style: CustomTextStyle.linkText(context).copyWith(
+                          fontSize: 9.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    /*badgeContent: Consumer<CartProvider>(
+                        builder: (context, value, child) {
+                      return Text(
+                        value.getCounter().toString(),
+                        style: CustomTextStyle.linkText(context).copyWith(
+                            fontSize: 9.sp,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      );
+                    }),*/
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SvgPicture.asset(
+                          widget.icons,
+                          color: _iconColor,
+                        ),
+                        Text(
+                          widget.iconName,
+                          style: TextStyle(color: _iconColor, fontSize: 12.sp),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SvgPicture.asset(
+                      widget.icons,
+                      color: _iconColor,
+                    ),
+                    Text(
+                      widget.iconName,
+                      style: TextStyle(color: _iconColor, fontSize: 12.sp),
+                    ),
+                  ],
+                ),
         ),
       ],
     );

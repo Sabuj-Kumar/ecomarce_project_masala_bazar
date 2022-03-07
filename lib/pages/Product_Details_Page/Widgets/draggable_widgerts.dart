@@ -22,7 +22,7 @@ class DragAbleList extends StatelessWidget {
                 Column(
                   children: [
                     SizedBox(height: 33.73.h,),
-                    Text("katla fish Khabo uk ki giye ghurbo heheh."),
+                    Text("Product Title"),
                     Container(
                       color: Colors.purple,
                       height: height * 0.3,
