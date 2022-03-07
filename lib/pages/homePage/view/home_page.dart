@@ -5,7 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:badges/badges.dart';
 
+import '../../../config/custom_text_style.dart';
 import '../widget/discount_banner.dart';
 import '../widget/flash_deals.dart';
 import '../widget/search_container.dart';
@@ -57,10 +59,25 @@ class _HomePageState extends State<HomePage> {
                     const SearchContainer(),
                     InkWell(
                       onTap: () {
+                        Navigator.pushNamed(context, '/notification');
                       },
-                      child: SvgPicture.asset(
-                        'assets/icons/notification_bell.svg',
-                        width: 23.w,
+                      child: Badge(
+                        elevation: 0,
+                        padding: EdgeInsets.all(6.h),
+                        position: BadgePosition.topEnd(),
+                        toAnimate: false,
+                        showBadge: false,
+                        badgeContent: Text(
+                          '2',
+                          style: CustomTextStyle.linkText(context).copyWith(
+                              fontSize: 9.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/notification_bell.svg',
+                          width: 23.w,
+                        ),
                       ),
                     ),
                   ],

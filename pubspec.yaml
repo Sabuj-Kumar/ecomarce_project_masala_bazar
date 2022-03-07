@@ -93,7 +93,7 @@ flutter:
   assets:
     - lang/en.json
     - lang/bn.json
-#    - assets/images/
+    - assets/images/
     - assets/icons/
     - assets/logo/
     - assets/img/

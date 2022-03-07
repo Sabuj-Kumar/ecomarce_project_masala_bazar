@@ -1,4 +1,5 @@
 import 'package:efgecom/pages/categories/fish_meat/view/fishMeat.dart';
+import 'package:efgecom/pages/notification/view/notification_page.dart';
 import 'package:efgecom/pages/sinInAndsignUpPage/view/forget_password_page.dart';
 import 'package:efgecom/pages/sinInAndsignUpPage/view/sign_up_page.dart';
 import 'package:efgecom/pages/wrapper.dart';
@@ -20,6 +21,8 @@ class PageRouter {
         handler: _homeHandler, transitionType: TransitionType.fadeIn);
     router.define('/fishMeat/:title',
         handler: _fishMeatHandler, transitionType: TransitionType.fadeIn);
+    router.define('/notification',
+        handler: _notificationHandler, transitionType: TransitionType.fadeIn);
     router.define('/signInPage', handler: _signInHandler,transitionType: TransitionType.fadeIn);
     router.define('/signUpPage', handler: _singUpHandler,transitionType: TransitionType.fadeIn);
     router.define('/forgetPassPage', handler: _forgetPassHandler,transitionType: TransitionType.fadeIn);
@@ -47,6 +50,7 @@ class PageRouter {
     var title = params['title'][0];
     return FishMeat(title: title);
   });
+  static final Handler _notificationHandler =  Handler(handlerFunc: (context,Map<String,dynamic> params) => const NotificationPage());
 
   static final Handler _signInHandler =  Handler(handlerFunc: (context,Map<String,dynamic> params) => const SignInPage());
   static final Handler _singUpHandler = Handler(handlerFunc: (context,Map<String,dynamic> params) => const SignUpPage());

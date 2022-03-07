@@ -49,7 +49,7 @@ class _TabBarItemWidgetState extends State<TabBarItemWidget> {
               ? Center(
                   child: Badge(
                     elevation: 0,
-                    padding: EdgeInsets.all(7.h),
+                    padding: EdgeInsets.all(6.h),
                     position: BadgePosition.topEnd(),
                     toAnimate: false,
                     badgeContent: Text(
