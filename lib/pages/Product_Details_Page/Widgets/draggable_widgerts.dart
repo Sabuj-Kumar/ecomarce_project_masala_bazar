@@ -1,10 +1,14 @@
 import 'package:efgecom/config/theme_config.dart';
+import 'package:efgecom/pages/Product_Details_Page/Widgets/delivery_info.dart';
+import 'package:efgecom/pages/Product_Details_Page/Widgets/description.dart';
+import 'package:efgecom/pages/Product_Details_Page/Widgets/reviews.dart';
 import 'package:efgecom/pages/Product_Details_Page/Widgets/star_icons_and_available_quantity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../models/product_details_model.dart';
+import '../../homePage/widget/featured_product.dart';
+import 'add_to_cart.dart';
 import 'key_description.dart';
 import 'offers.dart';
 
@@ -29,13 +33,19 @@ class DragAbleList extends StatefulWidget {
   State<DragAbleList> createState() => _DragAbleListState();
 }
 
-class _DragAbleListState extends State<DragAbleList> {
+class _DragAbleListState extends State<DragAbleList>
+    with TickerProviderStateMixin {
+
   String productNameEng = "";
   String productNameBng = "";
   int reviews = 0;
   double oldPrice = 0.0;
   double newPrice = 0.0;
   double rating = 0.0;
+  List<Widget> _pages = [];
+  final List<String> _name = ["Description", "Reviews", "Delivery Info"];
+  late List<String> v, d;
+
   @override
   void initState() {
     productNameEng = widget.productNameEng!;
@@ -45,6 +55,15 @@ class _DragAbleListState extends State<DragAbleList> {
     newPrice = widget.newPrice!;
     rating = widget.rating!;
     super.initState();
+    _pages = [
+      Descriptions(
+        variousTempor: list[0].variousTemperList,
+        moreDetails: list[0].moreDetailsList,
+      ),
+      const Reviews(),
+      const DeliveryInfo()
+    ];
+   // _tabController = TabController(length: 3, vsync: this);
   }
 
   List<ProductDetails> list = [
@@ -84,12 +103,12 @@ class _DragAbleListState extends State<DragAbleList> {
 
   @override
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 3, vsync: this);
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return DraggableScrollableSheet(
-        initialChildSize: 0.7.h,
-        maxChildSize: 0.88.h,
-        minChildSize: 0.5.h,
+        initialChildSize: 0.88.h,
+        minChildSize: 0.87.h,
         builder: (context, scrollController) => ClipRRect(
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(24.r),
@@ -147,24 +166,52 @@ class _DragAbleListState extends State<DragAbleList> {
                       padding: EdgeInsets.symmetric(horizontal: 20.0.w),
                       child: Column(
                         children: [
-                          Container(
-                            color: Colors.red,
-                            height: height * 0.3,
-                            width: width,
+                          SizedBox(
+                            height:400.h,
+                            width: width.w,
+                            child: Column(
+                              children: [
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: TabBar(
+                                    controller: _tabController,
+                                    unselectedLabelColor: fuschiaText,
+                                    labelColor: fuschiaRed,
+                                    isScrollable: true,
+                                    labelPadding: EdgeInsets.only(left: 0.w,right: 60.w),
+                                    indicatorColor: bgColor.withOpacity(0.0),
+                                    indicatorSize: TabBarIndicatorSize.tab,
+                                    tabs: [
+                                      Tab(
+                                        text: _name[0],
+                                      ),
+                                      Tab(
+                                        text: _name[1] + "($reviews)",
+                                      ),
+                                      Tab(
+                                        text: _name[2],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Flexible(child: SizedBox(
+                                  height: 390.h,
+                                  width: double.maxFinite,
+                                  child: TabBarView(
+                                      controller: _tabController,
+                                      children: _pages),
+                                )
+                                ),
+                              ],
+                            ),
                           ),
-                          Container(
-                            color: Colors.yellow,
-                            height: height * 0.3,
-                            width: width,
-                          ),
-                          Container(
-                            color: Colors.black,
-                            height: height * 0.3,
-                            width: width,
-                          )
                         ],
                       ),
-                    )
+                    ),
+                    SizedBox(height: 60.h),
+                    const FeaturedProduct(),
+                    SizedBox(height: 20.h),
+                    const AddToCart()
                   ],
                 ),
               ),

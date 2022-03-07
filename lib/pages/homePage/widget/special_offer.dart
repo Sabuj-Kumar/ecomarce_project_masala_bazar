@@ -89,7 +89,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
                         child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(15.r),
+                                Radius.circular(bannerTileCurve.r),
                               ),
                               color: item.color,
                             ),
@@ -142,7 +142,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
                                           child: Image.asset(
                                               "assets/img/Snacks.png"),
                                           borderRadius:
-                                              BorderRadius.circular(15.r),
+                                              BorderRadius.circular(bannerTileCurve.r),
                                         ),
                                       ],
                                     ),

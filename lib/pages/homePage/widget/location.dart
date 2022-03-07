@@ -14,14 +14,29 @@ class Location extends StatefulWidget {
 
 class _LocationState extends State<Location> {
   // Initial Selected Value
-  String dropdownvalue = 'Mirpur Cantonment, Dhaka';
+  String dhakaValue = 'Bashundhara';
+  String sylhetValue = 'Moulovibazar';
+
+  var division = [
+    'Dhaka',
+    'Sylhet',
+  ];
 
   // List of items in our dropdown menu
-  var items = [
-    'Bashundhara, Dhaka',
-    'Mirpur Cantonment, Dhaka',
-    'Uttara, Dhaka',
+  var dhaka = [
+    'Bashundhara',
+    'Mirpur',
+    'Uttara',
   ];
+
+  var sylhet = [
+    'Moulovibazar',
+    'Habiganj',
+    'Sumanganj',
+  ];
+
+  late String divisionName = division[0];
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -32,45 +47,92 @@ class _LocationState extends State<Location> {
           width: double.infinity,
           child: Stack(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    'assets/icons/map_pin.svg',
-                    width: 16.5.w,
-                  ),
-                  SizedBox(
-                    width: 7.25.w,
-                  ),
-                  SizedBox(
-                    width: 200.w,
-                    //width: _width * 0.5,
-                    child: Center(
-                      child: DropdownButton(
-                        value: dropdownvalue,
-                        isDense: true,
-                        underline: const SizedBox(),
-                        itemHeight: null,
-                        isExpanded: true,
-                        icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                        items: items.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items,
-                              style: CustomTextStyle.bodyText2(context),
-                              //style: text.headline1?.copyWith(fontSize: 12.sp),
-                            ),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 21.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons/map_pin.svg',
+                          width: 16.5.w,
+                        ),
+                        SizedBox(
+                          width: 7.25.w,
+                        ),
+                        SizedBox(
+                          width: 120.w,
+                          //width: _width * 0.5,
+                          child: DropdownButton(
+                            value: divisionName == 'Dhaka' ? dhakaValue : sylhetValue,
+                            isDense: true,
+                            underline: const SizedBox(),
+                            itemHeight: null,
+                            isExpanded: true,
+                            icon: const Icon(Icons.keyboard_arrow_down_outlined),
+                            items: divisionName == 'Dhaka' ? dhaka.map((String items) {
+                              return DropdownMenuItem(
+                                value: items,
+                                child: Text(items,
+                                  style: CustomTextStyle.bodyText2(context).copyWith(color: secondaryColor),
+                                  //style: text.headline1?.copyWith(fontSize: 12.sp),
+                                ),
+                              );
+                            }).toList() : sylhet.map((String items) {
+                              return DropdownMenuItem(
+                                value: items,
+                                child: Text(items,
+                                  style: CustomTextStyle.bodyText2(context).copyWith(color: secondaryColor),
+                                  //style: text.headline1?.copyWith(fontSize: 12.sp),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              if (divisionName == 'Dhaka') {
+                                setState(() {
+                                  dhakaValue = newValue!;
+                                });
+                              }else{
+                                setState(() {
+                                  sylhetValue = newValue!;
+                                });
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    InkWell(
+                      onTap: (){
+                        if(divisionName == 'Dhaka'){
+                          divisionName = division[1];
                           setState(() {
-                            dropdownvalue = newValue!;
                           });
-                        },
+                        }else{
+                          divisionName = division[0];
+                          setState(() {
+                          });
+                        }
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/map_pin.svg',
+                            width: 16.5.w,
+                          ),
+                          SizedBox(
+                            width: 7.25.w,
+                          ),
+                          Text(divisionName,
+                            style: CustomTextStyle.bodyText2(context).copyWith(color: secondaryColor),
+                            //style: text.headline1?.copyWith(fontSize: 12.sp),
+                          )
+                        ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           )

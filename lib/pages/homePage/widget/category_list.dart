@@ -113,7 +113,7 @@ class _CategoryListState extends State<CategoryList> {
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10.r))),
+                                  BorderRadius.all(Radius.circular(categoryTileCurve.r))),
                           child: Column(
                             children: [
                               Expanded(

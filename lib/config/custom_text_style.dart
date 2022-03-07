@@ -7,7 +7,7 @@ class CustomTextStyle{
   static TextStyle header1(BuildContext context) {
     return TextStyle(
       fontSize: 24.sp,
-      color: secondaryColor,
+      color: fuschiaBlueGem,
       fontWeight: FontWeight.w700,
     );
   }
@@ -15,7 +15,7 @@ class CustomTextStyle{
   static TextStyle header2Bold(BuildContext context) {
     return TextStyle(
       fontSize: 18.sp,
-      color: secondaryColor,
+      color: fuschiaBlueGem,
       fontWeight: FontWeight.w700,
     );
   }
@@ -23,7 +23,7 @@ class CustomTextStyle{
   static TextStyle header2Semi(BuildContext context) {
     return TextStyle(
       fontSize: 18.sp,
-      color: secondaryColor,
+      color: fuschiaBlueGem,
       fontWeight: FontWeight.w600,
     );
   }
@@ -31,7 +31,7 @@ class CustomTextStyle{
   static TextStyle subHeader1(BuildContext context) {
     return TextStyle(
       fontSize: 16.sp,
-      color: secondaryColor,
+      color: fuschiaBlueGem,
       fontWeight: FontWeight.w600,
     );
   }
@@ -39,7 +39,7 @@ class CustomTextStyle{
   static TextStyle subHeader2(BuildContext context) {
     return TextStyle(
       fontSize: 14.sp,
-      color: secondaryColor,
+      color: fuschiaBlueGem,
       fontWeight: FontWeight.w500,
     );
   }
@@ -47,7 +47,7 @@ class CustomTextStyle{
   static TextStyle body(BuildContext context) {
     return TextStyle(
       fontSize: 12.sp,
-      color: secondaryColor,
+      color: fuschiaBlueGem,
       fontWeight: FontWeight.w400,
     );
   }
@@ -55,7 +55,7 @@ class CustomTextStyle{
   static TextStyle bodySmall(BuildContext context) {
     return TextStyle(
       fontSize: 12.sp,
-      color: secondaryColor,
+      color: fuschiaBlueGem,
       fontWeight: FontWeight.w700,
     );
   }
@@ -63,7 +63,7 @@ class CustomTextStyle{
   static TextStyle bodyText2(BuildContext context) {
     return TextStyle(
       fontSize: 12.sp,
-      color: secondaryColor,
+      color: fuschiaBlueGem,
       fontWeight: FontWeight.w600,
     );
   }
@@ -71,7 +71,7 @@ class CustomTextStyle{
   static TextStyle linkText(BuildContext context) {
     return TextStyle(
       fontSize: 10.sp,
-      color: secondaryColor,
+      color: fuschiaBlueGem,
       fontWeight: FontWeight.w400,
     );
   }

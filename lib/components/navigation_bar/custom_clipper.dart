@@ -7,7 +7,7 @@ class Clipper extends CustomPainter {
     final paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2.0
-      ..color = irisOrange;
+      ..color = offers;
     final paint1 = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3.0

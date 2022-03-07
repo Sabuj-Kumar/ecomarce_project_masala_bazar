@@ -1,12 +1,10 @@
 import 'package:efgecom/components/appbars/custom_appbar.dart';
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:efgecom/config/theme_config.dart';
-import 'package:efgecom/pages/homePage/widget/featured_product.dart';
 import 'package:efgecom/pages/homePage/widget/product_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:number_paginator/number_paginator.dart';
 
 import '../../../../models/featured_product_model.dart';
 
@@ -28,75 +26,75 @@ class _FishMeatState extends State<FishMeat> {
     super.initState();
     featured = [
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
-          imgUrl: 'assets/img/katla.png',
+          imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
-          titleEng:
-              'Katla Fish processing (Big Size) কাতলা মাছ প্রসেসিং ( বড় মাছ)',
+          titleEng: 'Katla Fish processing (Big Size)',
           newPrice: 200,
           oldPrice: 200,
+          discountPrice: 25,
           rating: 4.6,
           reviews: 86),
     ];
@@ -163,7 +161,7 @@ class _FishMeatState extends State<FishMeat> {
             ),
           ),
           SizedBox(
-            height: 5.h,
+            height: 2.h,
           ),
           Expanded(
             child: ListView(
@@ -173,35 +171,46 @@ class _FishMeatState extends State<FishMeat> {
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 21.75.w),
-                  height: 1270.h,
+                  height: 1240.h,
                   child: GridView.builder(
                       itemCount: featured.length,
                       scrollDirection: Axis.vertical,
                       physics: const NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 13.w / 21.h,
-                        mainAxisSpacing: 5,
+                        //childAspectRatio: 13.w / 21.h,
+                        childAspectRatio: 13.sw / 9.5.sh,
+                        mainAxisSpacing: 15.h,
+                        crossAxisSpacing: 10.w
                         //childAspectRatio: MediaQuery.of(context).devicePixelRatio * 0.55
                       ),
                       itemBuilder: (context, index) {
                         return Container(
                           margin: EdgeInsets.symmetric(horizontal: 2.5.w),
-                          child: ProductTile(
-                              imgUrl: featured[index].imgUrl,
-                              titleBang: featured[index].titleBang,
-                              titleEng: featured[index].titleEng,
-                              newPrice: featured[index].newPrice,
-                              oldPrice: featured[index].oldPrice,
-                              rating: featured[index].rating,
-                              reviews: featured[index].reviews),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(productTileCurve.r),
+                                bottomRight: Radius.circular(productTileCurve.r)),
+                            child: ProductTile(
+                                imgUrl: featured[index].imgUrl,
+                                titleBang: featured[index].titleBang,
+                                titleEng: featured[index].titleEng,
+                                newPrice: featured[index].newPrice,
+                                oldPrice: featured[index].oldPrice,
+                                discountPrice: featured[index].discountPrice,
+                                rating: featured[index].rating,
+                                reviews: featured[index].reviews),
+                          ),
                         );
                       }),
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
-                Container(
+
+                //////////// Pagination and Feature Products ////////////
+
+              /*  Container(
                   margin: EdgeInsets.symmetric(horizontal: 38.w),
                   child: NumberPaginator(
                     numberPages: _numPages,
@@ -209,7 +218,7 @@ class _FishMeatState extends State<FishMeat> {
                       borderRadius: BorderRadius.circular(5.r),
                     ),
                     buttonUnselectedForegroundColor: secondaryColor,
-                    buttonSelectedBackgroundColor: irisOrange,
+                    buttonSelectedBackgroundColor: offers,
                     onPageChange: (int index) {
                       setState(() {});
                     },
@@ -221,7 +230,7 @@ class _FishMeatState extends State<FishMeat> {
                 const FeaturedProduct(),
                 SizedBox(
                   height: 20.h,
-                ),
+                ), */
               ],
             ),
           ),

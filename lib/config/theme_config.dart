@@ -12,6 +12,7 @@ const cardColor = Color(0xffFFFFFF);
 const textColor = Color(0xff585D69);
 const textLight = Color(0xFF9D9D9D);
 const irisOrange = Color(0xFFF37042);
+const offers = Color(0xFFF37042);
 const irisYellow = Color(0xFFFDB94A);
 const mbOnlineColor = Color(0xFF3D00BD);
 const fuschiaText = Color(0xFF1D1D1F);
@@ -19,3 +20,11 @@ const fuschiaBlueGem = Color(0xFF494099);
 const defaultPadding = 16.0;
 const irisStudio = Color(0xFF6E52A2);
 const fuschiaRed = Color(0xFFB80F0A);
+
+
+const productTileCurve = 10.0;
+const categoryTileCurve = 10.0;
+const bannerTileCurve = 10.0;
+const buttonCurve = 10.0;
+const searchCurve = 10.0;
+

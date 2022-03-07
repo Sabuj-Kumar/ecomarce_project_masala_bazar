@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                 flexibleSpace: FlexibleSpaceBar(
                   background: Padding(
                     padding: EdgeInsets.only(top: 20.h),
-                    child: const Location(),
+                    child: Location(),
                   ),
 
                 ),

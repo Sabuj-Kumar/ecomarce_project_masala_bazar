@@ -41,7 +41,6 @@ class _WrapperState extends State<Wrapper> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     // setPrefernces();
-
     log("==================" + CURRENT_PLATFORM + " PLATFORM ===============");
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
       setPrefernces();

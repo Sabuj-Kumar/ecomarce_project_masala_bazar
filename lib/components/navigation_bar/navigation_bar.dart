@@ -40,7 +40,7 @@ class NavigationBar extends StatelessWidget {
                         Padding(
                             padding: EdgeInsets.only(top: 4.0.h, bottom: 3.0.h),
                             child: SvgPicture.asset(
-                              'assets/icons/Home.svg',
+                              'assets/icons/home.svg',
                               width: 22.w,
                               height: 22.w,
                               color: currentPage != 0

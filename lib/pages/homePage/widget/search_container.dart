@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +40,11 @@ class _SearchContainerState extends State<SearchContainer> {
               hintText: 'Search Product Name',
               hintStyle: CustomTextStyle.subHeader2(context).copyWith(color: Colors.grey.shade400),
               suffixIcon: InkWell(
-                onTap: () {},
+                onTap: () {
+                  log(_searchController.text);
+                  _searchController.clear();
+                  FocusScope.of(context).requestFocus(FocusNode());
+                },
                 child: Padding(
                   padding: EdgeInsets.all(10.w),
                   child: SvgPicture.asset(
@@ -47,11 +53,11 @@ class _SearchContainerState extends State<SearchContainer> {
                 ),
               ),
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                  borderRadius: BorderRadius.all(Radius.circular(searchCurve.r)),
                   borderSide:
                   BorderSide(color: Colors.grey.withOpacity(0.15))),
               focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.r)),
+                  borderRadius: BorderRadius.all(Radius.circular(searchCurve.r)),
                   borderSide: const BorderSide(color: secondaryColor)),
             ),
           ),

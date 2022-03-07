@@ -66,7 +66,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         color: widget.tabBarBackgroundColor,
-        border: Border.all(color: irisOrange, width: 1.5.w),
+        border: Border.all(color: offers, width: 1.5.w),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.0.w, vertical: 3.h),
