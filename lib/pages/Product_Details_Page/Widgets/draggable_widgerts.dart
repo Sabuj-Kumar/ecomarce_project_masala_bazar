@@ -211,7 +211,10 @@ class _DragAbleListState extends State<DragAbleList>
                     SizedBox(height: 60.h),
                     const FeaturedProduct(),
                     SizedBox(height: 20.h),
-                    const AddToCart()
+                    AddToCart(
+                      newPrice: newPrice,
+                      oldPrice: oldPrice,
+                    )
                   ],
                 ),
               ),
