@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:efgecom/config/theme_config.dart';
+import 'package:efgecom/pages/Product_Details_Page/Widgets/photos_with_cupartino_dialogs.dart';
+import 'package:efgecom/pages/Product_Details_Page/Widgets/product_details_personal_reviews.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +35,7 @@ class Reviews extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 24.h),
+            SizedBox(height: 20.h),
             Text(
               "Rating & Reviews",
               style: CustomTextStyle.bodyText2(context).copyWith(
@@ -159,106 +161,35 @@ class Reviews extends StatelessWidget {
                   fontSize: 16.sp,
                   decoration: TextDecoration.underline),
             ),
-            SizedBox(height: 15.h),
-            imageList.length > 3
-                ? imageRowAllImages(context)
-                : imageRowLessThenFour(),
+            SizedBox(height: 20.h),
+            DialogWithPhotos(
+              imageList: imageList,
+              imageWidth: 90.w,
+              imageHeight: 90.h,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            ),
+            SizedBox(height: 20.h),
+            Text(
+              "Reviews",
+              style: CustomTextStyle.subHeader2(context).copyWith(
+                  color: fuschiaRed,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600),
+            ),
+            SizedBox(height: 20.h),
+            Column(
+              children: List.generate(5, (index) => PersonComments(
+                location: "House Building Uttora, Dhaka",
+                profileImage: "assets/img/mbOnline.png",
+                rating: rating,
+                comments: "Guru ghor banaila ki diya dorja janala kisoi nai kmne tumay dekhte pai guru ghor banaila ki diya.",
+                imagesUrl: imageList,
 
+              ),)
+            )
           ],
         ),
       ],
     );
   }
-
-  Widget imageRowLessThenFour() {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(
-            3,
-            (index) => Container(
-                  height: 90.h,
-                  width: 90.w,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: fuschiaRed, width: 1.w),
-                      borderRadius: BorderRadius.circular(10.r)),
-                  child: ClipRRect(
-                    child: Image.asset(
-                      imageList[index],
-                      fit: BoxFit.fill,
-                    ),
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                )));
-  }
-
-  Widget imageRowAllImages(BuildContext context) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(
-            3,
-            (index) => Container(
-                  height: 90.h,
-                  width: 90.w,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: fuschiaRed, width: 1.w),
-                      borderRadius: BorderRadius.circular(11.r)),
-                  child: ClipRRect(
-                    child: index == 2
-                        ? InkWell(
-                            onTap: () {
-                              showCupertinoDialog(
-                                barrierDismissible: true,
-                                  context: context, builder: createDialog);
-                            },
-                            child: Stack(
-                              children: [
-                                Image.asset(
-                                  imageList[index],
-                                  fit: BoxFit.fill,
-                                ),
-                                Container(
-                                  height: 90.h,
-                                  width: 90.w,
-                                  color: Colors.black.withOpacity(0.5),
-                                ),
-                                Center(
-                                    child: Text(
-                                  "+ ${imageList.length}",
-                                  style: CustomTextStyle.subHeader2(context)
-                                      .copyWith(
-                                          color: Colors.white,
-                                          fontSize: 16.sp,
-                                          fontWeight: FontWeight.w600),
-                                ))
-                              ],
-                            ))
-                        : Image.asset(
-                            imageList[index],
-                            fit: BoxFit.fill,
-                          ),
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                )));
-  }
-
-  Widget createDialog(BuildContext context) => CupertinoAlertDialog(
-        content: SizedBox(
-          height: _height * 0.5.h,
-          width: _width,
-          child: CarouselSlider(
-            items: imageList
-                .map((item) => Builder(builder: (ctx) => ClipRRect(
-                borderRadius: BorderRadius.circular(10.r),
-                child: Image.asset(item,fit: BoxFit.fill,))))
-                .toList(),
-            options: CarouselOptions(
-              //height: _height * 0.6.h,
-              initialPage: 0,
-              viewportFraction: 1,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: false,
-            ),
-          ),
-        ),
-      );
 }
