@@ -1,4 +1,5 @@
 import 'package:efgecom/pages/homePage/widget/product_tile.dart';
+import 'package:efgecom/pages/notification/widget/count_down_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -139,42 +140,11 @@ class _FlashDealsState extends State<FlashDeals> {
           SizedBox(
             height: 10.h,
           ),
-          SizedBox(
+          Container(
             height: 34.h,
-            width: 297.w,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(
-                  4,
-                  (index) => Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 0.1.h),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: offers,
-                            borderRadius: BorderRadius.circular(productTileCurve.r)),
-                        child: Padding(
-                          padding: EdgeInsets.all(7.0.w),
-                          child: RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text: value[index] + " ",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12.sp),
-                              ),
-                              TextSpan(
-                                text: time[index],
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12.sp,
-                                    letterSpacing: 0.2),
-                              ),
-                            ]),
-                          ),
-                        )),
-                  ),
-                )),
+            width: double.maxFinite,
+            //color: Colors.green,
+            child: CountDownTime()
           ),
           SizedBox(
             height: 10.h,
@@ -216,4 +186,5 @@ class _FlashDealsState extends State<FlashDeals> {
       ),
     );
   }
+
 }

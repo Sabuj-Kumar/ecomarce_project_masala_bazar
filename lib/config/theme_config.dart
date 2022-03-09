@@ -27,4 +27,5 @@ const categoryTileCurve = 10.0;
 const bannerTileCurve = 10.0;
 const buttonCurve = 10.0;
 const searchCurve = 10.0;
+const counterCurve = 5.0;
 
