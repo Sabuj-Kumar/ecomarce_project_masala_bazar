@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../pages/cart_page/widgets/cart_list.dart';
+
 class CartProvider with ChangeNotifier {
   int _counter = 0;
-
+  List<ListOfCarts> cartList = [];
   int get counter => _counter;
 
   double _totalPrice = 0.0;
@@ -56,5 +58,12 @@ class CartProvider with ChangeNotifier {
   double getTotalPrice() {
     _getPrefItems();
     return _totalPrice;
+  }
+  void addCartList(ListOfCarts value){
+    cartList.add(value);
+  }
+  List<ListOfCarts> getCartList(){
+
+    return cartList;
   }
 }

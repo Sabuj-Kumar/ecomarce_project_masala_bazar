@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:efgecom/pages/Product_Details_Page/Widgets/photos_with_cupartino_dialogs.dart';
@@ -8,9 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Reviews extends StatelessWidget {
-  Reviews({Key? key, this.reviews, this.rating}) : super(key: key);
+  Reviews({Key? key, this.reviews, this.rating,this.percentages}) : super(key: key);
   final double? rating;
   final int? reviews;
+  final List<int>? percentages;
   double _height = 0.0;
   double _width = 0.0;
   List<String> imageList = [
@@ -117,18 +117,27 @@ class Reviews extends StatelessWidget {
                           )
                       ],
                     ),
-                  ),
+                  ),//star print
                   Column(
                     children: List.generate(
-                      5,
+                      percentages!.length,
                       (index) => Expanded(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Container(
-                                color: Colors.black.withOpacity(0.2),
-                                height: 2.h,
-                                width: 123.w),
+                            Stack(
+                              children: [
+                                Container(
+                                    color: Colors.black.withOpacity(0.2),
+                                    height: 2.h,
+                                    width: 123.w),
+                                LayoutBuilder(builder:  (context,constrains) => Container(
+                                  width: 123.w * (percentages![index] / 100.0),
+                                  height: 2.h,
+                                  color: Colors.yellow,
+                                ))
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -142,7 +151,7 @@ class Reviews extends StatelessWidget {
                                 padding:
                                     EdgeInsets.only(left: 20.0.w, right: 20.w),
                                 child: Text(
-                                  "$index",
+                                  "${percentages![index]}",
                                   style: CustomTextStyle.subHeader2(context)
                                       .copyWith(
                                           color: fuschiaText,

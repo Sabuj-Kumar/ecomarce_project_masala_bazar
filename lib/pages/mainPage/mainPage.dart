@@ -5,6 +5,7 @@ import 'package:efgecom/pages/mainPage/dashboard_page.dart';
 import 'package:efgecom/pages/menu/side_menu.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../components/navigation_bar/RoundedTabBarWidgets/rounded_tabbar_widgets.dart';
+import '../cart_page/pages/cart_page_view.dart';
 
 class MainPage extends StatefulWidget {
   final int? index;
@@ -27,7 +28,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   List pageList = const [
     HomePage(),
     DashboardPage(),
-    DashboardPage(),
+    CartPageView(),
     DashboardPage(),
     Menu(),
   ];

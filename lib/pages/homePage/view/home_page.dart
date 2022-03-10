@@ -1,12 +1,10 @@
 import 'package:efgecom/components/scaffold/custom_scaffold.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:efgecom/pages/homePage/widget/location.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart';
-
 import '../../../config/custom_text_style.dart';
 import '../widget/discount_banner.dart';
 import '../widget/flash_deals.dart';
@@ -24,6 +22,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,18 +34,19 @@ class _HomePageState extends State<HomePage> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
+                automaticallyImplyLeading: false,
                 toolbarHeight: 45.h,
                 elevation: 0,
                 backgroundColor: deepBgColor,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Padding(
                     padding: EdgeInsets.only(top: 20.h),
-                    child: Location(),
+                    child: const Location(),
                   ),
-
                 ),
               ),
               SliverAppBar(
+                automaticallyImplyLeading: false,
                 toolbarHeight: 65.h,
                 elevation: 3,
                 shadowColor: deepBgColor.withOpacity(0.5),

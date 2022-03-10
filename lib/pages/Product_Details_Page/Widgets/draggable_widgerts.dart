@@ -60,7 +60,7 @@ class _DragAbleListState extends State<DragAbleList>
         variousTempor: list[0].variousTemperList,
         moreDetails: list[0].moreDetailsList,
       ),
-      Reviews(reviews: reviews,rating: rating),
+      Reviews(reviews: reviews,rating: rating,percentages: const [20,3,2,0,0],),
       const DeliveryInfo()
     ];
    // _tabController = TabController(length: 3, vsync: this);

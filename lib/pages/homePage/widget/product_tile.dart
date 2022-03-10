@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../components/layers/offer_layer.dart';
 import '../../../config/theme_config.dart';
 import '../../Product_Details_Page/Pages/product_details_main_page.dart';
+import '../../cart_page/widgets/cart_list.dart';
 
 class ProductTile extends StatefulWidget {
   final String imgUrl;
@@ -41,6 +42,7 @@ class _ProductTileState extends State<ProductTile> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    int totalCount = 0;
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(productTileCurve.r),
@@ -192,6 +194,14 @@ class _ProductTileState extends State<ProductTile> {
                 child: ElevatedButton(
                   onPressed: () {
                     cart.addCounter();
+                    cart.addCartList(ListOfCarts(
+                      images: widget.imgUrl,
+                      productName: widget.titleEng,
+                      oldPrice: widget.oldPrice,
+                      newPrice: widget.newPrice,
+                      deliveryDate: "Arrive by 2030 to 2040 hehe",
+                      offerPercentages: -10,
+                    ));
                   },
                   style: ElevatedButton.styleFrom(
                       primary: buttonColor,
