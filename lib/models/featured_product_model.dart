@@ -1,4 +1,5 @@
 class FeaturedProductModel {
+  final int productId;
   final String imgUrl;
   final String titleBang;
   final String titleEng;
@@ -9,7 +10,8 @@ class FeaturedProductModel {
   final int reviews;
 
   FeaturedProductModel(
-      {required this.imgUrl,
+      {required this.productId,
+      required this.imgUrl,
       required this.titleBang,
       required this.titleEng,
       required this.newPrice,

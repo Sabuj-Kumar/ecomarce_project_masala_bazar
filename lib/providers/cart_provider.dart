@@ -1,14 +1,24 @@
+import 'package:efgecom/models/featured_product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CartProvider with ChangeNotifier {
   int _counter = 0;
+  List<FeaturedProductModel> items = [];
 
-  int get counter => _counter;
+  //int get counter => _counter;
 
   double _totalPrice = 0.0;
 
-  double get totalPrice => _totalPrice;
+  //double get totalPrice => _totalPrice;
+
+  getItemQuantity(int productId){
+    items.where((element) => element.productId == productId).first;
+  }
+
+  void addToCart (int itemId){
+
+  }
 
   void _setPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

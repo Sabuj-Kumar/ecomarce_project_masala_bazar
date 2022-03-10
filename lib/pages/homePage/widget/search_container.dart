@@ -26,9 +26,15 @@ class _SearchContainerState extends State<SearchContainer> {
           width: 320.w,
           child: TextFormField(
             controller: _searchController,
+            textInputAction: TextInputAction.search,
             autocorrect: false,
             autovalidateMode: AutovalidateMode.always,
             style: TextStyle(color: Colors.black, fontSize: 14.sp),
+            onFieldSubmitted: (value){
+              log(_searchController.text);
+              _searchController.clear();
+              FocusScope.of(context).requestFocus(FocusNode());
+            },
             onChanged: (changed) {
               setState(() {});
             },

@@ -37,6 +37,10 @@ class ProductTile extends StatefulWidget {
 
 class _ProductTileState extends State<ProductTile> {
   bool favorite = false;
+  bool normalButton = true;
+
+  int itemCount =0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -186,12 +190,13 @@ class _ProductTileState extends State<ProductTile> {
                 ),
               ),
               SizedBox(height: 8.h),
-              SizedBox(
+              normalButton ? SizedBox(
                 height: 28.h,
                 width: 160.w,
                 child: ElevatedButton(
                   onPressed: () {
-                    cart.addCounter();
+                    normalButton = false;
+                    //cart.addCounter();
                   },
                   style: ElevatedButton.styleFrom(
                       primary: buttonColor,
@@ -217,7 +222,64 @@ class _ProductTileState extends State<ProductTile> {
                     ),
                   ),
                 ),
+              ) : Padding(
+                padding: EdgeInsets.symmetric(horizontal: 4.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                        onTap: (){},
+                        child: Icon(Icons.cancel, color: Colors.redAccent,)),
+                    Container(
+                      height: 30.h,
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                          color: buttonColor,
+                          borderRadius: BorderRadius.circular(buttonCurve.r)
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          itemCount == 0 ? Icon(Icons.remove_circle_outline, size: 22.h, color: Colors.grey,) : GestureDetector(
+                              onTap: (){
+                                setState(() {
+                                  itemCount--;
+                                });
+                              },
+                              child: Icon(Icons.remove_circle_outline, size: 22.h, color: Colors.white,)
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                itemCount.toString(),
+                                style: CustomTextStyle.subHeader1(context).copyWith(color: Colors.white),
+                              ),
+                              SizedBox(width: 2.w,),
+                              SvgPicture.asset(
+                                'assets/icons/cart.svg',
+                                height: 20.h,
+                                width: 20.h,
+                              ),
+                            ],
+                          ),
+                          GestureDetector(
+                              onTap: (){
+                                setState(() {
+                                  itemCount++;
+                                });
+                              },
+                              child: Icon(Icons.add_circle_outline, size: 22.h, color: Colors.white,))
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                        onTap: (){},
+                        child: Icon(Icons.check_circle, color: Colors.orangeAccent,)),
+                  ],
+                ),
               ),
+              //ExpandButton(context),
             ],
           ),
           Positioned(
@@ -243,3 +305,57 @@ class _ProductTileState extends State<ProductTile> {
     );
   }
 }
+
+// Widget ExpandButton(BuildContext context, CartProvider cart, int itemCount){
+//   return Padding(
+//     padding: EdgeInsets.symmetric(horizontal: 4.w),
+//     child: Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//       children: [
+//          GestureDetector(
+//             onTap: (){},
+//             child: Icon(Icons.cancel, color: Colors.redAccent,)),
+//         Container(
+//           height: 30.h,
+//           width: 100.w,
+//           decoration: BoxDecoration(
+//               color: buttonColor,
+//               borderRadius: BorderRadius.circular(buttonCurve.r)
+//           ),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceAround,
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: [
+//               itemCount == 0 ? Icon(Icons.remove_circle_outline, size: 22.h, color: Colors.grey,) : GestureDetector(
+//                   onTap: (){
+//                   },
+//                   child: Icon(Icons.remove_circle_outline, size: 22.h, color: Colors.white,)
+//               ),
+//               Row(
+//                 children: [
+//                   Text(
+//                     '1',
+//                     style: CustomTextStyle.subHeader1(context).copyWith(color: Colors.white),
+//                   ),
+//                   SizedBox(width: 2.w,),
+//                   SvgPicture.asset(
+//                     'assets/icons/cart.svg',
+//                     height: 20.h,
+//                     width: 20.h,
+//                   ),
+//                 ],
+//               ),
+//               GestureDetector(
+//                   onTap: (){
+//                   },
+//                   child: Icon(Icons.add_circle_outline, size: 22.h, color: Colors.white,))
+//             ],
+//           ),
+//         ),
+//          GestureDetector(
+//             onTap: (){},
+//             child: Icon(Icons.check_circle, color: Colors.orangeAccent,)),
+//       ],
+//     ),
+//   );
+// }

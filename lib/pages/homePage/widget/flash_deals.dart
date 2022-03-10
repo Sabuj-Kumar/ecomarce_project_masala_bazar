@@ -1,5 +1,5 @@
+import 'package:efgecom/pages/homePage/widget/countdown_timer_page.dart';
 import 'package:efgecom/pages/homePage/widget/product_tile.dart';
-import 'package:efgecom/pages/notification/widget/count_down_time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,9 +8,11 @@ import '../../../config/theme_config.dart';
 import '../../../models/featured_product_model.dart';
 
 class FlashDeals extends StatefulWidget {
+  final int? flashDealTime;
   const FlashDeals({
     Key? key,
     this.text,
+    this.flashDealTime
   }) : super(key: key);
   final String? text;
 
@@ -26,6 +28,7 @@ class _FlashDealsState extends State<FlashDeals> {
     super.initState();
     featured = [
       FeaturedProductModel(
+        productId: 111,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -35,6 +38,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 222,
           imgUrl: 'assets/img/bakery.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Bakery',
@@ -44,6 +48,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 333,
           imgUrl: 'assets/img/masala.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Masala Item',
@@ -53,6 +58,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 444,
           imgUrl: 'assets/img/katla.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish',
@@ -62,6 +68,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 555,
           imgUrl: 'assets/img/shrimp.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Shrimp',
@@ -71,6 +78,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 666,
           imgUrl: 'assets/img/Snacks.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Snacks Item',
@@ -144,7 +152,7 @@ class _FlashDealsState extends State<FlashDeals> {
             height: 34.h,
             width: double.maxFinite,
             //color: Colors.green,
-            child: CountDownTime()
+            child: CountdownTimerPage(flashDealTime: widget.flashDealTime,)
           ),
           SizedBox(
             height: 10.h,
