@@ -7,6 +7,9 @@ import 'package:efgecom/components/scaffold/scaffold_header.dart';
 import 'package:efgecom/helpers/toast.dart';
 import 'package:efgecom/pages/wrapper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/language_provider.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -24,6 +27,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   Widget build(BuildContext context) {
+    final languageProvider = Provider.of<LanguageProvider>(context,listen: false);
     return CustomScaffold(
       header: const ScaffoldHeader(title: "Dashboard"),
       child: SingleChildScrollView(
@@ -44,6 +48,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       child: const Text("Change to English"),
                       onPressed: () async {
                         await Wrapper.setLocale(context, 'en');
+                        languageProvider.setLanguageCode('en');
                         setState(() {});
                       },
                     ),
@@ -51,6 +56,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       child: const Text("বাংলায় যান"),
                       onPressed: () async {
                         await Wrapper.setLocale(context, 'bn');
+                        languageProvider.setLanguageCode('bn');
                         setState(() {});
                       },
                     ),

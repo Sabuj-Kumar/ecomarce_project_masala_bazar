@@ -7,6 +7,8 @@ import 'package:efgecom/components/scaffold/custom_scaffold.dart';
 import 'package:efgecom/pages/wrapper.dart';
 import 'package:efgecom/providers/user_provider.dart';
 
+import '../../providers/language_provider.dart';
+
 class Menu extends StatefulWidget {
   const Menu({
     Key? key,
@@ -45,6 +47,7 @@ class _MenuState extends State<Menu> {
 
   @override
   Widget build(BuildContext context) {
+    final languageCode = Provider.of<LanguageProvider>(context,listen: false);
     return CustomScaffold(
       child: SizedBox(
         height: MediaQuery.of(context).size.height,
@@ -92,8 +95,8 @@ class _MenuState extends State<Menu> {
               svgSrc: "assets/icons/unknown.svg",
               press: () async {
                 langCode = langCode == 'en' ? 'bn' : 'en';
-
                 await Wrapper.setLocale(context, langCode);
+                languageCode.setLanguageCode(langCode);
                 setState(() {});
               },
             ),

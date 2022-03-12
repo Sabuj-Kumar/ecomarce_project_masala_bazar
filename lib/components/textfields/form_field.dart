@@ -102,7 +102,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       icon: const Icon(Icons.visibility_outlined,color: secondaryColor,))
               : null),
       validator: (value) {
-        print("$value");
+
         if (value == null || value.isEmpty) {
           return Validation(value: value,levelText: widget.hintText).emptyCheck();
         } else {
@@ -126,9 +126,8 @@ class Validation {
 
   String? checkValidation() {
 
-    print("Validate check. = $levelText");
     if(levelText == "Enter your mobile number"){
-      print("levelcheck");
+
       if(value!.length != 11){
         return "Mobile Number Must be 11 digits.";
       }
@@ -136,15 +135,6 @@ class Validation {
         return "Mobile Number Must be a Number";
       }
     }
-
-    /*if(levelText == "Password"){
-      if(value!.length < 6){
-        return "Password can't be less then 6 digits.";
-      }
-      else if(value!.length > 30){
-        return "Password can't be greater then 30 digits.";
-      }
-    }*/
 
     if(levelText == "Enter your password"){
       if(value!.length < 6){
@@ -155,14 +145,6 @@ class Validation {
       }
     }
 
-    /*if(levelText == "New Password"){
-      if(value!.length < 6){
-        return "Password can't be less then 6 digits.";
-      }
-      else if(value!.length > 30){
-        return "Password can't be greater then 30 digits.";
-      }
-    }*/
     return null;
   }
 }

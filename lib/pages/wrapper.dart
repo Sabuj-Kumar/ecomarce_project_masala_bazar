@@ -14,6 +14,7 @@ import 'package:efgecom/helpers/router.dart';
 import 'package:efgecom/providers/user_provider.dart';
 import 'package:efgecom/services/connectivity_service.dart';
 
+import '../providers/language_provider.dart';
 import 'mainPage/mainPage.dart';
 
 class Wrapper extends StatefulWidget {
@@ -95,6 +96,9 @@ class _WrapperState extends State<Wrapper> with WidgetsBindingObserver {
       providers: [
         ChangeNotifierProvider(create: (context) => UserProvider()),
         ChangeNotifierProvider(create: (context) => CartProvider()),
+        ChangeNotifierProvider<LanguageProvider>(
+          create: (_) => LanguageProvider(),
+        ),
         StreamProvider<ConnectivityResult>.value(
           value: ConnectivityService().connectionStatusController.stream,
           initialData: ConnectivityResult.wifi,
@@ -110,7 +114,6 @@ class _WrapperState extends State<Wrapper> with WidgetsBindingObserver {
             themeMode: _preferedTheme ?? ThemeMode.system,
             theme: AppThemeData.light(),
             darkTheme: AppThemeData.dark(),
-
             onGenerateRoute: PageRouter.router.generator, // routes: routes,
             navigatorKey: Get.key,
             // List all of the app's supported locales here

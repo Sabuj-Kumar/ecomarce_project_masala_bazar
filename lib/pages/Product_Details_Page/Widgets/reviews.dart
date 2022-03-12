@@ -186,16 +186,8 @@ class Reviews extends StatelessWidget {
                   fontWeight: FontWeight.w600),
             ),
             SizedBox(height: 20.h),
-            Column(
-              children: List.generate(5, (index) => PersonComments(
-                location: "House Building Uttora, Dhaka",
-                profileImage: "assets/img/mbOnline.png",
-                rating: rating,
-                comments: "Guru ghor banaila ki diya dorja janala kisoi nai kmne tumay dekhte pai guru ghor banaila ki diya.",
-                imagesUrl: imageList,
+           const PersonComments(),
 
-              ),)
-            )
           ],
         ),
       ],

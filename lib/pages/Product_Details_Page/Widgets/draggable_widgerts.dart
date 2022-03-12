@@ -6,7 +6,9 @@ import 'package:efgecom/pages/Product_Details_Page/Widgets/star_icons_and_availa
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import '../../../models/product_details_model.dart';
+import '../../../providers/language_provider.dart';
 import '../../homePage/widget/featured_product.dart';
 import 'add_to_cart.dart';
 import 'key_description.dart';
@@ -35,7 +37,7 @@ class DragAbleList extends StatefulWidget {
 
 class _DragAbleListState extends State<DragAbleList>
     with TickerProviderStateMixin {
-
+  late TabController _tabController;
   String productNameEng = "";
   String productNameBng = "";
   int reviews = 0;
@@ -44,8 +46,7 @@ class _DragAbleListState extends State<DragAbleList>
   double rating = 0.0;
   List<Widget> _pages = [];
   final List<String> _name = ["Description", "Reviews", "Delivery Info"];
-  late List<String> v, d;
-
+  List<ProductDetails> list = [];
   @override
   void initState() {
     productNameEng = widget.productNameEng!;
@@ -54,7 +55,40 @@ class _DragAbleListState extends State<DragAbleList>
     oldPrice = widget.oldPrice!;
     newPrice = widget.newPrice!;
     rating = widget.rating!;
-    super.initState();
+    list = [
+      ProductDetails(
+          quantity: 01,
+          views: 25,
+          available: 250,
+          percentageOfOffer: 10,
+          weightRangeStart: 3,
+          weightRangeEnd: 4,
+          tags: [
+            "Boro Katla Mach",
+            "Katla",
+            "Katla Fish",
+            "katla Mach",
+            "katol",
+            "katol Mach"
+          ],
+          categoryListTageName: [
+            "Fish & Meat",
+            "New Products"
+          ],
+          keyDescription: [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.",
+            "৩ থেকে ৪ কেজি ওজনের, প্রতি কেজির মূল্য ৪৭০ টাকা প্রসেসিং করা প্রতি কেজির মূল্য ৪৯০ টাকা।",
+          ],
+          moreDetailsList: [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit."
+          ],
+          variousTemperList: [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.",
+            "৩ থেকে ৪ কেজি ওজনের, প্রতি কেজির মূল্য ৪৭০ টাকা প্রসেসিং করা প্রতি কেজির মূল্য ৪৯০ টাকা।"
+          ], retailerId: '', id: '', productId: '')
+    ];
     _pages = [
       Descriptions(
         variousTempor: list[0].variousTemperList,
@@ -63,47 +97,16 @@ class _DragAbleListState extends State<DragAbleList>
       Reviews(reviews: reviews,rating: rating,percentages: const [20,3,2,0,0],),
       const DeliveryInfo()
     ];
-   // _tabController = TabController(length: 3, vsync: this);
+
+   _tabController = TabController(length: 3, vsync: this);
+    super.initState();
   }
 
-  List<ProductDetails> list = [
-    ProductDetails(
-        quantity: 01,
-        views: 25,
-        available: 250,
-        percentageOfOffer: 10,
-        weightRangeStart: 3,
-        weightRangeEnd: 4,
-        tags: [
-          "Boro Katla Mach",
-          "Katla",
-          "Katla Fish",
-          "katla Mach",
-          "katol",
-          "katol Mach"
-        ],
-        categoryListTageName: [
-          "Fish & Meat",
-          "New Products"
-        ],
-        keyDescription: [
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.",
-          "৩ থেকে ৪ কেজি ওজনের, প্রতি কেজির মূল্য ৪৭০ টাকা প্রসেসিং করা প্রতি কেজির মূল্য ৪৯০ টাকা।",
-        ],
-        moreDetailsList: [
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.",
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.",
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit."
-        ],
-        variousTemperList: [
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.",
-          "৩ থেকে ৪ কেজি ওজনের, প্রতি কেজির মূল্য ৪৭০ টাকা প্রসেসিং করা প্রতি কেজির মূল্য ৪৯০ টাকা।"
-        ])
-  ];
 
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 3, vsync: this);
+    final langProvider = Provider.of<LanguageProvider>(context,listen: false);
+    String languageCode = langProvider.languageCode;
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return DraggableScrollableSheet(
@@ -127,20 +130,22 @@ class _DragAbleListState extends State<DragAbleList>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("${widget.productNameEng}",
+                              languageCode == 'en'? Text("${widget.productNameEng}",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 18.sp)) :Text("${widget.productNameBng}",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 18.sp)),
                               GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    print("clicked share button");
+                                  },
                                   child: SvgPicture.asset(
                                       "assets/icons/share_button.svg")),
                             ],
                           ),
-                          Text("${widget.productNameBng}",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 18.sp)),
+
                           SizedBox(height: 6.57.h),
                           Text("Quantity: ${list[0].quantity} KG"),
                           SizedBox(height: 11.7.h),
