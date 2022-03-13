@@ -21,9 +21,9 @@ class _CartPageViewState extends State<CartPageView> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
-    List<ListOfCarts> list = cart.getCartList();
+    var list = cart.items;
     return Scaffold(
-      appBar: const CustomAppbar(title: "Shopping Cart"),
+      appBar: CustomAppbar(title: "Shopping Cart"),
       body: SafeArea(
         child: ListView(
           children: [
@@ -102,7 +102,7 @@ class _CartPageViewState extends State<CartPageView> {
                   Column(
                     children: List.generate(list.length, (index) => Column(
                       children: [
-                        list[index],
+                        //list[index],
                         SizedBox(height: 50.h)
                       ],
                     ))

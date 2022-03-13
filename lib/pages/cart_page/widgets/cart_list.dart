@@ -167,13 +167,13 @@ class _ListOfCartsState extends State<ListOfCarts> {
                         children: [
                           InkWell(
                               onTap: () {
-                                setState(() {
+                                /*setState(() {
                                   if (counter > 1) {
                                     counter--;
                                     widget.individualItemCount = counter;
                                     cart.removeCounter();
                                   }
-                                });
+                                });*/
                               },
                               child: const Icon(Icons.remove,
                                   size: 15, color: fuschiaBlueGem)),
@@ -185,11 +185,11 @@ class _ListOfCartsState extends State<ListOfCarts> {
                                       fontSize: 13.sp)),
                           InkWell(
                               onTap: () {
-                                setState(() {
+                                /*setState(() {
                                   counter++;
                                   widget.individualItemCount = counter;
                                   cart.addCounter();
-                                });
+                                });*/
                               },
                               child: const Icon(Icons.add,
                                   size: 15, color: fuschiaBlueGem))
