@@ -8,8 +8,11 @@ import 'package:provider/provider.dart';
 import '../../../components/layers/offer_layer.dart';
 import '../../../config/theme_config.dart';
 import '../../Product_Details_Page/Pages/product_details_main_page.dart';
+import 'add_to_cart_button.dart';
+import 'expanded_button.dart';
 
 class ProductTile extends StatefulWidget {
+  final int productId;
   final String imgUrl;
   final String titleBang;
   final String titleEng;
@@ -21,6 +24,7 @@ class ProductTile extends StatefulWidget {
 
   const ProductTile(
       {Key? key,
+      required this.productId,
       required this.imgUrl,
       required this.titleBang,
       required this.titleEng,
@@ -36,15 +40,12 @@ class ProductTile extends StatefulWidget {
 }
 
 class _ProductTileState extends State<ProductTile> {
+  late int? itemCount;
   bool favorite = false;
-  bool normalButton = true;
-
-  int itemCount =0;
-
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context);
+    itemCount = context.watch<CartProvider>().getItemCount(widget.productId);
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(productTileCurve.r),
@@ -58,15 +59,16 @@ class _ProductTileState extends State<ProductTile> {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) =>
-                      ProductDetailsPage(
-                        productNameEng: widget.titleEng,
-                        productNameBng: widget.titleBang,
-                        oldPrice: widget.oldPrice,
-                        newPrice: widget.newPrice,
-                        rating: widget.rating,
-                        reviews: widget.reviews,
-                      )));
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProductDetailsPage(
+                                productNameEng: widget.titleEng,
+                                productNameBng: widget.titleBang,
+                                oldPrice: widget.oldPrice,
+                                newPrice: widget.newPrice,
+                                rating: widget.rating,
+                                reviews: widget.reviews,
+                              )));
                 },
                 child: Column(
                   children: [
@@ -100,7 +102,8 @@ class _ProductTileState extends State<ProductTile> {
                             child: Center(
                               child: Text(
                                 '${widget.discountPrice?.toInt()} Tk off',
-                                style: CustomTextStyle.linkText(context).copyWith(color: Colors.white),
+                                style: CustomTextStyle.linkText(context)
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                           ),
@@ -190,95 +193,25 @@ class _ProductTileState extends State<ProductTile> {
                 ),
               ),
               SizedBox(height: 8.h),
-              normalButton ? SizedBox(
-                height: 28.h,
-                width: 160.w,
-                child: ElevatedButton(
-                  onPressed: () {
-                    normalButton = false;
-                    //cart.addCounter();
-                  },
-                  style: ElevatedButton.styleFrom(
-                      primary: buttonColor,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(productTileCurve.r),
-                      )),
-                  child: Padding(
-                    padding: EdgeInsets.all(2.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Add to Cart",
-                          style: CustomTextStyle.bodySmall(context).copyWith(
-                              fontSize: 11.88.sp, color: Colors.white),
-                        ),
-                        SvgPicture.asset(
-                          'assets/icons/cart.svg',
-                          height: 20.h,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ) : Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                        onTap: (){},
-                        child: Icon(Icons.cancel, color: Colors.redAccent,)),
-                    Container(
-                      height: 30.h,
-                      width: 100.w,
-                      decoration: BoxDecoration(
-                          color: buttonColor,
-                          borderRadius: BorderRadius.circular(buttonCurve.r)
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          itemCount == 0 ? Icon(Icons.remove_circle_outline, size: 22.h, color: Colors.grey,) : GestureDetector(
-                              onTap: (){
-                                setState(() {
-                                  itemCount--;
-                                });
-                              },
-                              child: Icon(Icons.remove_circle_outline, size: 22.h, color: Colors.white,)
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                itemCount.toString(),
-                                style: CustomTextStyle.subHeader1(context).copyWith(color: Colors.white),
-                              ),
-                              SizedBox(width: 2.w,),
-                              SvgPicture.asset(
-                                'assets/icons/cart.svg',
-                                height: 20.h,
-                                width: 20.h,
-                              ),
-                            ],
-                          ),
-                          GestureDetector(
-                              onTap: (){
-                                setState(() {
-                                  itemCount++;
-                                });
-                              },
-                              child: Icon(Icons.add_circle_outline, size: 22.h, color: Colors.white,))
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                        onTap: (){},
-                        child: Icon(Icons.check_circle, color: Colors.orangeAccent,)),
-                  ],
-                ),
-              ),
+              itemCount == 0
+                  ? AddToCartButton(
+                      productId: widget.productId,
+                      imgUrl: widget.imgUrl,
+                      titleBang: widget.titleBang,
+                      titleEng: widget.titleEng,
+                      newPrice: widget.newPrice,
+                      oldPrice: widget.oldPrice,
+                      rating: widget.rating,
+                      reviews: widget.reviews)
+                  : ExpandedButton(
+                      productId: widget.productId,
+                      imgUrl: widget.imgUrl,
+                      titleBang: widget.titleBang,
+                      titleEng: widget.titleEng,
+                      newPrice: widget.newPrice,
+                      oldPrice: widget.oldPrice,
+                      rating: widget.rating,
+                      reviews: widget.reviews),
               //ExpandButton(context),
             ],
           ),
@@ -305,57 +238,3 @@ class _ProductTileState extends State<ProductTile> {
     );
   }
 }
-
-// Widget ExpandButton(BuildContext context, CartProvider cart, int itemCount){
-//   return Padding(
-//     padding: EdgeInsets.symmetric(horizontal: 4.w),
-//     child: Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceAround,
-//       children: [
-//          GestureDetector(
-//             onTap: (){},
-//             child: Icon(Icons.cancel, color: Colors.redAccent,)),
-//         Container(
-//           height: 30.h,
-//           width: 100.w,
-//           decoration: BoxDecoration(
-//               color: buttonColor,
-//               borderRadius: BorderRadius.circular(buttonCurve.r)
-//           ),
-//           child: Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceAround,
-//             crossAxisAlignment: CrossAxisAlignment.center,
-//             children: [
-//               itemCount == 0 ? Icon(Icons.remove_circle_outline, size: 22.h, color: Colors.grey,) : GestureDetector(
-//                   onTap: (){
-//                   },
-//                   child: Icon(Icons.remove_circle_outline, size: 22.h, color: Colors.white,)
-//               ),
-//               Row(
-//                 children: [
-//                   Text(
-//                     '1',
-//                     style: CustomTextStyle.subHeader1(context).copyWith(color: Colors.white),
-//                   ),
-//                   SizedBox(width: 2.w,),
-//                   SvgPicture.asset(
-//                     'assets/icons/cart.svg',
-//                     height: 20.h,
-//                     width: 20.h,
-//                   ),
-//                 ],
-//               ),
-//               GestureDetector(
-//                   onTap: (){
-//                   },
-//                   child: Icon(Icons.add_circle_outline, size: 22.h, color: Colors.white,))
-//             ],
-//           ),
-//         ),
-//          GestureDetector(
-//             onTap: (){},
-//             child: Icon(Icons.check_circle, color: Colors.orangeAccent,)),
-//       ],
-//     ),
-//   );
-// }

@@ -8,6 +8,7 @@ class FeaturedProductModel {
   final double? discountPrice;
   final double rating;
   final int reviews;
+  late int quantity;
 
   FeaturedProductModel(
       {required this.productId,
@@ -18,5 +19,33 @@ class FeaturedProductModel {
       required this.oldPrice,
       this.discountPrice,
       required this.rating,
-      required this.reviews});
+      required this.reviews,
+      this.quantity = 1});
+
+  Map<String, dynamic> toMap() {
+    return {
+      'productId': this.productId,
+      'imgUrl': this.imgUrl,
+      'titleBang': this.titleBang,
+      'titleEng': this.titleEng,
+      'newPrice': this.newPrice,
+      'oldPrice': this.oldPrice,
+      'rating': this.rating,
+      'reviews': this.reviews,
+      'quantity': this.quantity
+    };
+  }
+
+  factory FeaturedProductModel.fromMap(Map<String, dynamic> map) {
+    return FeaturedProductModel(
+        productId: map['productId'],
+        imgUrl: map['imgUrl'],
+        titleBang: map['titleBang'],
+        titleEng: map['titleEng'],
+        newPrice: map['newPrice'],
+        oldPrice: map['oldPrice'],
+        rating: map['rating'],
+        reviews: map['reviews'],
+        quantity: map['quantity']);
+  }
 }

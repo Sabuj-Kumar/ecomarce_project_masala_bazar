@@ -90,10 +90,6 @@ class _FlashDealsState extends State<FlashDeals> {
     ];
   }
 
-  List<String> time = ["Days", "Hours", "Minutes", "Seconds"];
-
-  List<String> value = ["15", "05", "25", "25"];
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -178,6 +174,7 @@ class _FlashDealsState extends State<FlashDeals> {
                           topRight: Radius.circular(productTileCurve.r),
                           bottomRight: Radius.circular(productTileCurve.r)),
                       child: ProductTile(
+                        productId: featured[index].productId,
                           imgUrl: featured[index].imgUrl,
                           titleBang: featured[index].titleBang,
                           titleEng: featured[index].titleEng,
@@ -185,7 +182,8 @@ class _FlashDealsState extends State<FlashDeals> {
                           oldPrice: featured[index].oldPrice,
                           discountPrice: featured[index].discountPrice,
                           rating: featured[index].rating,
-                          reviews: featured[index].reviews),
+                          reviews: featured[index].reviews,
+                      ),
                     ),
                   );
                 }),

@@ -115,6 +115,7 @@ class _FeaturedProductState extends State<FeaturedProduct> {
                         topRight: Radius.circular(productTileCurve.r),
                         bottomRight: Radius.circular(productTileCurve.r)),
                     child: ProductTile(
+                      productId: featured[index].productId,
                 imgUrl: featured[index].imgUrl,
                     titleBang: featured[index].titleBang,
                     titleEng: featured[index].titleEng,
