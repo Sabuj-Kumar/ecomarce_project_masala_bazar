@@ -38,7 +38,6 @@ class _ListOfCartsState extends State<ListOfCarts> {
     final cart = Provider.of<CartProvider>(context);
     return SizedBox(
         height: 125.h,
-        width: 430.w,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
