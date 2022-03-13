@@ -1,10 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:efgecom/components/appbars/custom_appbar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../Widgets/draggable_widgerts.dart';
 
 class ProductDetailsPage extends StatefulWidget {
@@ -31,11 +29,10 @@ class ProductDetailsPage extends StatefulWidget {
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
   List images = [
     "assets/img/hilsha.png",
-    "assets/img/hilsha.png",
-    "assets/img/hilsha.png",
+    "assets/img/bakery.png",
+    "assets/img/placeholder.jpg",
   ];
 
-  List<bool> clicked = [true, false, false];
   int _index = 0;
   @override
   Widget build(BuildContext context) {

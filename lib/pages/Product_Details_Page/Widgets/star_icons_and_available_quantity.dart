@@ -30,10 +30,19 @@ class StarIconsAndAvailableQuantity extends StatelessWidget {
             )
           ],
         ),
-        Text(
-          "Available: ${available}",
-          style: TextStyle(
-              fontSize: 12.sp, fontWeight: FontWeight.w400, color: irisStudio),
+        Container(
+          decoration: BoxDecoration(
+              color: irisYellow.withOpacity(0.25),
+              borderRadius: BorderRadius.circular(10.r),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text(
+              "Available: ${available}",
+              style: TextStyle(
+                  fontSize: 12.sp, fontWeight: FontWeight.w600, color: fuschiaBlueGem),
+            ),
+          ),
         )
       ],
     );

@@ -5,8 +5,8 @@ import '../../../config/custom_text_style.dart';
 import '../../../config/theme_config.dart';
 
 class SignUpForm extends StatefulWidget {
-  const SignUpForm({Key? key,this.emailOrMobile,this.confirmPassword,this.password}) : super(key: key);
-  final TextEditingController? emailOrMobile;
+  const SignUpForm({Key? key,this.mobile,this.confirmPassword,this.password}) : super(key: key);
+  final TextEditingController? mobile;
   final TextEditingController? password;
   final TextEditingController? confirmPassword;
   @override
@@ -22,7 +22,7 @@ class _SignUpFormState extends State<SignUpForm> {
         Align(
           alignment: Alignment.topLeft,
           child: Text(
-            "Email / Mobile",
+            "Mobile Number",
             style: CustomTextStyle.subHeader2(context).copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 14.sp,
@@ -31,10 +31,10 @@ class _SignUpFormState extends State<SignUpForm> {
         ),
         CustomTextField(
           suffixVisibilityIcon: false,
-          controller: widget.emailOrMobile,
-          keyboardType: TextInputType.text,
+          controller: widget.mobile,
+          keyboardType: TextInputType.number,
           textInputAction: TextInputAction.next,
-          hintText: "Enter your email address/ phone number",
+          hintText: "Enter your mobile number",
           obscureCharacter: '*',
         ),
         SizedBox(
@@ -69,7 +69,7 @@ class _SignUpFormState extends State<SignUpForm> {
               width: 5.w,
             ),
             Text(
-              "Password must be 6 characters and more 12 characters",
+              "Password must be 6 characters and more 30 characters",
               style: CustomTextStyle.subHeader2(context).copyWith(
                   color: textLight,
                   fontSize: 11.sp,

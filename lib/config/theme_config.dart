@@ -10,6 +10,7 @@ const searchBarBgColor = Color(0xffFAFAFA);
 const buttonColor = Color(0xffB81E25);
 const cardColor = Color(0xffFFFFFF);
 const textColor = Color(0xff585D69);
+const extraGrey = Color(0xFF828282);
 const textLight = Color(0xFF9D9D9D);
 const irisOrange = Color(0xFFF37042);
 const offers = Color(0xFFF37042);

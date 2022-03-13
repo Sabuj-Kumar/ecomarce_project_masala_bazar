@@ -24,7 +24,7 @@ class Offers extends StatelessWidget {
           ),
         ),
         Container(
-          height: 115.h,
+          height: 120.h,
           width: width,
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(20.r)),

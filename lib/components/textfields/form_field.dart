@@ -102,12 +102,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       icon: const Icon(Icons.visibility_outlined,color: secondaryColor,))
               : null),
       validator: (value) {
+
         if (value == null || value.isEmpty) {
-          return Validation(value,widget.hintText).emptyCheck();
-        } else if(value.isNotEmpty){
-          return Validation(value,widget.hintText).checkValidation();
+          return Validation(value: value,levelText: widget.hintText).emptyCheck();
+        } else {
+          return Validation(value: value.toString(),levelText: widget.hintText.toString()).checkValidation();
         }
-        return null;
       },
     );
   }
@@ -116,17 +116,35 @@ class _CustomTextFieldState extends State<CustomTextField> {
 class Validation {
 
   String? value;
-  String? hintText;
+  String? levelText;
 
-  Validation(this.value,this.hintText);
+  Validation({this.value,this.levelText});
 
   String emptyCheck() {
-    return "$hintText.";
+    return "$levelText.";
   }
 
   String? checkValidation() {
+
+    if(levelText == "Enter your mobile number"){
+
+      if(value!.length != 11){
+        return "Mobile Number Must be 11 digits.";
+      }
+      else if(double.tryParse(value!) == null){
+        return "Mobile Number Must be a Number";
+      }
+    }
+
+    if(levelText == "Enter your password"){
+      if(value!.length < 6){
+        return "Password can't be less then 6 digits.";
+      }
+      else if(value!.length > 30){
+        return "Password can't be greater then 30 digits.";
+      }
+    }
+
     return null;
   }
-
-
 }
