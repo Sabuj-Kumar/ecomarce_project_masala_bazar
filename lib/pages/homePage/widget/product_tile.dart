@@ -8,9 +8,11 @@ import 'package:provider/provider.dart';
 import '../../../components/layers/offer_layer.dart';
 import '../../../config/theme_config.dart';
 import '../../Product_Details_Page/Pages/product_details_main_page.dart';
-import '../../cart_page/widgets/cart_list.dart';
+import 'add_to_cart_button.dart';
+import 'expanded_button.dart';
 
 class ProductTile extends StatefulWidget {
+  final int productId;
   final String imgUrl;
   final String titleBang;
   final String titleEng;
@@ -22,6 +24,7 @@ class ProductTile extends StatefulWidget {
 
   const ProductTile(
       {Key? key,
+      required this.productId,
       required this.imgUrl,
       required this.titleBang,
       required this.titleEng,
@@ -37,12 +40,12 @@ class ProductTile extends StatefulWidget {
 }
 
 class _ProductTileState extends State<ProductTile> {
+  late int? itemCount;
   bool favorite = false;
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context);
-    int totalCount = 0;
+    itemCount = context.watch<CartProvider>().getItemCount(widget.productId);
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(productTileCurve.r),
@@ -56,15 +59,16 @@ class _ProductTileState extends State<ProductTile> {
               InkWell(
                 onTap: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) =>
-                      ProductDetailsPage(
-                        productNameEng: widget.titleEng,
-                        productNameBng: widget.titleBang,
-                        oldPrice: widget.oldPrice,
-                        newPrice: widget.newPrice,
-                        rating: widget.rating,
-                        reviews: widget.reviews,
-                      )));
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ProductDetailsPage(
+                                productNameEng: widget.titleEng,
+                                productNameBng: widget.titleBang,
+                                oldPrice: widget.oldPrice,
+                                newPrice: widget.newPrice,
+                                rating: widget.rating,
+                                reviews: widget.reviews,
+                              )));
                 },
                 child: Column(
                   children: [
@@ -98,7 +102,8 @@ class _ProductTileState extends State<ProductTile> {
                             child: Center(
                               child: Text(
                                 '${widget.discountPrice?.toInt()} Tk off',
-                                style: CustomTextStyle.linkText(context).copyWith(color: Colors.white),
+                                style: CustomTextStyle.linkText(context)
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                           ),
@@ -188,46 +193,26 @@ class _ProductTileState extends State<ProductTile> {
                 ),
               ),
               SizedBox(height: 8.h),
-              SizedBox(
-                height: 28.h,
-                width: 160.w,
-                child: ElevatedButton(
-                  onPressed: () {
-                    cart.addCounter();
-                    cart.addCartList(ListOfCarts(
-                      images: widget.imgUrl,
-                      productName: widget.titleEng,
-                      oldPrice: widget.oldPrice,
+              itemCount == 0
+                  ? AddToCartButton(
+                      productId: widget.productId,
+                      imgUrl: widget.imgUrl,
+                      titleBang: widget.titleBang,
+                      titleEng: widget.titleEng,
                       newPrice: widget.newPrice,
-                      deliveryDate: "Arrive by 2030 to 2040 hehe",
-                      offerPercentages: -10,
-                    ));
-                  },
-                  style: ElevatedButton.styleFrom(
-                      primary: buttonColor,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(productTileCurve.r),
-                      )),
-                  child: Padding(
-                    padding: EdgeInsets.all(2.h),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Add to Cart",
-                          style: CustomTextStyle.bodySmall(context).copyWith(
-                              fontSize: 11.88.sp, color: Colors.white),
-                        ),
-                        SvgPicture.asset(
-                          'assets/icons/cart.svg',
-                          height: 20.h,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                      oldPrice: widget.oldPrice,
+                      rating: widget.rating,
+                      reviews: widget.reviews)
+                  : ExpandedButton(
+                      productId: widget.productId,
+                      imgUrl: widget.imgUrl,
+                      titleBang: widget.titleBang,
+                      titleEng: widget.titleEng,
+                      newPrice: widget.newPrice,
+                      oldPrice: widget.oldPrice,
+                      rating: widget.rating,
+                      reviews: widget.reviews),
+              //ExpandButton(context),
             ],
           ),
           Positioned(

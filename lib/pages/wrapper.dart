@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:connectivity/connectivity.dart';
 import 'package:efgecom/providers/cart_provider.dart';
@@ -14,6 +15,7 @@ import 'package:efgecom/helpers/router.dart';
 import 'package:efgecom/providers/user_provider.dart';
 import 'package:efgecom/services/connectivity_service.dart';
 
+import '../models/featured_product_model.dart';
 import '../providers/language_provider.dart';
 import 'mainPage/mainPage.dart';
 
@@ -145,11 +147,32 @@ class _WrapperState extends State<Wrapper> with WidgetsBindingObserver {
 }
 
 // ignore: must_be_immutable
-class AppHandler extends StatelessWidget {
+class AppHandler extends StatefulWidget {
   AppHandler({Key? key}) : super(key: key);
 
-  bool checked = false;
+  @override
+  State<AppHandler> createState() => _AppHandlerState();
+}
 
+class _AppHandlerState extends State<AppHandler> {
+  bool checked = false;
+  @override
+  void initState() {
+    super.initState();
+    setCartProductQuantity();
+  }
+
+  void setCartProductQuantity() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey("items")){
+      log('Contains Ok');
+      var itemStr = prefs.getString('items');
+      var itemList = jsonDecode(itemStr!);
+      for(var el in itemList){
+        context.read<CartProvider>().addToCart(FeaturedProductModel.fromMap(el));
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     // final userProvider = Provider.of<UserProvider>(context);

@@ -19,13 +19,13 @@ class FishMeat extends StatefulWidget {
 
 class _FishMeatState extends State<FishMeat> {
   late List<FeaturedProductModel> featured;
-  final int _numPages = 10;
 
   @override
   void initState() {
     super.initState();
     featured = [
       FeaturedProductModel(
+        productId: 111,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -35,6 +35,7 @@ class _FishMeatState extends State<FishMeat> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 222,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -44,6 +45,7 @@ class _FishMeatState extends State<FishMeat> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 333,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -53,6 +55,7 @@ class _FishMeatState extends State<FishMeat> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 444,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -62,6 +65,7 @@ class _FishMeatState extends State<FishMeat> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 555,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -71,6 +75,7 @@ class _FishMeatState extends State<FishMeat> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 666,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -80,6 +85,7 @@ class _FishMeatState extends State<FishMeat> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 777,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -89,6 +95,7 @@ class _FishMeatState extends State<FishMeat> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 888,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -192,6 +199,7 @@ class _FishMeatState extends State<FishMeat> {
                                 topRight: Radius.circular(productTileCurve.r),
                                 bottomRight: Radius.circular(productTileCurve.r)),
                             child: ProductTile(
+                              productId: featured[index].productId,
                                 imgUrl: featured[index].imgUrl,
                                 titleBang: featured[index].titleBang,
                                 titleEng: featured[index].titleEng,

@@ -15,13 +15,15 @@ import '../widget/featured_product.dart';
 import '../widget/top_banner.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final int? flashDealTime;
+  const HomePage({Key? key, this.flashDealTime = 1647253500000}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  int currentTime = DateTime.now().millisecondsSinceEpoch;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.only(top: 20.h),
                     child: const Location(),
                   ),
+
                 ),
               ),
               SliverAppBar(
@@ -51,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                 elevation: 3,
                 shadowColor: deepBgColor.withOpacity(0.5),
                 //expandedHeight: 60.h,
-                pinned: true,/**/
+                pinned: true,
                 backgroundColor: deepBgColor,
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,10 +110,14 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 25.h,
                 ),
-                const FlashDeals(),
-                SizedBox(
-                  height: 20.h,
-                ),
+                widget.flashDealTime != null && widget.flashDealTime! > currentTime ? Column(
+                  children: [
+                    FlashDeals(flashDealTime: widget.flashDealTime,),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                  ],
+                ) : Container(),
                 const SpecialOffers()
                 // TopBanner()
               ],

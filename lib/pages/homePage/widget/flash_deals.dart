@@ -1,3 +1,4 @@
+import 'package:efgecom/pages/homePage/widget/countdown_timer_page.dart';
 import 'package:efgecom/pages/homePage/widget/product_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,9 +8,11 @@ import '../../../config/theme_config.dart';
 import '../../../models/featured_product_model.dart';
 
 class FlashDeals extends StatefulWidget {
+  final int? flashDealTime;
   const FlashDeals({
     Key? key,
     this.text,
+    this.flashDealTime
   }) : super(key: key);
   final String? text;
 
@@ -25,6 +28,7 @@ class _FlashDealsState extends State<FlashDeals> {
     super.initState();
     featured = [
       FeaturedProductModel(
+        productId: 111,
           imgUrl: 'assets/img/meat.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish processing (Big Size)',
@@ -34,6 +38,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 222,
           imgUrl: 'assets/img/bakery.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Bakery',
@@ -43,6 +48,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 333,
           imgUrl: 'assets/img/masala.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Masala Item',
@@ -52,6 +58,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 444,
           imgUrl: 'assets/img/katla.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Katla Fish',
@@ -61,6 +68,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 555,
           imgUrl: 'assets/img/shrimp.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Shrimp',
@@ -70,6 +78,7 @@ class _FlashDealsState extends State<FlashDeals> {
           rating: 4.6,
           reviews: 86),
       FeaturedProductModel(
+        productId: 666,
           imgUrl: 'assets/img/Snacks.png',
           titleBang: 'কাতলা মাছ প্রসেসিং ( বড় মাছ)',
           titleEng: 'Snacks Item',
@@ -80,10 +89,6 @@ class _FlashDealsState extends State<FlashDeals> {
           reviews: 86),
     ];
   }
-
-  List<String> time = ["Days", "Hours", "Minutes", "Seconds"];
-
-  List<String> value = ["15", "05", "25", "25"];
 
   @override
   Widget build(BuildContext context) {
@@ -139,42 +144,11 @@ class _FlashDealsState extends State<FlashDeals> {
           SizedBox(
             height: 10.h,
           ),
-          SizedBox(
+          Container(
             height: 34.h,
-            width: 297.w,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(
-                  4,
-                  (index) => Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 0.1.h),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: offers,
-                            borderRadius: BorderRadius.circular(productTileCurve.r)),
-                        child: Padding(
-                          padding: EdgeInsets.all(7.0.w),
-                          child: RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text: value[index] + " ",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12.sp),
-                              ),
-                              TextSpan(
-                                text: time[index],
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12.sp,
-                                    letterSpacing: 0.2),
-                              ),
-                            ]),
-                          ),
-                        )),
-                  ),
-                )),
+            width: double.maxFinite,
+            //color: Colors.green,
+            child: CountdownTimerPage(flashDealTime: widget.flashDealTime,)
           ),
           SizedBox(
             height: 10.h,
@@ -200,6 +174,7 @@ class _FlashDealsState extends State<FlashDeals> {
                           topRight: Radius.circular(productTileCurve.r),
                           bottomRight: Radius.circular(productTileCurve.r)),
                       child: ProductTile(
+                        productId: featured[index].productId,
                           imgUrl: featured[index].imgUrl,
                           titleBang: featured[index].titleBang,
                           titleEng: featured[index].titleEng,
@@ -207,7 +182,8 @@ class _FlashDealsState extends State<FlashDeals> {
                           oldPrice: featured[index].oldPrice,
                           discountPrice: featured[index].discountPrice,
                           rating: featured[index].rating,
-                          reviews: featured[index].reviews),
+                          reviews: featured[index].reviews,
+                      ),
                     ),
                   );
                 }),
@@ -216,4 +192,5 @@ class _FlashDealsState extends State<FlashDeals> {
       ),
     );
   }
+
 }
