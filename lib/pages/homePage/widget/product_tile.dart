@@ -144,7 +144,7 @@ class _ProductTileState extends State<ProductTile> {
                         child: Row(
                           children: [
                             Text(
-                              "Tk-${widget.oldPrice}/kg",
+                              "Tk ${widget.oldPrice}/kg",
                               style: CustomTextStyle.linkText(context).copyWith(
                                   color: Colors.grey,
                                   decoration: TextDecoration.lineThrough),
@@ -153,7 +153,7 @@ class _ProductTileState extends State<ProductTile> {
                               width: 5.w,
                             ),
                             Text(
-                              "Tk-${widget.newPrice}/kg",
+                              "Tk ${widget.newPrice}/kg",
                               style: CustomTextStyle.bodySmall(context)
                                   .copyWith(
                                       color: buttonColor, fontSize: 14.sp),
