@@ -87,7 +87,7 @@ class _CategoryListState extends State<CategoryList> {
                     width: 122.w,
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, '/fishMeat/${slider[index].title.toString()}');
+                        Navigator.pushNamed(context, '/searchPage/${slider[index].title.toString()}');
                       },
                       child: Card(
                           margin: EdgeInsets.zero,

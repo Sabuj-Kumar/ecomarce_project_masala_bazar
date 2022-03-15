@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:efgecom/components/scaffold/custom_scaffold.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:efgecom/pages/homePage/widget/location.dart';
@@ -9,12 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../config/custom_text_style.dart';
-import '../../../models/featured_product_model.dart';
-import '../../../providers/cart_provider.dart';
 import '../widget/discount_banner.dart';
 import '../widget/flash_deals.dart';
 import '../widget/search_container.dart';
@@ -25,7 +18,7 @@ import '../widget/top_banner.dart';
 
 class HomePage extends StatefulWidget {
   final int? flashDealTime;
-  const HomePage({Key? key, this.flashDealTime = 1647492299000}) : super(key: key);
+  const HomePage({Key? key, this.flashDealTime = 1647749520000}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -33,25 +26,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentTime = DateTime.now().millisecondsSinceEpoch;
-
-
-  @override
-  void initState() {
-    super.initState();
-    setCartProductQuantity();
-  }
-
-  void setCartProductQuantity() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.containsKey("items")){
-      log('Contains Ok');
-      var itemStr = prefs.getString('items');
-      var itemList = jsonDecode(itemStr!);
-      for(var el in itemList){
-        context.read<CartProvider>().addToCart(FeaturedProductModel.fromMap(el));
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

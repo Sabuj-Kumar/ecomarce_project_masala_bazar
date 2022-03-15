@@ -1,10 +1,17 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:efgecom/config/theme_config.dart';
 import 'package:efgecom/pages/homePage/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:efgecom/pages/mainPage/dashboard_page.dart';
 import 'package:efgecom/pages/menu/side_menu.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/navigation_bar/RoundedTabBarWidgets/rounded_tabbar_widgets.dart';
+import '../../models/featured_product_model.dart';
+import '../../providers/cart_provider.dart';
 import '../cart_page/pages/cart_page_view.dart';
 
 class MainPage extends StatefulWidget {
@@ -35,6 +42,19 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    setCartProductQuantity();
+  }
+
+  void setCartProductQuantity() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey("items")){
+      log('Contains Ok');
+      var itemStr = prefs.getString('items');
+      var itemList = jsonDecode(itemStr!);
+      for(var el in itemList){
+        context.read<CartProvider>().addToCart(FeaturedProductModel.fromMap(el));
+      }
+    }
   }
 
   @override

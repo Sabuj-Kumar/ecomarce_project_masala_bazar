@@ -8,7 +8,7 @@ import '../../../config/theme_config.dart';
 class CountdownTimerPage extends StatefulWidget {
   final int? flashDealTime;
 
-  CountdownTimerPage({Key? key, this.flashDealTime}) : super(key: key);
+  CountdownTimerPage({Key? key, required this.flashDealTime}) : super(key: key);
 
   @override
   _CountdownTimerPageState createState() => _CountdownTimerPageState();
@@ -48,8 +48,6 @@ class _CountdownTimerPageState extends State<CountdownTimerPage> {
           return Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Text(
-              //     'days: [ ${time.days} ], hours: [ ${time.hours} ], min: [ ${time.min} ], sec: [ ${time.sec} ]'),
               buildTimeCard(time: time.days.toString() != 'null' ? time.days.toString() : '00', header: 'Days'),
               SizedBox(width: 13.w,),
               buildTimeCard(time: time.hours.toString() != 'null' ? time.hours.toString() : '00', header: 'Hours'),
