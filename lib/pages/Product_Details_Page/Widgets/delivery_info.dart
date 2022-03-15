@@ -1,4 +1,3 @@
-import 'package:efgecom/components/textfields/custom_input_style.dart';
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:efgecom/config/theme_config.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +6,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DeliveryInfo extends StatelessWidget {
-  const DeliveryInfo({Key? key}) : super(key: key);
+  DeliveryInfo({Key? key}) : super(key: key);
+  List<String> images = [
+    "assets/icons/track.svg",
+    "assets/icons/dollarHand.svg",
+    "assets/icons/badge.svg",
+    "assets/icons/phoneCall24hours.svg",
+  ];
+  List<String> songLyrics = [
+    "Guro Ghor banaila Ki diya dorja janala kisoi nai kmne tumay dekhte pai guru ghor banaila ki diya",
+    "Guro Ghor banaila Ki diya dorja janala kisoi nai kmne tumay dekhte pai guru ghor banaila ki diya",
+    "Guro Ghor banaila Ki diya dorja janala kisoi nai kmne tumay dekhte pai guru ghor banaila ki diya",
+    "Guro Ghor banaila Ki diya dorja janala kisoi nai kmne tumay dekhte pai guru ghor banaila ki diya",
+  ];
+  String deliveryTime = "2 - 3 Days";
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -33,7 +45,9 @@ class DeliveryInfo extends StatelessWidget {
                 ),
               ),
               InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    print("Change pressed");
+                  },
                   child: Text("Change",
                       style: CustomTextStyle.subHeader2(context)
                           .copyWith(color: fuschiaBlueGem)))
@@ -46,9 +60,9 @@ class DeliveryInfo extends StatelessWidget {
                 style: CustomTextStyle.subHeader2(context)
                     .copyWith(color: fuschiaText))),
         Center(
-            child: Text("2-3 Days",
+            child: Text(deliveryTime,
                 style: CustomTextStyle.subHeader2(context)
-                    .copyWith(color: fuschiaText, fontSize: 18.sp))),
+                    .copyWith(color: fuschiaText, fontSize: 18.sp,fontWeight: FontWeight.w600))),
         SizedBox(height: 25.h),
         RichText(
             text: TextSpan(
@@ -68,13 +82,15 @@ class DeliveryInfo extends StatelessWidget {
                       fontWeight: FontWeight.w500)),
               TextSpan(
                 text: "   Offer!",
-                style: CustomTextStyle.header2Bold(context)
-                    .copyWith(fontWeight: FontWeight.w400, color: Colors.black,fontSize: 16.sp),
+                style: CustomTextStyle.header2Bold(context).copyWith(
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                    fontSize: 16.sp),
               )
             ])),
         SizedBox(height: 15.h),
         SizedBox(
-          height: 350.h,
+          height: 300.h,
           child: GridView.builder(
             scrollDirection: Axis.vertical,
             physics: const NeverScrollableScrollPhysics(),
@@ -83,22 +99,35 @@ class DeliveryInfo extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 4.h,
               crossAxisSpacing: 4.w,
-              childAspectRatio: 8.h/5.w,
-          ),
-            itemBuilder:(context,index){
-              return Card(
-                elevation: 1,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-                shadowColor: Colors.black,
-                color: Colors.white,
-                child: Column(
-                  children: const [
-                      Text("Koco "),
-                      Text("Gurar dim"),
-                     Text("Boiler morgir bacca"),
-                  ],
+              childAspectRatio: 8.h / 5.w,
+            ),
+            itemBuilder: (context, index) {
+              return Center(
+                child: Card(
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  shadowColor: Colors.black,
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(images[index],
+                            height: 23.h, width: 35.w),
+                        Text("24/7 Support",
+                            style: CustomTextStyle.subHeader1(context)
+                                .copyWith(fontSize: 14.sp,color: fuschiaText)),
+                        Text(songLyrics[index],
+                            style: CustomTextStyle.linkText(context).copyWith(color: fuschiaText),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               );
             },

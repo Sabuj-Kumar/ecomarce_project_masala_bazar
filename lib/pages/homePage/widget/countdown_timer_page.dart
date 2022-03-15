@@ -55,7 +55,6 @@ class _CountdownTimerPageState extends State<CountdownTimerPage> {
               buildTimeCard(time: time.min.toString() != 'null' ? time.min.toString() : '00', header: 'Minutes'),
               SizedBox(width: 13.w,),
               buildTimeCard(time: time.sec.toString() != 'null' ? time.sec.toString() : '00', header: 'Seconds'),
-
             ],
           );
         },
@@ -81,12 +80,10 @@ class _CountdownTimerPageState extends State<CountdownTimerPage> {
           Text(
             header, style: CustomTextStyle.linkText(context).copyWith(color: Colors.white, fontWeight: FontWeight.w300),
           ),
-
         ],
       ),
     );
   }
-
 
   @override
   void dispose() {

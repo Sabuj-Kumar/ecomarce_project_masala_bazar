@@ -1,9 +1,15 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:efgecom/config/custom_text_style.dart';
 import 'package:efgecom/config/theme_config.dart';
+import 'package:efgecom/models/featured_product_model.dart';
+import 'package:efgecom/providers/language_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../providers/cart_provider.dart';
 
@@ -14,31 +20,40 @@ class ListOfCarts extends StatefulWidget {
       this.deliveryDate,
       this.oldPrice,
       this.newPrice,
-      this.productName,
+      this.productNameBng,
+        this.productNameEng,
       this.offerPercentages,
-        this.individualItemCount})
+         required this.productId,
+        this.reviews,
+        this.rating
+        })
       : super(key: key);
   final String? images;
   final String? deliveryDate;
-  final String? productName;
+  final String? productNameBng;
+  final String? productNameEng;
   final double? oldPrice;
   final double? newPrice;
   final double? offerPercentages;
-  int? individualItemCount = 0;
+  final int productId;
+  final double? rating;
+  final int? reviews;
   @override
   _ListOfCartsState createState() => _ListOfCartsState();
 }
 
 class _ListOfCartsState extends State<ListOfCarts> {
+  int? quantity;
   bool isChecked = false;
   bool pressed = false;
-  int counter = 1;
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
+    quantity = context.watch<CartProvider>().getItemCount(widget.productId);
+    final lng = Provider.of<LanguageProvider>(context);
     return SizedBox(
         height: 125.h,
-        width: 430.w,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -82,8 +97,14 @@ class _ListOfCartsState extends State<ListOfCarts> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "${widget.productName}",
+                        lng.languageCode =='en' ? Text(
+                          "${widget.productNameBng}",
+                          style: CustomTextStyle.subHeader2(context).copyWith(
+                              color: fuschiaBlueGem,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500),
+                        ):Text(
+                          "${widget.productNameEng}",
                           style: CustomTextStyle.subHeader2(context).copyWith(
                               color: fuschiaBlueGem,
                               fontSize: 14.sp,
@@ -166,18 +187,23 @@ class _ListOfCartsState extends State<ListOfCarts> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           InkWell(
-                              onTap: () {
-                                /*setState(() {
-                                  if (counter > 1) {
-                                    counter--;
-                                    widget.individualItemCount = counter;
-                                    cart.removeCounter();
-                                  }
-                                });*/
-                              },
+                              onTap: quantity! > 1?() {
+                                setState(() {
+                                  cart.removeQuantity(FeaturedProductModel(
+                                      productId: widget.productId,
+                                      imgUrl: widget.images!,
+                                      titleBang: widget.productNameBng!,
+                                      titleEng: widget.productNameEng!,
+                                      newPrice: widget.newPrice!,
+                                      oldPrice: widget.oldPrice!,
+                                      rating: widget.rating!,
+                                      reviews: widget.reviews!));
+                                  cart.minusTotalPrice(widget.newPrice!);
+                                });
+                              }: null,
                               child: const Icon(Icons.remove,
                                   size: 15, color: fuschiaBlueGem)),
-                          Text("$counter",
+                          Text("$quantity",
                               style: CustomTextStyle.subHeader2(context)
                                   .copyWith(
                                       color: fuschiaBlueGem,
@@ -185,11 +211,22 @@ class _ListOfCartsState extends State<ListOfCarts> {
                                       fontSize: 13.sp)),
                           InkWell(
                               onTap: () {
-                                /*setState(() {
-                                  counter++;
-                                  widget.individualItemCount = counter;
-                                  cart.addCounter();
-                                });*/
+                                setState(() {
+                                  cart.addToCart(
+                                      FeaturedProductModel(
+                                          productId: widget.productId,
+                                          imgUrl: widget.images!,
+                                          titleBang: widget.productNameBng!,
+                                          titleEng: widget.productNameEng!,
+                                          newPrice: widget.newPrice!,
+                                          oldPrice: widget.oldPrice!,
+                                          rating: widget.rating!,
+                                          reviews: widget.reviews!)
+                                  );
+                                  cart.addTotalPrice(widget.newPrice!);
+
+                                }
+                                );
                               },
                               child: const Icon(Icons.add,
                                   size: 15, color: fuschiaBlueGem))

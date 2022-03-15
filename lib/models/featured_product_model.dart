@@ -9,6 +9,7 @@ class FeaturedProductModel {
   final double rating;
   final int reviews;
   late int quantity;
+  final double? offerPercentage;
 
   FeaturedProductModel(
       {required this.productId,
@@ -20,19 +21,22 @@ class FeaturedProductModel {
       this.discountPrice,
       required this.rating,
       required this.reviews,
-      this.quantity = 1});
+      this.quantity = 1,
+      this.offerPercentage
+      });
 
   Map<String, dynamic> toMap() {
     return {
-      'productId': this.productId,
-      'imgUrl': this.imgUrl,
-      'titleBang': this.titleBang,
-      'titleEng': this.titleEng,
-      'newPrice': this.newPrice,
-      'oldPrice': this.oldPrice,
-      'rating': this.rating,
-      'reviews': this.reviews,
-      'quantity': this.quantity
+      'productId': productId,
+      'imgUrl': imgUrl,
+      'titleBang': titleBang,
+      'titleEng': titleEng,
+      'newPrice': newPrice,
+      'oldPrice': oldPrice,
+      'rating': rating,
+      'reviews': reviews,
+      'quantity': quantity,
+      'offerPercentage':offerPercentage
     };
   }
 
@@ -46,6 +50,8 @@ class FeaturedProductModel {
         oldPrice: map['oldPrice'],
         rating: map['rating'],
         reviews: map['reviews'],
-        quantity: map['quantity']);
+        quantity: map['quantity'],
+        offerPercentage:map['offerPercentage']
+    );
   }
 }

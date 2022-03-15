@@ -81,7 +81,6 @@ class _ExpandedButtonState extends State<ExpandedButton> {
                         oldPrice: widget.oldPrice,
                         rating: widget.rating,
                         reviews: widget.reviews));
-                    log('cart length: ${cart.cartCount}');
                     cart.minusTotalPrice(widget.newPrice);
                   });
                 },

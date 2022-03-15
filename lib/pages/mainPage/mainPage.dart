@@ -39,23 +39,6 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
     DashboardPage(),
     Menu(),
   ];
-  @override
-  void initState() {
-    super.initState();
-    setCartProductQuantity();
-  }
-
-  void setCartProductQuantity() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (prefs.containsKey("items")){
-      log('Contains Ok');
-      var itemStr = prefs.getString('items');
-      var itemList = jsonDecode(itemStr!);
-      for(var el in itemList){
-        context.read<CartProvider>().addToCart(FeaturedProductModel.fromMap(el));
-      }
-    }
-  }
 
   @override
   void dispose() {
@@ -68,6 +51,9 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
       style: Theme.of(context).textTheme.headline6,
     );
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {

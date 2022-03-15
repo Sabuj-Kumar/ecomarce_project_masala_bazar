@@ -57,7 +57,6 @@ class CartProvider with ChangeNotifier {
       _cartCount++;
       _setPrefitems();
     }
-
   }
 
   void removeQuantity(FeaturedProductModel item){
